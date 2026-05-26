@@ -1,0 +1,10 @@
+# Keep this repo limited to the public static site.
+*
+!index.html
+!README.md
+!LICENSE
+!.gitignore
+!.nojekyll
+!.github/
+!.github/workflows/
+!.github/workflows/pages.yml
