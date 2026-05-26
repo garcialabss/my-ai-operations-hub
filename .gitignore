@@ -5,3 +5,6 @@
 !LICENSE
 !.gitignore
 !.nojekyll
+!.github/
+!.github/workflows/
+!.github/workflows/pages.yml
