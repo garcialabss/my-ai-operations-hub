@@ -1,381 +1,474 @@
 <!doctype html>
 <html lang="pt">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>My AI Operations Hub</title>
+  <meta name="description" content="Interactive AI-assisted operations workflow map with specialist agents, reusable skills and execution levels.">
   <style>
     :root {
       color-scheme: dark;
-      --bg: #061326;
-      --cyan: #42eaff;
-      --cyan2: #00a9ff;
-      --chip: #35f3ff;
-      --text: #e8fbff;
-      --muted: #8eb6c8;
-      --panel: rgba(2, 14, 27, .88);
+      --bg: #041329;
+      --bg2: #082f5d;
+      --cyan: #26e9ff;
+      --cyan-soft: rgba(38, 233, 255, .42);
+      --cyan-faint: rgba(38, 233, 255, .16);
+      --panel: rgba(1, 12, 28, .62);
+      --line: rgba(76, 236, 255, .22);
+      --text: #e9fbff;
+      --muted: #91bad0;
+      --chip-text: #034e66;
     }
+
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: Inter, ui-sans-serif, system-ui, "Segoe UI", sans-serif;
+      overflow: hidden;
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at 49% 44%, rgba(15, 143, 224, .32), transparent 31%),
-        radial-gradient(circle at 50% 46%, rgba(66, 234, 255, .10), transparent 45%),
-        linear-gradient(135deg, #020713, #06234a 55%, #020b18);
-      overflow: hidden;
+        radial-gradient(circle at 41% 43%, rgba(42, 218, 255, .22), transparent 24rem),
+        radial-gradient(circle at 48% 44%, rgba(9, 96, 168, .35), transparent 34rem),
+        linear-gradient(135deg, #030916 0%, #062a56 48%, #031020 100%);
     }
+
     .app {
-      display: grid;
-      grid-template-columns: 1fr 330px;
-      height: 100vh;
-      gap: 14px;
-      padding: 14px;
-    }
-    .stage {
       position: relative;
-      overflow: hidden;
-      border-radius: 10px;
-      background:
-        radial-gradient(circle at 50% 45%, rgba(50, 220, 255, .08), transparent 34%),
-        linear-gradient(180deg, rgba(4, 28, 56, .28), rgba(0, 5, 14, .28));
-      border: 1px solid rgba(66, 234, 255, .12);
-      box-shadow: inset 0 0 80px rgba(66,234,255,.06), 0 24px 80px rgba(0,0,0,.35);
+      min-height: 100vh;
+      padding: 30px;
+      isolation: isolate;
     }
-    .title {
+
+    .brand {
       position: absolute;
-      left: 22px;
-      top: 18px;
-      z-index: 20;
+      top: 30px;
+      left: 34px;
+      z-index: 5;
       pointer-events: none;
     }
+
     h1 {
       margin: 0;
-      font-size: 22px;
-      font-weight: 700;
+      font-size: clamp(22px, 2.3vw, 36px);
+      line-height: 1.05;
       letter-spacing: 0;
+      text-shadow: 0 0 28px rgba(38, 233, 255, .28);
     }
-    .title p {
-      margin: 5px 0 0;
-      font-size: 12px;
+
+    .brand p {
+      margin: 8px 0 0;
+      max-width: 430px;
       color: var(--muted);
+      line-height: 1.45;
+      font-size: 14px;
     }
-    svg {
+
+    .brain-wrap {
       position: absolute;
-      inset: 0;
+      left: 3vw;
+      top: 4vh;
+      width: min(78vw, 1060px);
+      height: min(88vh, 790px);
+      min-height: 610px;
+      filter: drop-shadow(0 0 22px rgba(38, 233, 255, .18));
+    }
+
+    svg {
       width: 100%;
       height: 100%;
+      display: block;
     }
-    .brain-shape {
-      fill: rgba(2, 26, 52, .24);
-      stroke: rgba(66, 234, 255, .28);
-      stroke-width: 2;
-      filter: drop-shadow(0 0 18px rgba(66,234,255,.18));
+
+    .brain-shell {
+      fill: rgba(5, 45, 83, .18);
+      stroke: rgba(87, 240, 255, .20);
+      stroke-width: 1.6;
+      filter: drop-shadow(0 0 18px rgba(38, 233, 255, .22));
     }
+
     .trace {
       fill: none;
-      stroke: rgba(40, 209, 255, .72);
-      stroke-width: 2.2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      filter: drop-shadow(0 0 5px rgba(66,234,255,.55));
-      transition: opacity .18s ease, stroke .18s ease, stroke-width .18s ease;
-    }
-    .trace.faint { opacity: .34; stroke-width: 1.5; }
-    .trace.active {
-      stroke: rgba(107, 247, 255, 1);
-      stroke-width: 3;
-      filter: drop-shadow(0 0 10px rgba(66,234,255,.95));
-      stroke-dasharray: 8 12;
-      animation: move 2.3s linear infinite;
-    }
-    @keyframes move { to { stroke-dashoffset: -80; } }
-    .node-dot {
-      fill: #69f3ff;
-      filter: drop-shadow(0 0 7px rgba(66,234,255,.95));
-    }
-    .micro {
-      fill: none;
-      stroke: rgba(66,234,255,.30);
-      stroke-width: 1.1;
-    }
-    .chip {
-      cursor: pointer;
-    }
-    .chip-body {
-      fill: url(#chipGrad);
-      stroke: rgba(172, 255, 255, .95);
-      stroke-width: 2.2;
-      filter: drop-shadow(0 0 24px rgba(53,243,255,.7));
-    }
-    .chip-pin {
-      stroke: rgba(98, 245, 255, .85);
+      stroke: rgba(48, 222, 255, .78);
       stroke-width: 2;
       stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 5px rgba(38, 233, 255, .72));
+      transition: opacity .18s ease, stroke-width .18s ease, stroke .18s ease;
     }
-    .chip-text {
-      fill: #036070;
+
+    .trace.micro {
+      stroke-width: 1.15;
+      opacity: .46;
+    }
+
+    .trace.active {
+      stroke: rgba(119, 250, 255, 1);
+      stroke-width: 3;
+      stroke-dasharray: 10 12;
+      animation: signal 2.1s linear infinite;
+      opacity: 1;
+    }
+
+    .trace.dim { opacity: .20; }
+    .trace.hide { opacity: .06; }
+
+    @keyframes signal { to { stroke-dashoffset: -88; } }
+
+    .node {
+      fill: #7ff8ff;
+      stroke: rgba(255, 255, 255, .62);
+      stroke-width: 1.1;
+      filter: drop-shadow(0 0 8px rgba(38, 233, 255, .92));
+      cursor: pointer;
+      transition: r .18s ease, opacity .18s ease;
+    }
+
+    .node.dim { opacity: .28; }
+    .node.active { r: 6.8; }
+
+    .chip {
+      cursor: pointer;
+      filter: drop-shadow(0 0 24px rgba(38, 233, 255, .85));
+    }
+
+    .chip rect {
+      fill: url(#chipGrad);
+      stroke: rgba(205, 255, 255, .96);
+      stroke-width: 2.2;
+    }
+
+    .chip text {
+      fill: var(--chip-text);
       font: 800 38px Inter, system-ui, sans-serif;
       text-anchor: middle;
       dominant-baseline: middle;
     }
-    .agent-label {
+
+    .pin {
+      stroke: rgba(114, 248, 255, .9);
+      stroke-width: 2;
+      stroke-linecap: round;
+    }
+
+    .label {
       position: absolute;
       transform: translate(-50%, -50%);
-      border: 1px solid rgba(66,234,255,.18);
+      border: 1px solid rgba(52, 226, 255, .26);
       border-radius: 999px;
       padding: 6px 9px;
-      background: rgba(1, 14, 29, .70);
-      color: #dffbff;
-      font-size: 10.5px;
+      max-width: 190px;
+      background: rgba(1, 13, 30, .68);
+      color: #e6fbff;
+      font-size: 11px;
+      line-height: 1.05;
       white-space: nowrap;
       cursor: pointer;
-      z-index: 12;
-      opacity: .78;
-      transition: opacity .18s ease, border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+      z-index: 4;
+      opacity: .68;
+      box-shadow: 0 0 14px rgba(38, 233, 255, .12);
+      transition: opacity .18s ease, transform .18s ease, border-color .18s ease;
     }
-    .agent-label:hover,
-    .agent-label.active {
+
+    .label:hover,
+    .label.active {
       opacity: 1;
-      border-color: rgba(66,234,255,.85);
-      transform: translate(-50%, -50%) scale(1.06);
-      box-shadow: 0 0 16px rgba(66,234,255,.35);
+      transform: translate(-50%, -50%) scale(1.05);
+      border-color: rgba(52, 226, 255, .88);
     }
-    .agent-label.dim { opacity: .22; }
-    .skill-bubble {
-      position: absolute;
-      z-index: 14;
-      transform: translate(-50%, -50%);
-      max-width: 158px;
-      padding: 6px 8px;
-      border: 1px solid rgba(66,234,255,.26);
-      border-radius: 999px;
-      background: rgba(0, 10, 22, .84);
-      color: #e6fbff;
-      font-size: 10px;
-      line-height: 1.1;
-      text-align: center;
-      box-shadow: 0 0 13px rgba(66,234,255,.16);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .18s ease, transform .18s ease;
-    }
-    .skill-bubble.open {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .skill-bubble.all-open {
-      opacity: .86;
-      transform: translate(-50%, -50%) scale(1);
-    }
+
+    .label.dim { opacity: .18; }
+
     .panel {
-      border: 1px solid rgba(66,234,255,.16);
-      border-radius: 10px;
-      background: var(--panel);
-      box-shadow: 0 24px 80px rgba(0,0,0,.32);
-      padding: 15px;
+      position: absolute;
+      right: 28px;
+      top: 50%;
+      z-index: 8;
+      width: min(360px, calc(100vw - 44px));
+      max-height: calc(100vh - 58px);
+      transform: translateY(-50%);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: linear-gradient(180deg, rgba(3, 17, 36, .78), rgba(1, 8, 20, .70));
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .38), inset 0 0 30px rgba(38, 233, 255, .05);
+      backdrop-filter: blur(12px);
+      padding: 18px;
       overflow: auto;
     }
+
     .panel h2 {
-      margin: 0 0 4px;
-      font-size: 19px;
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.12;
+      letter-spacing: 0;
     }
+
     .tech {
+      margin-top: 7px;
       color: var(--muted);
       font-size: 12px;
-      margin-bottom: 14px;
       word-break: break-word;
     }
+
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 8px;
-      margin-bottom: 12px;
+      margin: 16px 0;
     }
+
     .stat {
-      border: 1px solid rgba(66,234,255,.13);
+      border: 1px solid rgba(38, 233, 255, .18);
       border-radius: 8px;
-      padding: 8px;
-      background: rgba(1, 10, 21, .68);
+      background: rgba(0, 12, 27, .64);
+      padding: 9px;
     }
-    .stat b { display: block; color: var(--cyan); font-size: 18px; line-height: 1; }
-    .stat span { color: var(--muted); font-size: 10.5px; }
+
+    .stat b {
+      display: block;
+      color: var(--cyan);
+      font-size: 19px;
+      line-height: 1;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 10.5px;
+    }
+
     input {
       width: 100%;
-      border: 1px solid rgba(66,234,255,.20);
+      min-height: 40px;
+      border: 1px solid rgba(38, 233, 255, .22);
       border-radius: 8px;
-      padding: 10px;
-      background: rgba(0, 8, 18, .72);
+      background: rgba(0, 8, 20, .72);
       color: var(--text);
+      padding: 9px 10px;
       font: inherit;
       font-size: 13px;
-      margin-bottom: 12px;
+      outline: none;
     }
+
     .filters {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-bottom: 14px;
+      margin: 12px 0 14px;
     }
-    .filters button {
-      border: 1px solid rgba(66,234,255,.18);
-      border-radius: 999px;
-      padding: 6px 8px;
-      background: rgba(1, 10, 21, .72);
-      color: #d8f9ff;
+
+    button {
+      border: 1px solid rgba(38, 233, 255, .22);
+      border-radius: 8px;
+      background: rgba(38, 233, 255, .08);
+      color: var(--text);
+      min-height: 34px;
+      padding: 7px 9px;
+      font: inherit;
+      font-size: 12px;
       cursor: pointer;
-      font-size: 11px;
     }
-    .filters button.active {
-      border-color: rgba(66,234,255,.82);
-      background: rgba(66,234,255,.14);
+
+    button:hover,
+    button.active {
+      border-color: rgba(38, 233, 255, .78);
+      background: rgba(38, 233, 255, .15);
     }
+
     .actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
       margin-bottom: 14px;
     }
-    .actions button {
-      border: 1px solid rgba(66,234,255,.20);
-      border-radius: 8px;
-      padding: 9px 10px;
-      background: rgba(66,234,255,.10);
-      color: #e8fbff;
-      cursor: pointer;
-      font-weight: 650;
-      font-size: 12px;
-    }
+
     .section {
-      margin: 14px 0 8px;
-      color: #aceef8;
+      margin: 15px 0 8px;
+      color: #a8f1fa;
       font-size: 11px;
-      text-transform: uppercase;
       letter-spacing: .08em;
+      text-transform: uppercase;
     }
+
     .pills {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
     }
+
     .pill {
-      border: 1px solid rgba(66,234,255,.18);
+      border: 1px solid rgba(38, 233, 255, .18);
       border-radius: 999px;
+      background: rgba(0, 10, 23, .74);
+      color: #e7fbff;
       padding: 6px 8px;
-      background: rgba(0, 9, 19, .72);
-      color: #e6fbff;
       font-size: 11px;
+      line-height: 1.1;
     }
-    .flow {
+
+    .flow,
+    .rows {
       display: grid;
       gap: 8px;
     }
-    .flow-step {
-      border: 1px solid rgba(66,234,255,.13);
+
+    .flow-step,
+    .row {
+      border: 1px solid rgba(38, 233, 255, .14);
       border-radius: 8px;
+      background: rgba(0, 10, 23, .58);
       padding: 8px;
-      background: rgba(0, 9, 19, .55);
-      color: #d8f9ff;
-      font-size: 11px;
+      color: #d9faff;
+      font-size: 11.5px;
       line-height: 1.35;
     }
+
     .flow-step b { color: var(--cyan); }
-    .rows { display: grid; gap: 7px; }
-    .row {
-      border: 1px solid rgba(66,234,255,.12);
-      border-radius: 8px;
-      padding: 8px;
-      background: rgba(0, 9, 19, .58);
-      cursor: pointer;
+    .row { cursor: pointer; }
+    .row:hover { border-color: rgba(38, 233, 255, .58); }
+    .row strong { display: block; font-size: 12px; margin-bottom: 4px; }
+    .row span { color: var(--muted); }
+
+    .hint {
+      position: absolute;
+      left: 34px;
+      bottom: 26px;
+      color: rgba(210, 246, 255, .72);
+      font-size: 12px;
+      z-index: 6;
     }
-    .row:hover { border-color: rgba(66,234,255,.55); }
-    .row strong { display: block; font-size: 12px; margin-bottom: 3px; }
-    .row span { display: block; color: var(--muted); font-size: 10.5px; line-height: 1.3; }
+
     @media (max-width: 980px) {
       body { overflow: auto; }
-      .app { grid-template-columns: 1fr; height: auto; }
-      .stage { height: 740px; }
+      .app { min-height: auto; padding: 18px; }
+      .brand, .brain-wrap, .panel, .hint {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        transform: none;
+      }
+      .brand { margin-bottom: 10px; }
+      .brain-wrap {
+        width: 100%;
+        height: 66vh;
+        min-height: 500px;
+      }
+      .panel {
+        width: 100%;
+        max-height: none;
+        margin-top: 14px;
+      }
+      .hint { margin-top: 12px; }
+      .label { font-size: 10px; }
     }
   </style>
 </head>
 <body>
   <main class="app">
-    <section class="stage" id="stage">
-      <div class="title">
-        <h1>My AI Operations Hub</h1>
-        <p>Central router, specialist agents, reusable skills</p>
-      </div>
-      <svg id="map" viewBox="0 0 1000 760" preserveAspectRatio="xMidYMid meet">
+    <header class="brand">
+      <h1>My AI Operations Hub</h1>
+      <p>Interactive map of an AI-assisted operations workflow: central routing, specialist agents, reusable skills and context-aware execution.</p>
+    </header>
+
+    <section class="brain-wrap" id="stage" aria-label="Interactive AI operations brain map">
+      <svg viewBox="0 0 1100 760" role="img" aria-labelledby="svgTitle svgDesc">
+        <title id="svgTitle">AI operations brain map</title>
+        <desc id="svgDesc">A glowing circuit-board brain with a central AI chip connected to specialist workflow agents.</desc>
         <defs>
           <clipPath id="brainClip">
-            <path d="M226 377 C171 344 171 267 233 239 C251 164 347 145 399 188 C451 109 579 117 623 194 C704 184 775 238 773 318 C850 359 844 457 765 492 C737 576 625 604 555 552 C498 627 382 609 346 529 C263 532 206 463 226 377 Z"/>
+            <path d="M183 397 C113 356 122 276 194 244 C217 164 322 143 385 188 C449 103 595 116 646 197 C734 186 816 242 818 326 C912 368 904 477 811 517 C777 603 651 633 573 572 C506 653 373 633 335 541 C239 545 163 476 183 397 Z"/>
           </clipPath>
+          <radialGradient id="brainGlow" cx="50%" cy="48%" r="52%">
+            <stop offset="0%" stop-color="#1fdfff" stop-opacity=".22"/>
+            <stop offset="58%" stop-color="#0a5f9e" stop-opacity=".12"/>
+            <stop offset="100%" stop-color="#031329" stop-opacity=".05"/>
+          </radialGradient>
           <linearGradient id="chipGrad" x1="0" x2="1" y1="0" y2="1">
-            <stop offset="0" stop-color="#71fbff"/>
-            <stop offset="1" stop-color="#20dfef"/>
+            <stop offset="0%" stop-color="#90ffff"/>
+            <stop offset="100%" stop-color="#20ddec"/>
           </linearGradient>
         </defs>
-        <path class="brain-shape" d="M226 377 C171 344 171 267 233 239 C251 164 347 145 399 188 C451 109 579 117 623 194 C704 184 775 238 773 318 C850 359 844 457 765 492 C737 576 625 604 555 552 C498 627 382 609 346 529 C263 532 206 463 226 377 Z"/>
-        <g id="traces" clip-path="url(#brainClip)"></g>
-        <g class="chip" id="chip">
-          <rect class="chip-body" x="463" y="332" width="92" height="92" rx="8"/>
-          <text class="chip-text" x="509" y="380">AI</text>
+
+        <path class="brain-shell" d="M183 397 C113 356 122 276 194 244 C217 164 322 143 385 188 C449 103 595 116 646 197 C734 186 816 242 818 326 C912 368 904 477 811 517 C777 603 651 633 573 572 C506 653 373 633 335 541 C239 545 163 476 183 397 Z"/>
+        <path d="M183 397 C113 356 122 276 194 244 C217 164 322 143 385 188 C449 103 595 116 646 197 C734 186 816 242 818 326 C912 368 904 477 811 517 C777 603 651 633 573 572 C506 653 373 633 335 541 C239 545 163 476 183 397 Z" fill="url(#brainGlow)"/>
+        <g id="circuits" clip-path="url(#brainClip)"></g>
+        <g id="nodes" clip-path="url(#brainClip)"></g>
+        <g class="chip" id="chip" role="button" tabindex="0" aria-label="Reset to central brain">
+          <rect x="503" y="342" width="96" height="96" rx="7"/>
+          <text x="551" y="391">AI</text>
           <g id="pins"></g>
         </g>
       </svg>
     </section>
 
     <aside class="panel">
-      <h2 id="title">Cerebro Central</h2>
-      <div class="tech" id="tech">central-router-agent</div>
+      <h2 id="title">Central Router</h2>
+      <div class="tech" id="tech">master-router-agent.md</div>
       <div class="stats">
-        <div class="stat"><b>18</b><span>agents</span></div>
-        <div class="stat"><b id="skillCount">57</b><span>skills</span></div>
+        <div class="stat"><b id="agentCount">18</b><span>agents</span></div>
+        <div class="stat"><b id="skillCount">58</b><span>skills</span></div>
         <div class="stat"><b>3</b><span>levels</span></div>
       </div>
-      <input id="search" type="search" placeholder="Buscar agente ou skill" />
+      <input id="search" type="search" placeholder="Search agent or skill">
       <div class="filters" id="filters"></div>
       <div class="actions">
-        <button id="expandAll">Expandir tudo</button>
-        <button id="collapseAll">Recolher tudo</button>
+        <button id="expandAll">Show all signals</button>
+        <button id="collapseAll">Focus mode</button>
       </div>
-      <div class="section">Skills ligadas</div>
+      <div class="section">Linked Skills</div>
       <div class="pills" id="skills"></div>
-      <div class="section">Fluxo de decisao</div>
+      <div class="section">Decision Flow</div>
       <div class="flow" id="flow"></div>
-      <div class="section">Agentes</div>
+      <div class="section">Agents</div>
       <div class="rows" id="rows"></div>
     </aside>
+
+    <div class="hint">Click an agent node or label to inspect its skills. Click the AI chip to reset.</div>
   </main>
 
   <script>
     const agents = [
-      {id:"frontend", name:"Designer Produto Web", tech:"frontend-product-agent.md", group:"product", x:232, y:258, skills:["Design Frontend","Guia de Web Design","QA Web Browser","UX Senior","Boas Praticas React"]},
-      {id:"code", name:"Engenheiro de Codigo", tech:"engineering-lead-agent.md", group:"engineering", x:312, y:198, skills:["Mapa do Projeto","Plano de Implementacao","Ciclo de Pull Request","Estrategia de Testes","Revisao de Codigo"]},
-      {id:"ci", name:"Gestor CI e Releases", tech:"ci-release-agent.md", group:"engineering", x:431, y:168, skills:["Correcao de CI","Atualizacao de Dependencias","Gestor de Releases","Prevencao de Segredos"]},
-      {id:"productivity", name:"Operador Productivity Suite", tech:"productivity-ops-agent", group:"productivity", x:585, y:178, skills:["Admin Productivity Suite","Collaboration Tools","Seguranca do Environment","PowerShell Seguro"]},
-      {id:"identity", name:"Guardiao de Acessos", tech:"identity-access-agent.md", group:"productivity", x:707, y:240, skills:["Gestao de Identidade","Seguranca do Environment","Admin Productivity Suite","Modelo de Ameacas"]},
-      {id:"itsm", name:"Service Integration Ops", tech:"service-integration-ops-agent.md", group:"ops", x:757, y:330, skills:["Service Desk ITIL","Integracao Service Desk Issue Tracker Productivity","Cloud Functions","Admin Productivity Suite"]},
-      {id:"azf", name:"Engenheiro Cloud Functions", tech:"cloud-functions-engineer-agent", group:"cloud", x:748, y:430, skills:["Cloud Functions","Seguranca Cloud Functions","Deploy Cloud Seguro","Logs e Alertas Cloud"]},
-      {id:"perf", name:"Analista de Performance", tech:"performance-agent.md", group:"engineering", x:682, y:520, skills:["Analise de Performance","Instrumentacao Observavel","Seguranca de Migracoes","Boas Praticas React"]},
-      {id:"docs", name:"Documentador", tech:"documentation-reporting-agent.md", group:"product", x:585, y:585, skills:["Documentacao do Codigo","Criador de Relatorios","Office e PDF","Texto Direto","Transcricao"]},
-      {id:"cont", name:"Gestor de Conversa", tech:"conversation-continuity-agent.md", group:"ai", x:503, y:626, skills:["Gestao de Limites","Poupanca de Contexto","Otimizador de Contexto"]},
-      {id:"ai", name:"Governanca de IA", tech:"ai-governance-agent", group:"ai", x:420, y:594, skills:["Governanca de IA","Construtor de Agentes Productivity","Arquitetura Agents SDK","Seguranca de Agentes IA"]},
-      {id:"systems", name:"Arquiteto de Sistemas", tech:"systems-architect-agent", group:"ops", x:331, y:535, skills:["Arquitetura de Integracoes","Implementacao de Sistemas","Avaliacao de Fornecedores","Plano de Mudanca"]},
-      {id:"security", name:"Guardiao de Seguranca", tech:"security-review-agent.md", group:"security", x:270, y:460, skills:["Modelo de Ameacas","Prevencao de Segredos","Seguranca de Migracoes","Seguranca do Environment"]},
-      {id:"auto", name:"Arquiteto de Automacao", tech:"automation-architect-agent.md", group:"automation", x:229, y:390, skills:["Desenho de Automacao","Fabrica de Automacao","Criador de CLI","PowerShell Seguro"]},
-      {id:"intauto", name:"Eng. Automacao Interna", tech:"internal-automation-engineer-agent.md", group:"automation", x:262, y:320, skills:["Ferramentas Internas","Runbook Para Automacao","Modulos PowerShell","Criador de CLI"]},
-      {id:"incident", name:"Gestor de Incidentes", tech:"incident-manager-agent", group:"ops", x:635, y:468, skills:["Erro Producao Para Fix","Monitorizacao Monitoring Platform","Instrumentacao Observavel","Resumo Operacional"]},
-      {id:"azo", name:"Monitor Cloud", tech:"cloud-observability-agent", group:"cloud", x:660, y:390, skills:["Logs e Alertas Cloud","Monitorizacao Monitoring Platform","Erro Producao Para Fix","Analise de Performance"]},
-      {id:"coach", name:"Coach Produtividade IA", tech:"ai-productivity-coach-agent", group:"ai", x:368, y:282, skills:["Auditor de Workflow","Otimizador de Contexto","Poupanca de Contexto","Prompt Para Ticket"]}
+      {id:"frontend", name:"Web Product Designer", tech:"frontend-product-agent.md", group:"product", x:238, y:262, skills:["Frontend Design","Web Design Guide","Browser QA","Senior UX","React Best Practices"]},
+      {id:"code", name:"Code Engineer", tech:"engineering-lead-agent.md", group:"engineering", x:338, y:202, skills:["Project Map","Implementation Plan","Pull Request Flow","Test Strategy","Code Review"]},
+      {id:"ci", name:"CI and Release Manager", tech:"ci-release-agent.md", group:"engineering", x:472, y:164, skills:["CI Failure Fix","Dependency Migration","Release Manager","Exposure Prevention"]},
+      {id:"prod", name:"Productivity Ops", tech:"productivity-ops-agent.md", group:"productivity", x:638, y:184, skills:["Productivity Admin","Collaboration Tools","Environment Safety","Safe PowerShell"]},
+      {id:"identity", name:"Access Guardian", tech:"identity-access-agent.md", group:"productivity", x:748, y:252, skills:["Identity Access","Environment Security","Productivity Admin","Threat Model"]},
+      {id:"itsm", name:"Service Integration Ops", tech:"service-integration-ops-agent.md", group:"ops", x:806, y:346, skills:["Service Desk ITIL","Service Integration","Cloud Functions","Productivity Admin"]},
+      {id:"cloudfn", name:"Cloud Functions Engineer", tech:"cloud-functions-engineer-agent.md", group:"cloud", x:790, y:450, skills:["Cloud Functions","Function Security","Safe Cloud Deploy","Cloud Logs and Alerts"]},
+      {id:"perf", name:"Performance Analyst", tech:"performance-agent.md", group:"engineering", x:712, y:546, skills:["Performance Analysis","Observability","Migration Safety","React Best Practices"]},
+      {id:"docs", name:"Documentation Lead", tech:"documentation-reporting-agent.md", group:"product", x:614, y:610, skills:["Docs From Code","Report Builder","Office and PDF","Direct Writing","Transcription"]},
+      {id:"cont", name:"Conversation Manager", tech:"conversation-continuity-agent.md", group:"ai", x:508, y:652, skills:["Limit Management","Context Saving","Context Optimizer"]},
+      {id:"ai", name:"AI Governance", tech:"enterprise-ai-governance-agent.md", group:"ai", x:410, y:618, skills:["AI Governance","Agent Builder","Agents SDK Architecture","Agent Security"]},
+      {id:"systems", name:"Systems Architect", tech:"systems-implementation-architect-agent.md", group:"ops", x:318, y:548, skills:["Integration Architecture","System Implementation","Vendor Evaluation","Change Plan"]},
+      {id:"security", name:"Security Guardian", tech:"security-review-agent.md", group:"security", x:238, y:470, skills:["Threat Model","Exposure Prevention","Migration Safety","Environment Safety"]},
+      {id:"auto", name:"Automation Architect", tech:"automation-architect-agent.md", group:"automation", x:210, y:394, skills:["Automation Design","Automation Factory","CLI Builder","Safe PowerShell"]},
+      {id:"intauto", name:"Internal Automation", tech:"internal-automation-engineer-agent.md", group:"automation", x:236, y:330, skills:["Internal Tools","Runbook Automation","PowerShell Modules","CLI Builder"]},
+      {id:"incident", name:"Incident Manager", tech:"incident-manager-agent.md", group:"ops", x:688, y:488, skills:["Production Error Fix","Monitoring Platform","Observability","Ops Brief"]},
+      {id:"cloudmon", name:"Cloud Monitor", tech:"cloud-observability-agent.md", group:"cloud", x:718, y:400, skills:["Cloud Logs and Alerts","Monitoring Platform","Production Error Fix","Performance Analysis"]},
+      {id:"coach", name:"AI Productivity Coach", tech:"ai-productivity-coach-agent.md", group:"ai", x:370, y:294, skills:["Workflow Auditor","Context Optimizer","Context Saving","Prompt To Ticket"]}
     ];
-    const filters = {all:"Tudo", cloud:"Cloud", productivity:"Productivity", security:"Seguranca", automation:"Automacao", engineering:"Codigo", ai:"IA", ops:"Operacoes", product:"Produto/Docs"};
-    const center = {x:509, y:378};
-    const traces = document.getElementById("traces");
-    const pins = document.getElementById("pins");
+
+    const filters = {
+      all: "All",
+      cloud: "Cloud",
+      productivity: "Productivity",
+      security: "Security",
+      automation: "Automation",
+      engineering: "Engineering",
+      ai: "AI",
+      ops: "Operations",
+      product: "Product"
+    };
+
+    const center = {x: 551, y: 390};
     const stage = document.getElementById("stage");
+    const circuits = document.getElementById("circuits");
+    const nodes = document.getElementById("nodes");
+    const pins = document.getElementById("pins");
     const title = document.getElementById("title");
     const tech = document.getElementById("tech");
     const skills = document.getElementById("skills");
@@ -384,203 +477,214 @@
     const search = document.getElementById("search");
     const filterBar = document.getElementById("filters");
     const lineMap = new Map();
-    const labels = new Map();
-    const bubbles = new Map();
+    const nodeMap = new Map();
+    const labelMap = new Map();
     let selected = null;
     let activeFilter = "all";
-    let expandedAll = false;
-    document.getElementById("skillCount").textContent = [...new Set(agents.flatMap(a => a.skills))].length + 1;
+    let expandedAll = true;
+
+    document.getElementById("agentCount").textContent = agents.length;
+    document.getElementById("skillCount").textContent = new Set(agents.flatMap(a => a.skills)).size + 1;
+
+    function svgEl(name, attrs = {}) {
+      const el = document.createElementNS("http://www.w3.org/2000/svg", name);
+      Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+      return el;
+    }
 
     function route(a) {
-      const midX = center.x + (a.x - center.x) * .44;
-      const midY = center.y;
-      const turnX = center.x + (a.x - center.x) * .68;
-      return `M ${center.x} ${center.y} L ${midX} ${midY} L ${turnX} ${a.y} L ${a.x} ${a.y}`;
+      const dx = a.x - center.x;
+      const dy = a.y - center.y;
+      const step1 = {x: center.x + dx * .28, y: center.y};
+      const step2 = {x: center.x + dx * .52, y: center.y + dy * .20};
+      const step3 = {x: center.x + dx * .74, y: a.y};
+      return `M ${center.x} ${center.y} L ${step1.x} ${step1.y} L ${step2.x} ${step2.y} L ${step3.x} ${step3.y} L ${a.x} ${a.y}`;
     }
-    function addTrace(a) {
-      const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      p.setAttribute("d", route(a));
-      p.classList.add("trace");
-      p.dataset.agent = a.id;
-      traces.appendChild(p);
-      lineMap.set(a.id, p);
-      const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      c.setAttribute("cx", a.x);
-      c.setAttribute("cy", a.y);
-      c.setAttribute("r", 3.8);
-      c.setAttribute("class", "node-dot");
-      traces.appendChild(c);
+
+    function addAgent(a) {
+      const path = svgEl("path", {d: route(a), class: "trace", "data-agent": a.id});
+      circuits.appendChild(path);
+      lineMap.set(a.id, path);
+
+      const dot = svgEl("circle", {cx: a.x, cy: a.y, r: 4.8, class: "node", tabindex: "0", "data-agent": a.id});
+      dot.addEventListener("click", () => select(a.id));
+      dot.addEventListener("keydown", event => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          select(a.id);
+        }
+      });
+      nodes.appendChild(dot);
+      nodeMap.set(a.id, dot);
+
+      const label = document.createElement("button");
+      label.className = "label";
+      label.textContent = a.name;
+      label.title = `${a.name}: click to inspect skills`;
+      label.style.left = `${(a.x / 1100) * 100}%`;
+      label.style.top = `${(a.y / 760) * 100}%`;
+      label.addEventListener("click", () => select(a.id));
+      stage.appendChild(label);
+      labelMap.set(a.id, label);
     }
+
     function addMicroCircuits() {
       const segments = [
-        [330,210,330,150,315,150],[392,190,392,124,407,124],[500,325,500,118,516,118],[590,205,590,138,606,138],
-        [650,250,730,250,730,232],[668,305,792,305,792,288],[660,438,810,438,810,456],[594,506,594,596,610,596],
-        [506,428,506,652,490,652],[424,520,424,630,408,630],[330,470,228,470,228,488],[302,390,174,390,174,372],
-        [310,305,190,305,190,286],[420,330,340,330,340,350],[562,352,635,352,635,370],[464,410,382,410,382,430]
+        [260,240,260,160,245,160],[345,202,345,126,363,126],[448,180,448,106,466,106],[548,335,548,108,566,108],
+        [646,205,646,126,666,126],[722,255,830,255,830,234],[736,322,902,322,902,302],[720,428,896,428,896,450],
+        [650,520,650,640,668,640],[552,438,552,700,530,700],[455,526,455,674,435,674],[340,468,196,468,196,492],
+        [294,392,132,392,132,370],[310,312,160,312,160,292],[430,330,350,330,350,354],[600,350,704,350,704,374],
+        [510,460,410,460,410,486],[585,470,585,588,606,588],[780,500,860,500,860,520],[232,270,188,270,188,252],
+        [384,244,384,214,416,214],[684,292,760,292,760,274],[502,582,502,630,482,630],[278,524,234,524,234,548]
       ];
-      segments.forEach(s => {
-        const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        p.setAttribute("d", `M ${s[0]} ${s[1]} L ${s[2]} ${s[3]} L ${s[4]} ${s[5]}`);
-        p.setAttribute("class", "micro");
-        traces.appendChild(p);
-        const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-        c.setAttribute("cx", s[4]);
-        c.setAttribute("cy", s[5]);
-        c.setAttribute("r", 2.4);
-        c.setAttribute("class", "node-dot");
-        traces.appendChild(c);
+      segments.forEach((s, index) => {
+        const p = svgEl("path", {d: `M ${s[0]} ${s[1]} L ${s[2]} ${s[3]} L ${s[4]} ${s[5]}`, class: "trace micro"});
+        circuits.appendChild(p);
+        const c = svgEl("circle", {cx: s[4], cy: s[5], r: index % 3 === 0 ? 3 : 2.4, class: "node"});
+        nodes.appendChild(c);
       });
-      for (let i = 0; i < 18; i++) {
-        const x = 468 + (i % 6) * 16;
-        const yTop = 330 - 10;
-        const yBottom = 424 + 10;
-        ["top","bottom"].forEach(pos => {
-          const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
-          l.setAttribute("x1", x);
-          l.setAttribute("x2", x);
-          l.setAttribute("y1", pos === "top" ? yTop : 424);
-          l.setAttribute("y2", pos === "top" ? 332 : yBottom);
-          l.setAttribute("class", "chip-pin");
-          pins.appendChild(l);
-        });
+
+      for (let i = 0; i < 7; i++) {
+        const x = 507 + i * 15;
+        pins.appendChild(svgEl("line", {x1: x, y1: 332, x2: x, y2: 342, class: "pin"}));
+        pins.appendChild(svgEl("line", {x1: x, y1: 438, x2: x, y2: 450, class: "pin"}));
       }
-      for (let i = 0; i < 12; i++) {
-        const y = 338 + i * 7;
-        [["left",463,452],["right",555,566]].forEach(([pos,x1,x2]) => {
-          const l = document.createElementNS("http://www.w3.org/2000/svg", "line");
-          l.setAttribute("x1", x1);
-          l.setAttribute("x2", x2);
-          l.setAttribute("y1", y);
-          l.setAttribute("y2", y);
-          l.setAttribute("class", "chip-pin");
-          pins.appendChild(l);
-        });
+      for (let i = 0; i < 9; i++) {
+        const y = 350 + i * 10;
+        pins.appendChild(svgEl("line", {x1: 491, y1: y, x2: 503, y2: y, class: "pin"}));
+        pins.appendChild(svgEl("line", {x1: 599, y1: y, x2: 612, y2: y, class: "pin"}));
       }
     }
-    function addLabel(a) {
-      const el = document.createElement("button");
-      el.className = "agent-label";
-      el.textContent = a.name;
-      el.style.left = `${a.x / 10}%`;
-      el.style.top = `${a.y / 7.6}%`;
-      el.title = `${a.name} - clique para abrir/recolher skills`;
-      el.onclick = () => select(a.id);
-      stage.appendChild(el);
-      labels.set(a.id, el);
+
+    function baseSkills() {
+      return ["Smart Routing", "Limit Management", "Context Saving", "Workflow Auditor"];
     }
-    function bubblePosition(a, index, total) {
-      const radius = total > 4 ? 72 : 62;
-      const start = -120;
-      const end = 120;
-      const angle = (start + (end - start) * (index / Math.max(1, total - 1))) * Math.PI / 180;
-      const bias = a.x < center.x ? Math.PI : 0;
-      const x = a.x + Math.cos(angle + bias) * radius;
-      const y = a.y + Math.sin(angle + bias) * radius;
-      return {
-        left: Math.max(8, Math.min(92, x / 10)),
-        top: Math.max(8, Math.min(92, y / 7.6))
-      };
-    }
-    function addBubbles(a) {
-      const items = [];
-      a.skills.forEach((skill, i) => {
-        const b = document.createElement("div");
-        b.className = "skill-bubble";
-        b.textContent = skill;
-        b.title = `${skill} ligada a ${a.name}`;
-        const p = bubblePosition(a, i, a.skills.length);
-        b.style.left = `${p.left}%`;
-        b.style.top = `${p.top}%`;
-        b.dataset.agent = a.id;
-        stage.appendChild(b);
-        items.push(b);
-      });
-      bubbles.set(a.id, items);
-    }
-    function showAgent(a) {
-      title.textContent = a ? a.name : "Cerebro Central";
-      tech.textContent = a ? a.tech : "central-router-agent";
-      const list = a ? a.skills : ["Roteamento Inteligente","Gestao de Limites","Poupanca de Contexto","Auditor de Workflow"];
+
+    function showAgent(agent) {
+      title.textContent = agent ? agent.name : "Central Router";
+      tech.textContent = agent ? agent.tech : "master-router-agent.md";
+      const list = agent ? agent.skills : baseSkills();
       skills.innerHTML = "";
-      list.forEach(s => {
-        const p = document.createElement("span");
-        p.className = "pill";
-        p.textContent = s;
-        skills.appendChild(p);
+      list.forEach(item => {
+        const pill = document.createElement("span");
+        pill.className = "pill";
+        pill.textContent = item;
+        skills.appendChild(pill);
       });
-      const level = a ? (["productivity","cloud","security","ops"].includes(a.group) ? "critical quando houver escrita/produção" : "normal por padrão") : "light / normal / critical";
+
+      const level = agent
+        ? (["productivity", "cloud", "security", "ops"].includes(agent.group) ? "critical for production or admin writes" : "normal by default")
+        : "light / normal / critical";
+
       const steps = [
-        a ? `Pedido vai para ${a.name}` : "Pedido vai para o Cérebro Central",
-        a ? `Seleciona skills: ${list.slice(0,3).join(", ")}` : "Escolhe agente, skills e nível de execução",
-        `Nível recomendado: ${level}`,
-        "Verifica só o necessário para poupar contexto e limites"
+        agent ? `Request enters ${agent.name}` : "Request enters the central router",
+        agent ? `Selects skills: ${list.slice(0, 3).join(", ")}` : "Selects agent, skills and execution depth",
+        `Recommended level: ${level}`,
+        "Verifies only what materially improves safety and correctness"
       ];
+
       flow.innerHTML = "";
-      steps.forEach((text, i) => {
+      steps.forEach((step, index) => {
         const item = document.createElement("div");
         item.className = "flow-step";
-        item.innerHTML = `<b>${i + 1}.</b> ${text}`;
+        item.innerHTML = `<b>${index + 1}.</b> ${step}`;
         flow.appendChild(item);
       });
     }
-    function visible(a) {
+
+    function visible(agent) {
       const q = search.value.trim().toLowerCase();
-      const hay = `${a.name} ${a.tech} ${a.skills.join(" ")}`.toLowerCase();
-      return (activeFilter === "all" || a.group === activeFilter) && (!q || hay.includes(q));
+      const hay = `${agent.name} ${agent.tech} ${agent.skills.join(" ")}`.toLowerCase();
+      return (activeFilter === "all" || agent.group === activeFilter) && (!q || hay.includes(q));
     }
+
     function select(id) {
       selected = selected === id ? null : id;
+      expandedAll = selected ? false : expandedAll;
       update();
     }
+
     function update() {
       const visibleAgents = agents.filter(visible);
       const ids = new Set(visibleAgents.map(a => a.id));
+
       agents.forEach(a => {
-        const show = ids.has(a.id);
-        const isActive = !selected ? show : selected === a.id;
-        lineMap.get(a.id).style.display = show ? "block" : "none";
-        lineMap.get(a.id).className.baseVal = isActive ? "trace active" : "trace faint";
-        labels.get(a.id).style.display = show ? "block" : "none";
-        labels.get(a.id).classList.toggle("active", selected === a.id);
-        labels.get(a.id).classList.toggle("dim", selected && selected !== a.id);
-        (bubbles.get(a.id) || []).forEach(b => {
-          b.style.display = show ? "block" : "none";
-          b.classList.toggle("open", selected === a.id);
-          b.classList.toggle("all-open", expandedAll && !selected && show);
-        });
+        const isVisible = ids.has(a.id);
+        const isActive = selected ? selected === a.id : expandedAll && isVisible;
+        const shouldDim = selected && selected !== a.id;
+        const line = lineMap.get(a.id);
+        const node = nodeMap.get(a.id);
+        const label = labelMap.get(a.id);
+
+        line.classList.toggle("active", isActive);
+        line.classList.toggle("dim", !isActive && isVisible);
+        line.classList.toggle("hide", !isVisible);
+        node.classList.toggle("active", selected === a.id);
+        node.classList.toggle("dim", shouldDim || !isVisible);
+        label.style.display = isVisible ? "block" : "none";
+        label.classList.toggle("active", selected === a.id);
+        label.classList.toggle("dim", shouldDim);
       });
-      [...filterBar.children].forEach(b => b.classList.toggle("active", b.dataset.filter === activeFilter));
+
       if (selected && !ids.has(selected)) selected = null;
-      const agent = agents.find(a => a.id === selected);
-      showAgent(agent || null);
+      [...filterBar.children].forEach(button => button.classList.toggle("active", button.dataset.filter === activeFilter));
+      showAgent(agents.find(a => a.id === selected) || null);
+
       rows.innerHTML = "";
       visibleAgents.forEach(a => {
-        const r = document.createElement("div");
-        r.className = "row";
-        r.innerHTML = `<strong>${a.name}</strong><span>${a.skills.slice(0,3).join(" · ")}</span>`;
-        r.onclick = () => select(a.id);
-        rows.appendChild(r);
+        const row = document.createElement("div");
+        row.className = "row";
+        row.innerHTML = `<strong>${a.name}</strong><span>${a.skills.slice(0, 3).join(" · ")}</span>`;
+        row.addEventListener("click", () => select(a.id));
+        rows.appendChild(row);
       });
     }
-    Object.entries(filters).forEach(([key,label]) => {
-      const b = document.createElement("button");
-      b.textContent = label;
-      b.dataset.filter = key;
-      b.onclick = () => { activeFilter = key; selected = null; expandedAll = false; update(); };
-      filterBar.appendChild(b);
+
+    Object.entries(filters).forEach(([key, label]) => {
+      const button = document.createElement("button");
+      button.textContent = label;
+      button.dataset.filter = key;
+      button.addEventListener("click", () => {
+        activeFilter = key;
+        selected = null;
+        expandedAll = true;
+        update();
+      });
+      filterBar.appendChild(button);
     });
-    agents.forEach(addTrace);
+
+    agents.forEach(addAgent);
     addMicroCircuits();
-    agents.forEach(addLabel);
-    agents.forEach(addBubbles);
-    document.getElementById("chip").onclick = () => { selected = null; expandedAll = false; update(); };
-    document.getElementById("expandAll").onclick = () => { selected = null; expandedAll = true; update(); };
-    document.getElementById("collapseAll").onclick = () => { selected = null; expandedAll = false; update(); };
-    search.addEventListener("input", () => { selected = null; expandedAll = false; update(); });
+    document.getElementById("chip").addEventListener("click", () => {
+      selected = null;
+      expandedAll = true;
+      update();
+    });
+    document.getElementById("chip").addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        selected = null;
+        expandedAll = true;
+        update();
+      }
+    });
+    document.getElementById("expandAll").addEventListener("click", () => {
+      selected = null;
+      expandedAll = true;
+      update();
+    });
+    document.getElementById("collapseAll").addEventListener("click", () => {
+      selected = null;
+      expandedAll = false;
+      update();
+    });
+    search.addEventListener("input", () => {
+      selected = null;
+      expandedAll = true;
+      update();
+    });
+
     update();
   </script>
 </body>
 </html>
-
-
-
