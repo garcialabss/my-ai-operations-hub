@@ -4,6 +4,13 @@ Interactive static map of an AI-assisted operations and engineering workflow sys
 
 This project visualizes how a central router coordinates specialist agents, reusable skills, execution levels, and context-saving decisions across cloud operations, identity, automation, security, engineering, documentation, and AI governance.
 
+## Live Demo
+
+- Primary repository: <https://github.com/garcialabss/my-ai-operations-hub>
+- Temporary live preview: <https://raw.githack.com/garcialabss/my-ai-operations-hub/gh-pages/index.html>
+
+GitHub Pages is configured from the `gh-pages` branch. If the official Pages URL is still returning `404`, use the temporary preview above while GitHub Pages finishes or recovers its build.
+
 ## Why This Exists
 
 The goal is to make an AI workflow architecture understandable at a glance:
@@ -28,11 +35,23 @@ The goal is to make an AI workflow architecture understandable at a glance:
 
 ## Publish With GitHub Pages
 
-1. Create a new repository in GitHub.
-2. Upload only the files from this folder.
-3. In repository settings, enable GitHub Pages from the `main` branch and root folder.
+This repository publishes the static site from the `gh-pages` branch and root folder.
+
+Recommended setup:
+
+1. Keep source files on `main`.
+2. Publish the static site files to `gh-pages`.
+3. In repository settings, enable GitHub Pages from `gh-pages` and `/`.
 
 ## Security Note
 
 This is the public-safe version. Do not upload the parent workspace because it contains operational notes, internal system names, scripts, and environment-specific files.
+
+## What This Demonstrates
+
+- AI workflow architecture and routing.
+- Agent and skill organization.
+- Context and execution-level thinking.
+- Static frontend implementation with no backend dependency.
+- Security-aware portfolio publishing.
 
