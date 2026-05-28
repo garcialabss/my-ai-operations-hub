@@ -7,7 +7,7 @@ This project visualizes how a central router coordinates specialist agents, reus
 ## Live Demo
 
 - Primary repository: <https://github.com/garcialabss/my-ai-operations-hub>
-- Temporary live preview: <https://raw.githack.com/garcialabss/my-ai-operations-hub/gh-pages/index.html>
+- Temporary live preview: <https://raw.githack.com/garcialabss/my-ai-operations-hub/5ddea558e804c025ca6fece0a284cff378fdff8c/index.html>
 
 GitHub Pages is configured from the `gh-pages` branch. If the official Pages URL is still returning `404`, use the temporary preview above while GitHub Pages finishes or recovers its build.
 
