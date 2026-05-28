@@ -1,57 +1,57 @@
-# My AI Operations Hub
+# Hub de Operações IA
 
-Interactive static map of an AI-assisted operations and engineering workflow system.
+Mapa interativo estático de um sistema de trabalho assistido por IA para operações, engenharia, automação e produtividade.
 
-This project visualizes how a central router coordinates specialist agents, reusable skills, execution levels, and context-saving decisions across cloud operations, identity, automation, security, engineering, documentation, and AI governance.
+O projeto mostra como um roteador central pode coordenar agentes especializados, competências reutilizáveis, níveis de execução e decisões de poupança de contexto em áreas como nuvem, identidade, automação, segurança, engenharia, documentação e governança de IA.
 
-## Live Demo
+## Demonstração
 
-- Primary repository: <https://github.com/garcialabss/my-ai-operations-hub>
-- Live site: <https://garcialabss.github.io/my-ai-operations-hub/>
+- Repositório: <https://github.com/garcialabss/my-ai-operations-hub>
+- Site: <https://garcialabss.github.io/my-ai-operations-hub/>
 
-GitHub Pages is configured from the `gh-pages` branch.
+O GitHub Pages está configurado a partir da branch `gh-pages`.
 
-## Why This Exists
+## Objetivo
 
-The goal is to make an AI workflow architecture understandable at a glance:
+Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 
-- central routing before execution;
-- specialist agents for different domains;
-- reusable skills as operational playbooks;
-- execution levels for balancing speed, safety, and verification;
-- context-saving flow for long-running AI work.
+- roteamento central antes da execução;
+- agentes especializados por domínio;
+- competências reutilizáveis como playbooks operacionais;
+- níveis de execução para equilibrar rapidez, segurança e verificação;
+- fluxo de poupança de contexto para trabalhos longos.
 
-## Good For
+## Indicado Para
 
-- portfolio / CV demonstration;
-- LinkedIn showcase;
-- explaining AI workflow orchestration;
-- presenting how agents and skills can support system administration, cloud engineering, automation, and governance.
+- demonstração em portfólio ou CV;
+- destaque no LinkedIn;
+- explicação de orquestração de agentes e competências;
+- apresentação de como IA pode apoiar administração de sistemas, operações em nuvem, automação e governança.
 
-## Files
+## Ficheiros
 
-- `index.html` - the full static site.
-- `.nojekyll` - keeps GitHub Pages from applying Jekyll processing.
+- `index.html` - site estático completo.
+- `social-preview.png` - imagem de preview para LinkedIn e redes sociais.
+- `.nojekyll` - evita processamento Jekyll no GitHub Pages.
 
-## Publish With GitHub Pages
+## Publicação
 
-This repository publishes the static site from the `gh-pages` branch and root folder.
+Este repositório publica o site estático a partir da branch `gh-pages` e da pasta raiz.
 
-Recommended setup:
+Fluxo recomendado:
 
-1. Keep source files on `main`.
-2. Publish the static site files to `gh-pages`.
-3. In repository settings, enable GitHub Pages from `gh-pages` and `/`.
+1. Manter os ficheiros fonte na branch `main`.
+2. Publicar os ficheiros estáticos na branch `gh-pages`.
+3. Ativar GitHub Pages em `gh-pages` e `/`.
 
-## Security Note
+## Nota de Segurança
 
-This is the public-safe version. Do not upload the parent workspace because it contains operational notes, internal system names, scripts, and environment-specific files.
+Esta é a versão pública e sanitizada. Não deve ser publicado o workspace original, porque pode conter notas operacionais, nomes internos de sistemas, scripts e ficheiros específicos do ambiente.
 
-## What This Demonstrates
+## O Que Demonstra
 
-- AI workflow architecture and routing.
-- Agent and skill organization.
-- Context and execution-level thinking.
-- Static frontend implementation with no backend dependency.
-- Security-aware portfolio publishing.
-
+- Arquitetura de workflows com IA.
+- Organização de agentes e competências.
+- Poupança de contexto e escolha de nível de execução.
+- Frontend estático sem dependência de backend.
+- Publicação de portfólio com atenção à segurança.
