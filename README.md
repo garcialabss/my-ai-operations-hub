@@ -1,5 +1,7 @@
 # Hub de Operações IA
 
+![Hub de Operações IA social preview](social-preview.png)
+
 Mapa interativo estático de um sistema de trabalho assistido por IA para operações, engenharia, automação e produtividade.
 
 O projeto mostra como um roteador central pode coordenar agentes especializados, competências reutilizáveis, níveis de execução e decisões de poupança de contexto em áreas como nuvem, identidade, automação, segurança, engenharia, documentação e governança de IA.
