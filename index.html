@@ -3,7 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cerebro Codex</title>
+  <title>Hub de Operações IA</title>
+  <meta name="description" content="Mapa interativo de agentes, competências e automação operacional para apoiar produtividade, engenharia, segurança e operações.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hub de Operações IA">
+  <meta property="og:description" content="Mapa interativo de agentes, competências e automação operacional.">
+  <meta property="og:url" content="https://garcialabss.github.io/my-ai-operations-hub/">
+  <meta property="og:image" content="https://garcialabss.github.io/my-ai-operations-hub/social-preview.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hub de Operações IA">
+  <meta name="twitter:description" content="Mapa interativo de agentes, competências e automação operacional.">
+  <meta name="twitter:image" content="https://garcialabss.github.io/my-ai-operations-hub/social-preview.png">
   <style>
     :root {
       color-scheme: dark;
@@ -304,8 +314,8 @@
   <main class="app">
     <section class="stage" id="stage">
       <div class="title">
-        <h1>Cerebro Codex</h1>
-        <p>Chip central, agentes nas pontas, skills no painel</p>
+        <h1>Hub de Operações IA</h1>
+        <p>Mapa interativo de agentes, competências e automação operacional</p>
       </div>
       <svg id="map" viewBox="0 0 1000 760" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -332,16 +342,16 @@
       <div class="tech" id="tech">master-router-agent.md</div>
       <div class="stats">
         <div class="stat"><b>19</b><span>agentes</span></div>
-        <div class="stat"><b id="skillCount">68</b><span>skills</span></div>
+        <div class="stat"><b id="skillCount">57</b><span>competências</span></div>
         <div class="stat"><b>3</b><span>niveis</span></div>
       </div>
-      <input id="search" type="search" placeholder="Buscar agente ou skill" />
+      <input id="search" type="search" placeholder="Buscar agente ou competência" />
       <div class="filters" id="filters"></div>
       <div class="actions">
         <button id="expandAll">Expandir tudo</button>
         <button id="collapseAll">Recolher tudo</button>
       </div>
-      <div class="section">Skills ligadas</div>
+      <div class="section">Competências ligadas</div>
       <div class="pills" id="skills"></div>
       <div class="section">Fluxo de decisao</div>
       <div class="flow" id="flow"></div>
@@ -352,26 +362,26 @@
 
   <script>
     const agents = [
-      {id:"frontend", name:"Designer Produto Web", tech:"frontend-product-agent.md", group:"product", x:232, y:258, skills:["Design Frontend","Guia de Web Design","QA Web Browser","UX Senior","Boas Praticas React"]},
-      {id:"code", name:"Engenheiro de Codigo", tech:"engineering-lead-agent.md", group:"engineering", x:312, y:198, skills:["Mapa do Projeto","Plano de Implementacao","Ciclo de Pull Request","Estrategia de Testes","Revisao de Codigo"]},
-      {id:"ci", name:"Gestor CI e Releases", tech:"ci-release-agent.md", group:"engineering", x:431, y:168, skills:["Correcao de CI","Atualizacao de Dependencias","Gestor de Releases","Prevencao de Exposicao"]},
-      {id:"suite", name:"Operador Productivity Suite", tech:"productivity-ops-agent.md", group:"productivity", x:585, y:178, skills:["Admin Productivity Suite","Collaboration Tools","Seguranca do Ambiente","Scripts Administrativos"]},
-      {id:"identity", name:"Guardiao de Acessos", tech:"identity-access-agent.md", group:"productivity", x:707, y:240, skills:["Gestao de Identidade","Seguranca do Ambiente","Admin Productivity Suite","Modelo de Ameacas"]},
-      {id:"itsm", name:"Operador Integracoes ITSM", tech:"service-integration-ops-agent.md", group:"ops", x:757, y:330, skills:["Service Desk ITIL","Integracao Service Desk Issue Tracker","Cloud Functions","Admin Productivity Suite"]},
-      {id:"cloudfn", name:"Engenheiro Cloud Functions", tech:"cloud-functions-engineer-agent.md", group:"cloud", x:748, y:430, skills:["Cloud Functions","Seguranca Cloud Functions","Deploy Cloud Seguro","Logs e Alertas Cloud"]},
-      {id:"perf", name:"Analista de Performance", tech:"performance-agent.md", group:"engineering", x:682, y:520, skills:["Analise de Performance","Instrumentacao Observavel","Seguranca de Migracoes","Boas Praticas React"]},
-      {id:"docs", name:"Documentador", tech:"documentation-reporting-agent.md", group:"product", x:585, y:585, skills:["Documentacao do Codigo","Criador de Relatorios","Office e PDF","Texto Direto","Transcricao"]},
-      {id:"cont", name:"Gestor de Conversa", tech:"conversation-continuity-agent.md", group:"ai", x:503, y:626, skills:["Gestao de Limites","Poupanca de Contexto","Otimizador de Contexto"]},
-      {id:"ai", name:"Governanca de IA", tech:"enterprise-ai-governance-agent.md", group:"ai", x:420, y:594, skills:["Governanca de IA","Construtor de Agentes","Arquitetura Agents SDK","Seguranca de Agentes IA"]},
-      {id:"systems", name:"Arquiteto de Sistemas", tech:"systems-implementation-architect-agent.md", group:"ops", x:331, y:535, skills:["Arquitetura de Integracoes","Implementacao de Sistemas","Avaliacao de Fornecedores","Plano de Mudanca"]},
-      {id:"security", name:"Guardiao de Seguranca", tech:"security-review-agent.md", group:"security", x:270, y:460, skills:["Modelo de Ameacas","Prevencao de Exposicao","Seguranca de Migracoes","Seguranca do Ambiente"]},
-      {id:"auto", name:"Arquiteto de Automacao", tech:"automation-architect-agent.md", group:"automation", x:229, y:390, skills:["Desenho de Automacao","Fabrica de Automacao","Criador de CLI","Scripts Administrativos"]},
-      {id:"intauto", name:"Eng. Automacao Interna", tech:"internal-automation-engineer-agent.md", group:"automation", x:262, y:320, skills:["Ferramentas Internas","Runbook Para Automacao","Modulos de Automacao","Criador de CLI"]},
-      {id:"incident", name:"Gestor de Incidentes", tech:"production-incident-agent.md", group:"ops", x:635, y:468, skills:["Resolucao de Incidentes","Monitorizacao Operacional","Instrumentacao Observavel","Resumo Operacional"]},
-      {id:"cloudmon", name:"Monitor Cloud", tech:"cloud-observability-agent.md", group:"cloud", x:660, y:390, skills:["Logs e Alertas Cloud","Monitorizacao Operacional","Resolucao de Incidentes","Analise de Performance"]},
-      {id:"coach", name:"Coach Produtividade IA", tech:"ai-workflow-coach-agent.md", group:"ai", x:368, y:282, skills:["Auditor de Workflow","Otimizador de Contexto","Poupanca de Contexto","Prompt Para Ticket"]}
+      {id:"frontend", name:"Designer Produto Web", tech:"perfil-produto-web", group:"product", x:232, y:258, skills:["Design de Interface","Guia de Web Design","QA no Navegador","UX Senior","Boas Praticas React"]},
+      {id:"code", name:"Engenheiro de Codigo", tech:"perfil-engenharia-codigo", group:"engineering", x:312, y:198, skills:["Mapa do Projeto","Plano de Implementacao","Fluxo de Revisao","Estrategia de Testes","Revisao de Codigo"]},
+      {id:"ci", name:"Gestor CI e Lancamentos", tech:"perfil-ci-lancamentos", group:"engineering", x:431, y:168, skills:["Correcao de CI","Atualizacao de Dependencias","Gestao de Lancamentos","Prevencao de Exposicao"]},
+      {id:"suite", name:"Operador Suite Produtividade", tech:"perfil-suite-produtividade", group:"productivity", x:585, y:178, skills:["Admin Suite Produtividade","Ferramentas de Colaboracao","Seguranca do Ambiente","Scripts Administrativos"]},
+      {id:"identity", name:"Guardiao de Acessos", tech:"perfil-identidade-acessos", group:"productivity", x:707, y:240, skills:["Gestao de Identidade","Seguranca do Ambiente","Admin Suite Produtividade","Modelo de Ameacas"]},
+      {id:"itsm", name:"Operador Integracoes ITSM", tech:"perfil-integracoes-servicos", group:"ops", x:757, y:330, skills:["ITIL Central de Servicos","Integracao Central de Servicos","Funcoes em Nuvem","Admin Suite Produtividade"]},
+      {id:"cloudfn", name:"Engenheiro Funcoes em Nuvem", tech:"perfil-funcoes-nuvem", group:"cloud", x:748, y:430, skills:["Funcoes em Nuvem","Seguranca Funcoes em Nuvem","Deploy em Nuvem Seguro","Logs e Alertas de Nuvem"]},
+      {id:"perf", name:"Analista de Performance", tech:"perfil-performance", group:"engineering", x:682, y:520, skills:["Analise de Performance","Instrumentacao Observavel","Seguranca de Migracoes","Boas Praticas React"]},
+      {id:"docs", name:"Documentador", tech:"perfil-documentacao-relatorios", group:"product", x:585, y:585, skills:["Documentacao do Codigo","Criador de Relatorios","Documentos e PDF","Texto Direto","Transcricao"]},
+      {id:"cont", name:"Gestor de Conversa", tech:"perfil-continuidade-conversa", group:"ai", x:503, y:626, skills:["Gestao de Limites","Poupanca de Contexto","Otimizador de Contexto"]},
+      {id:"ai", name:"Governanca de IA", tech:"perfil-governanca-ia", group:"ai", x:420, y:594, skills:["Governanca de IA","Construtor de Agentes","Arquitetura de Agentes","Seguranca de Agentes IA"]},
+      {id:"systems", name:"Arquiteto de Sistemas", tech:"perfil-implementacao-sistemas", group:"ops", x:331, y:535, skills:["Arquitetura de Integracoes","Implementacao de Sistemas","Avaliacao de Fornecedores","Plano de Mudanca"]},
+      {id:"security", name:"Guardiao de Seguranca", tech:"perfil-revisao-seguranca", group:"security", x:270, y:460, skills:["Modelo de Ameacas","Prevencao de Exposicao","Seguranca de Migracoes","Seguranca do Ambiente"]},
+      {id:"auto", name:"Arquiteto de Automacao", tech:"perfil-arquitetura-automacao", group:"automation", x:229, y:390, skills:["Desenho de Automacao","Fabrica de Automacao","Criador de Linha de Comando","Scripts Administrativos"]},
+      {id:"intauto", name:"Eng. Automacao Interna", tech:"perfil-automacao-interna", group:"automation", x:262, y:320, skills:["Ferramentas Internas","Runbook Para Automacao","Modulos de Automacao","Criador de Linha de Comando"]},
+      {id:"incident", name:"Gestor de Incidentes", tech:"perfil-gestao-incidentes", group:"ops", x:635, y:468, skills:["Resolucao de Incidentes","Monitorizacao Operacional","Instrumentacao Observavel","Resumo Operacional"]},
+      {id:"cloudmon", name:"Monitor de Nuvem", tech:"perfil-monitorizacao-nuvem", group:"cloud", x:660, y:390, skills:["Logs e Alertas de Nuvem","Monitorizacao Operacional","Resolucao de Incidentes","Analise de Performance"]},
+      {id:"coach", name:"Coach Produtividade IA", tech:"perfil-produtividade-ia", group:"ai", x:368, y:282, skills:["Auditor de Fluxos de Trabalho","Otimizador de Contexto","Poupanca de Contexto","Pedido Para Ticket"]}
     ];
-    const filters = {all:"Tudo", cloud:"Cloud", productivity:"Productivity", security:"Seguranca", automation:"Automacao", engineering:"Codigo", ai:"IA", ops:"Operacoes", product:"Produto/Docs"};
+    const filters = {all:"Tudo", cloud:"Nuvem", productivity:"Produtividade", security:"Seguranca", automation:"Automacao", engineering:"Codigo", ai:"IA", ops:"Operacoes", product:"Produto/Docs"};
     const center = {x:509, y:378};
     const traces = document.getElementById("traces");
     const pins = document.getElementById("pins");
@@ -463,7 +473,7 @@
       el.textContent = a.name;
       el.style.left = `${a.x / 10}%`;
       el.style.top = `${a.y / 7.6}%`;
-      el.title = `${a.name} - clique para abrir/recolher skills`;
+      el.title = `${a.name} - clique para abrir/recolher competências`;
       el.onclick = () => select(a.id);
       stage.appendChild(el);
       labels.set(a.id, el);
@@ -511,7 +521,7 @@
       const level = a ? (["productivity","cloud","security","ops"].includes(a.group) ? "critical quando houver escrita/produção" : "normal por padrão") : "light / normal / critical";
       const steps = [
         a ? `Pedido chega ao ${a.name}` : "Pedido chega ao Cérebro Central",
-        a ? `Seleciona skills: ${list.slice(0,3).join(", ")}` : "Escolhe agente, skills e nível de execução",
+        a ? `Seleciona competências: ${list.slice(0,3).join(", ")}` : "Escolhe agente, competências e nível de execução",
         `Nível recomendado: ${level}`,
         "Verifica só o necessário para poupar contexto e limites"
       ];
