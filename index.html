@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>My AI Operations Hub</title>
+  <title>Cerebro Codex</title>
   <style>
     :root {
       color-scheme: dark;
@@ -304,8 +304,8 @@
   <main class="app">
     <section class="stage" id="stage">
       <div class="title">
-        <h1>My AI Operations Hub</h1>
-        <p>Central router, specialist agents, reusable skills</p>
+        <h1>Cerebro Codex</h1>
+        <p>Chip central, agentes nas pontas, skills no painel</p>
       </div>
       <svg id="map" viewBox="0 0 1000 760" preserveAspectRatio="xMidYMid meet">
         <defs>
@@ -329,11 +329,11 @@
 
     <aside class="panel">
       <h2 id="title">Cerebro Central</h2>
-      <div class="tech" id="tech">central-router-agent</div>
+      <div class="tech" id="tech">master-router-agent.md</div>
       <div class="stats">
-        <div class="stat"><b>18</b><span>agents</span></div>
-        <div class="stat"><b id="skillCount">57</b><span>skills</span></div>
-        <div class="stat"><b>3</b><span>levels</span></div>
+        <div class="stat"><b>19</b><span>agentes</span></div>
+        <div class="stat"><b id="skillCount">68</b><span>skills</span></div>
+        <div class="stat"><b>3</b><span>niveis</span></div>
       </div>
       <input id="search" type="search" placeholder="Buscar agente ou skill" />
       <div class="filters" id="filters"></div>
@@ -355,23 +355,23 @@
       {id:"frontend", name:"Designer Produto Web", tech:"frontend-product-agent.md", group:"product", x:232, y:258, skills:["Design Frontend","Guia de Web Design","QA Web Browser","UX Senior","Boas Praticas React"]},
       {id:"code", name:"Engenheiro de Codigo", tech:"engineering-lead-agent.md", group:"engineering", x:312, y:198, skills:["Mapa do Projeto","Plano de Implementacao","Ciclo de Pull Request","Estrategia de Testes","Revisao de Codigo"]},
       {id:"ci", name:"Gestor CI e Releases", tech:"ci-release-agent.md", group:"engineering", x:431, y:168, skills:["Correcao de CI","Atualizacao de Dependencias","Gestor de Releases","Prevencao de Segredos"]},
-      {id:"productivity", name:"Operador Productivity Suite", tech:"productivity-ops-agent", group:"productivity", x:585, y:178, skills:["Admin Productivity Suite","Collaboration Tools","Seguranca do Environment","PowerShell Seguro"]},
-      {id:"identity", name:"Guardiao de Acessos", tech:"identity-access-agent.md", group:"productivity", x:707, y:240, skills:["Gestao de Identidade","Seguranca do Environment","Admin Productivity Suite","Modelo de Ameacas"]},
-      {id:"itsm", name:"Service Integration Ops", tech:"service-integration-ops-agent.md", group:"ops", x:757, y:330, skills:["Service Desk ITIL","Integracao Service Desk Issue Tracker Productivity","Cloud Functions","Admin Productivity Suite"]},
-      {id:"azf", name:"Engenheiro Cloud Functions", tech:"cloud-functions-engineer-agent", group:"cloud", x:748, y:430, skills:["Cloud Functions","Seguranca Cloud Functions","Deploy Cloud Seguro","Logs e Alertas Cloud"]},
+      {id:"m365", name:"Operador Microsoft 365", tech:"microsoft-365-ops-agent.md", group:"m365", x:585, y:178, skills:["Admin Microsoft 365","SharePoint e Teams","Seguranca do Tenant","PowerShell Seguro"]},
+      {id:"identity", name:"Guardiao de Acessos", tech:"identity-access-agent.md", group:"m365", x:707, y:240, skills:["Gestao de Identidade","Seguranca do Tenant","Admin Microsoft 365","Modelo de Ameacas"]},
+      {id:"itsm", name:"Operador Integracoes ITSM", tech:"service-integration-ops-agent.md", group:"ops", x:757, y:330, skills:["Freshservice ITIL","Integracao Freshservice Jira M365","Azure Functions","Admin Microsoft 365"]},
+      {id:"azf", name:"Engenheiro Azure Functions", tech:"azure-functions-engineer-agent.md", group:"azure", x:748, y:430, skills:["Azure Functions","Seguranca Azure Functions","Deploy Azure Seguro","Logs e Alertas Azure"]},
       {id:"perf", name:"Analista de Performance", tech:"performance-agent.md", group:"engineering", x:682, y:520, skills:["Analise de Performance","Instrumentacao Observavel","Seguranca de Migracoes","Boas Praticas React"]},
       {id:"docs", name:"Documentador", tech:"documentation-reporting-agent.md", group:"product", x:585, y:585, skills:["Documentacao do Codigo","Criador de Relatorios","Office e PDF","Texto Direto","Transcricao"]},
-      {id:"cont", name:"Gestor de Conversa", tech:"conversation-continuity-agent.md", group:"ai", x:503, y:626, skills:["Gestao de Limites","Poupanca de Contexto","Otimizador de Contexto"]},
-      {id:"ai", name:"Governanca de IA", tech:"ai-governance-agent", group:"ai", x:420, y:594, skills:["Governanca de IA","Construtor de Agentes Productivity","Arquitetura Agents SDK","Seguranca de Agentes IA"]},
-      {id:"systems", name:"Arquiteto de Sistemas", tech:"systems-architect-agent", group:"ops", x:331, y:535, skills:["Arquitetura de Integracoes","Implementacao de Sistemas","Avaliacao de Fornecedores","Plano de Mudanca"]},
-      {id:"security", name:"Guardiao de Seguranca", tech:"security-review-agent.md", group:"security", x:270, y:460, skills:["Modelo de Ameacas","Prevencao de Segredos","Seguranca de Migracoes","Seguranca do Environment"]},
+      {id:"cont", name:"Gestor de Conversa", tech:"conversation-continuity-agent.md", group:"ai", x:503, y:626, skills:["Gestao de Limites","Poupanca de Tokens","Otimizador de Tokens"]},
+      {id:"ai", name:"Governanca de IA", tech:"enterprise-ai-governance-agent.md", group:"ai", x:420, y:594, skills:["Governanca de IA","Construtor de Agentes M365","Arquitetura Agents SDK","Seguranca de Agentes IA"]},
+      {id:"systems", name:"Arquiteto de Sistemas", tech:"systems-implementation-architect-agent.md", group:"ops", x:331, y:535, skills:["Arquitetura de Integracoes","Implementacao de Sistemas","Avaliacao de Fornecedores","Plano de Mudanca"]},
+      {id:"security", name:"Guardiao de Seguranca", tech:"security-review-agent.md", group:"security", x:270, y:460, skills:["Modelo de Ameacas","Prevencao de Segredos","Seguranca de Migracoes","Seguranca do Tenant"]},
       {id:"auto", name:"Arquiteto de Automacao", tech:"automation-architect-agent.md", group:"automation", x:229, y:390, skills:["Desenho de Automacao","Fabrica de Automacao","Criador de CLI","PowerShell Seguro"]},
       {id:"intauto", name:"Eng. Automacao Interna", tech:"internal-automation-engineer-agent.md", group:"automation", x:262, y:320, skills:["Ferramentas Internas","Runbook Para Automacao","Modulos PowerShell","Criador de CLI"]},
-      {id:"incident", name:"Gestor de Incidentes", tech:"incident-manager-agent", group:"ops", x:635, y:468, skills:["Erro Producao Para Fix","Monitorizacao Monitoring Platform","Instrumentacao Observavel","Resumo Operacional"]},
-      {id:"azo", name:"Monitor Cloud", tech:"cloud-observability-agent", group:"cloud", x:660, y:390, skills:["Logs e Alertas Cloud","Monitorizacao Monitoring Platform","Erro Producao Para Fix","Analise de Performance"]},
-      {id:"coach", name:"Coach Produtividade IA", tech:"ai-productivity-coach-agent", group:"ai", x:368, y:282, skills:["Auditor de Workflow","Otimizador de Contexto","Poupanca de Contexto","Prompt Para Ticket"]}
+      {id:"incident", name:"Gestor de Incidentes", tech:"production-incident-agent.md", group:"ops", x:635, y:468, skills:["Erro Producao Para Fix","Monitorizacao Better Stack","Instrumentacao Observavel","Resumo Operacional"]},
+      {id:"azo", name:"Monitor Azure", tech:"azure-ops-observability-agent.md", group:"azure", x:660, y:390, skills:["Logs e Alertas Azure","Monitorizacao Better Stack","Erro Producao Para Fix","Analise de Performance"]},
+      {id:"coach", name:"Coach Produtividade IA", tech:"ai-workflow-coach-agent.md", group:"ai", x:368, y:282, skills:["Auditor de Workflow","Otimizador de Tokens","Poupanca de Tokens","Prompt Para Ticket"]}
     ];
-    const filters = {all:"Tudo", cloud:"Cloud", productivity:"Productivity", security:"Seguranca", automation:"Automacao", engineering:"Codigo", ai:"IA", ops:"Operacoes", product:"Produto/Docs"};
+    const filters = {all:"Tudo", azure:"Azure", m365:"M365", security:"Seguranca", automation:"Automacao", engineering:"Codigo", ai:"IA", ops:"Operacoes", product:"Produto/Docs"};
     const center = {x:509, y:378};
     const traces = document.getElementById("traces");
     const pins = document.getElementById("pins");
@@ -499,8 +499,8 @@
     }
     function showAgent(a) {
       title.textContent = a ? a.name : "Cerebro Central";
-      tech.textContent = a ? a.tech : "central-router-agent";
-      const list = a ? a.skills : ["Roteamento Inteligente","Gestao de Limites","Poupanca de Contexto","Auditor de Workflow"];
+      tech.textContent = a ? a.tech : "master-router-agent.md";
+      const list = a ? a.skills : ["Roteamento Inteligente","Gestao de Limites","Poupanca de Tokens","Auditor de Workflow"];
       skills.innerHTML = "";
       list.forEach(s => {
         const p = document.createElement("span");
@@ -508,12 +508,12 @@
         p.textContent = s;
         skills.appendChild(p);
       });
-      const level = a ? (["productivity","cloud","security","ops"].includes(a.group) ? "critical quando houver escrita/produção" : "normal por padrão") : "light / normal / critical";
+      const level = a ? (["m365","azure","security","ops"].includes(a.group) ? "critical quando houver escrita/produção" : "normal por padrão") : "light / normal / critical";
       const steps = [
-        a ? `Pedido vai para ${a.name}` : "Pedido vai para o Cérebro Central",
+        a ? `Pedido entra no ${a.name}` : "Pedido entra no Cérebro Central",
         a ? `Seleciona skills: ${list.slice(0,3).join(", ")}` : "Escolhe agente, skills e nível de execução",
         `Nível recomendado: ${level}`,
-        "Verifica só o necessário para poupar contexto e limites"
+        "Verifica só o necessário para poupar tokens e limites"
       ];
       flow.innerHTML = "";
       steps.forEach((text, i) => {
@@ -581,6 +581,3 @@
   </script>
 </body>
 </html>
-
-
-
