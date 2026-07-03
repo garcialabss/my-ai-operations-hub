@@ -1,30 +1,30 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="pt">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Painel de OperaÃ§Ãµes IA</title>
-<meta name="description" content="Painel operacional de agentes, competÃªncias, automaÃ§Ãµes e runbooks de IA.">
+<title>Painel de Operações IA</title>
+<meta name="description" content="Painel operacional de agentes, competências, automações e runbooks de IA.">
 <style>
 :root{color-scheme:dark;--bg:#0b111c;--rail:#0f1724;--panel:#151f2f;--panel2:#1a2638;--line:rgba(226,234,244,.13);--text:#eef4fb;--muted:#9fb0c3;--cyan:#43cbe3;--green:#62d391;--amber:#e9b85a;--red:#ee7188;--blue:#8db6ff;--shadow:0 18px 55px rgba(0,0,0,.26)}*{box-sizing:border-box}body{margin:0;background:#0b111c;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;padding:18px 14px;border-right:1px solid var(--line);background:linear-gradient(180deg,#0d1522,#0a101a)}.brand{display:flex;align-items:center;gap:11px;padding:6px 6px 18px}.logo{width:38px;height:38px;border:1px solid rgba(67,203,227,.36);border-radius:8px;display:grid;place-items:center;color:var(--cyan);background:rgba(67,203,227,.11);font-weight:800}.brand strong,.brand span{display:block}.brand span{font-size:12px;color:var(--muted);margin-top:2px}.nav{display:grid;gap:6px}.nav a{color:var(--muted);text-decoration:none;border-radius:8px;padding:10px 11px;font-size:13px;border:1px solid transparent}.nav a:hover,.nav a.active{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--text)}.sidebox{position:absolute;left:14px;right:14px;bottom:16px;border:1px solid var(--line);border-radius:10px;padding:12px;background:rgba(255,255,255,.035);color:var(--muted);font-size:12px;line-height:1.4}.main{min-width:0}.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line);background:rgba(11,17,28,.86);backdrop-filter:blur(12px)}.title h1{margin:0;font-size:22px}.title p{margin:4px 0 0;color:var(--muted);font-size:13px}.search{width:min(430px,100%);height:40px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.05);color:var(--text);padding:0 12px}.content{padding:18px 22px 28px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.kpi{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:14px;box-shadow:var(--shadow)}.kpi span{display:block;color:var(--muted);font-size:12px}.kpi b{display:block;margin-top:8px;font-size:28px;line-height:1}.kpi small{display:block;margin-top:8px;color:#b7c6d7}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) 380px;gap:14px;margin-top:14px}.panel{border:1px solid var(--line);border-radius:10px;background:var(--panel);box-shadow:var(--shadow);min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:14px;padding:14px 15px;border-bottom:1px solid var(--line)}.panel-head h2{margin:0;font-size:16px}.panel-head p{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.4}.panel-body{padding:14px 15px}.mapwrap{position:relative;min-height:440px;border-radius:8px;background:radial-gradient(circle at 48% 48%,rgba(67,203,227,.14),transparent 36%),linear-gradient(145deg,#111d2f,#0c1320);overflow:hidden}.mapwrap svg{position:absolute;inset:0;width:100%;height:100%}.brain{fill:rgba(20,40,62,.7);stroke:rgba(67,203,227,.32);stroke-width:2}.trace{fill:none;stroke:rgba(67,203,227,.3);stroke-width:2;stroke-linecap:round}.trace.active{stroke:var(--green);stroke-width:3;stroke-dasharray:8 12;animation:dash 2.2s linear infinite}@keyframes dash{to{stroke-dashoffset:-80}}.chip{fill:#55d7e8;stroke:rgba(255,255,255,.72);stroke-width:2}.chiptext{fill:#092033;font-size:28px;font-weight:800;text-anchor:middle;dominant-baseline:middle}.pill{position:absolute;transform:translate(-50%,-50%);max-width:172px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(8,15,26,.86);color:var(--text);padding:7px 9px;font-size:11px}.pill:hover,.pill.active{border-color:rgba(98,211,145,.82);background:#17263a}.detail h3{margin:0;font-size:18px}.detail p{margin:8px 0 0;color:#c5d3e4;line-height:1.45;font-size:13px}.meta{display:grid;gap:9px;margin-top:13px}.meta div{border-top:1px solid var(--line);padding-top:9px}.meta dt{color:var(--muted);font-size:12px;margin-bottom:4px}.meta dd{margin:0;font-size:13px;line-height:1.4}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tag{display:inline-flex;align-items:center;min-height:23px;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;color:#dce8f4;background:rgba(255,255,255,.04)}.tag.critical{color:#ffd1dc;border-color:rgba(238,113,136,.34);background:rgba(238,113,136,.08)}.tag.core{color:#caf6dc;border-color:rgba(98,211,145,.34);background:rgba(98,211,145,.08)}.tag.normal{color:#d8e5ff;border-color:rgba(141,182,255,.34);background:rgba(141,182,255,.08)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.opcard,.agentcard,.domaincard,.cmdcard{border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);padding:12px;min-width:0}.opcard h3,.agentcard h3,.domaincard h3,.cmdcard h3{margin:0;font-size:14px;line-height:1.25}.opcard p,.agentcard p,.domaincard p,.cmdcard p{margin:7px 0 0;color:var(--muted);font-size:12px;line-height:1.4}.agentcard{cursor:pointer}.agentcard:hover{border-color:rgba(67,203,227,.45);background:rgba(67,203,227,.05)}.domains{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.agents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.commands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.code{display:block;overflow-x:auto;white-space:nowrap;margin-top:9px;border:1px solid var(--line);border-radius:7px;background:rgba(0,0,0,.22);padding:8px;color:#d4f6ff;font:12px "Cascadia Mono",Consolas,monospace}.cmdtop{display:flex;justify-content:space-between;align-items:start;gap:8px}.copybtn{border:1px solid var(--line);border-radius:7px;background:rgba(67,203,227,.08);color:#d4f6ff;padding:5px 8px;font-size:11px;white-space:nowrap}.copybtn:hover{border-color:rgba(67,203,227,.5);background:rgba(67,203,227,.14)}.toast{position:fixed;right:18px;bottom:18px;z-index:50;border:1px solid var(--line);border-radius:9px;background:#17263a;color:var(--text);padding:10px 12px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:.18s ease}.toast.show{opacity:1;transform:translateY(0)}.script{display:grid;gap:9px;margin:0;padding:0;list-style:none;counter-reset:item}.script li{display:grid;grid-template-columns:28px 1fr;gap:9px;align-items:start;padding:10px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.03);font-size:12px;line-height:1.4;color:#d7e4f0}.script li:before{counter-increment:item;content:counter(item);width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:rgba(67,203,227,.12);color:var(--cyan);font-weight:800}.section{margin-top:14px}.hidden{display:none!important}@media(max-width:1180px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.sidebox{position:static;margin-top:14px}.layout{grid-template-columns:1fr}.kpis,.domains{grid-template-columns:repeat(2,minmax(0,1fr))}.agents{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:720px){.topbar{align-items:stretch;flex-direction:column}.content{padding:14px}.kpis,.domains,.agents,.commands,.grid2{grid-template-columns:1fr}.mapwrap{min-height:520px}.pill{font-size:10px;max-width:130px}.sidebar{padding-bottom:12px}}
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="sidebar"><div class="brand"><div class="logo">AI</div><div><strong>OperaÃ§Ãµes IA</strong><span>Painel</span></div></div><nav class="nav"><a class="active" href="#overview">VisÃ£o geral</a><a href="#agents">Agentes</a><a href="#operations">OperaÃ§Ãµes</a><a href="#commands">Comandos</a><a href="#script">Roteiro</a></nav><div class="sidebox"><strong>Modo apresentaÃ§Ã£o</strong><br>Use o overview: KPIs, mapa, operaÃ§Ã£o exemplo e roteiro curto. Detalhes tÃ©cnicos ficam abaixo.</div></aside>
-<main class="main"><header class="topbar"><div class="title"><h1>Painel de OperaÃ§Ãµes IA</h1><p>CÃ©rebro, agentes, automaÃ§Ãµes e runbooks em uma visÃ£o controlada para apresentaÃ§Ã£o e uso diÃ¡rio.</p></div><input class="search" id="search" type="search" placeholder="Pesquisar agente, competÃªncia, workflow ou comando"></header>
-<div class="content" id="overview"><section class="kpis" id="kpis"></section><section class="layout"><div class="panel"><div class="panel-head"><div><h2>Mapa do cÃ©rebro operacional</h2><p>Clique num agente para explicar funÃ§Ã£o, risco e competÃªncias.</p></div></div><div class="panel-body"><div class="mapwrap" id="map"><svg viewBox="0 0 1000 660" preserveAspectRatio="xMidYMid meet"><path class="brain" d="M225 332 C170 300 172 225 234 198 C252 126 349 111 400 152 C452 78 579 85 625 158 C704 151 776 201 774 278 C850 318 844 410 764 446 C736 528 625 552 555 506 C499 577 383 560 346 485 C262 487 206 420 225 332 Z"/><g id="traces"></g><rect class="chip" x="455" y="280" width="110" height="96" rx="10"/><text class="chiptext" x="510" y="330">AI</text></svg></div></div></div><aside class="panel"><div class="panel-head"><div><h2>Agente selecionado</h2><p>ExplicaÃ§Ã£o pronta para apresentaÃ§Ã£o e uso diÃ¡rio.</p></div></div><div class="panel-body detail" id="detail"></div></aside></section><section class="domains searchable-section" id="domains"></section>
-<section class="layout section"><div class="panel" id="operations"><div class="panel-head"><div><h2>OperaÃ§Ãµes prontas</h2><p>As aÃ§Ãµes que mostram valor rapidamente.</p></div></div><div class="panel-body"><div class="grid2" id="workflows"></div></div></div><aside class="panel" id="script"><div class="panel-head"><div><h2>Roteiro curto</h2><p>Para nÃ£o se perder numa apresentaÃ§Ã£o.</p></div></div><div class="panel-body"><ol class="script"><li><span><strong>Problema:</strong> muitas frentes tÃ©cnicas geram perda de contexto.</span></li><li><span><strong>CÃ©rebro:</strong> roteia agente, competÃªncias e verificaÃ§Ã£o.</span></li><li><span><strong>DomÃ­nios:</strong> M365, Azure, ITSM, seguranÃ§a, automaÃ§Ã£o e documentaÃ§Ã£o.</span></li><li><span><strong>Exemplo:</strong> Captura Microsoft 365 ou Better Stack Digest.</span></li><li><span><strong>GovernanÃ§a:</strong> nÃ­veis de risco e comandos rastreÃ¡veis.</span></li></ol></div></aside></section>
-<section class="panel section" id="agents"><div class="panel-head"><div><h2>Agentes</h2><p>Especialistas locais, com domÃ­nio, risco e competÃªncias principais.</p></div></div><div class="panel-body"><div class="agents" id="agentGrid"></div></div></section>
-<section class="panel section" id="commands"><div class="panel-head"><div><h2>Comandos e caminhos</h2><p>ReferÃªncias rÃ¡pidas para operar sem procurar em arquivos soltos.</p></div></div><div class="panel-body"><div class="commands" id="commandGrid"></div></div></section></div></main></div>
+<aside class="sidebar"><div class="brand"><div class="logo">AI</div><div><strong>Operações IA</strong><span>Painel</span></div></div><nav class="nav"><a class="active" href="#overview">Visão geral</a><a href="#agents">Agentes</a><a href="#operations">Operações</a><a href="#commands">Comandos</a><a href="#script">Roteiro</a></nav><div class="sidebox"><strong>Modo apresentação</strong><br>Use o overview: KPIs, mapa, operação exemplo e roteiro curto. Detalhes técnicos ficam abaixo.</div></aside>
+<main class="main"><header class="topbar"><div class="title"><h1>Painel de Operações IA</h1><p>Cérebro, agentes, automações e runbooks em uma visão controlada para apresentação e uso diário.</p></div><input class="search" id="search" type="search" placeholder="Pesquisar agente, competência, workflow ou comando"></header>
+<div class="content" id="overview"><section class="kpis" id="kpis"></section><section class="layout"><div class="panel"><div class="panel-head"><div><h2>Mapa do cérebro operacional</h2><p>Clique num agente para explicar função, risco e competências.</p></div></div><div class="panel-body"><div class="mapwrap" id="map"><svg viewBox="0 0 1000 660" preserveAspectRatio="xMidYMid meet"><path class="brain" d="M225 332 C170 300 172 225 234 198 C252 126 349 111 400 152 C452 78 579 85 625 158 C704 151 776 201 774 278 C850 318 844 410 764 446 C736 528 625 552 555 506 C499 577 383 560 346 485 C262 487 206 420 225 332 Z"/><g id="traces"></g><rect class="chip" x="455" y="280" width="110" height="96" rx="10"/><text class="chiptext" x="510" y="330">AI</text></svg></div></div></div><aside class="panel"><div class="panel-head"><div><h2>Agente selecionado</h2><p>Explicação pronta para apresentação e uso diário.</p></div></div><div class="panel-body detail" id="detail"></div></aside></section><section class="domains searchable-section" id="domains"></section>
+<section class="layout section"><div class="panel" id="operations"><div class="panel-head"><div><h2>Operações prontas</h2><p>As ações que mostram valor rapidamente.</p></div></div><div class="panel-body"><div class="grid2" id="workflows"></div></div></div><aside class="panel" id="script"><div class="panel-head"><div><h2>Roteiro curto</h2><p>Para não se perder numa apresentação.</p></div></div><div class="panel-body"><ol class="script"><li><span><strong>Problema:</strong> muitas frentes técnicas geram perda de contexto.</span></li><li><span><strong>Cérebro:</strong> roteia agente, competências e verificação.</span></li><li><span><strong>Domínios:</strong> M365, Azure, ITSM, segurança, automação e documentação.</span></li><li><span><strong>Exemplo:</strong> Captura Microsoft 365 ou Better Stack Digest.</span></li><li><span><strong>Governança:</strong> níveis de risco e comandos rastreáveis.</span></li></ol></div></aside></section>
+<section class="panel section" id="agents"><div class="panel-head"><div><h2>Agentes</h2><p>Especialistas locais, com domínio, risco e competências principais.</p></div></div><div class="panel-body"><div class="agents" id="agentGrid"></div></div></section>
+<section class="panel section" id="commands"><div class="panel-head"><div><h2>Comandos e caminhos</h2><p>Referências rápidas para operar sem procurar em arquivos soltos.</p></div></div><div class="panel-body"><div class="commands" id="commandGrid"></div></div></section></div></main></div>
 <script>
 const data={
     "agents":  [
                    {
-                       "name":  "CÃ©rebro Central",
+                       "name":  "Cérebro Central",
                        "file":  "master-router-agent.md",
                        "domain":  "Routing",
-                       "description":  "Camada executiva que classifica o pedido, escolhe agente, competÃªncias, profundidade de execuÃ§Ã£o, verificaÃ§Ã£o e orÃ§amento de contexto.",
+                       "description":  "Camada executiva que classifica o pedido, escolhe agente, competências, profundidade de execução, verificação e orçamento de contexto.",
                        "skills":  [
                                       "request-routing-policy",
                                       "conversation-limit-manager",
@@ -35,10 +35,10 @@ const data={
                        "updatedAt":  "2026-05-25"
                    },
                    {
-                       "name":  "Engenheiro de CÃ³digo",
+                       "name":  "Engenheiro de Código",
                        "file":  "engineering-lead-agent.md",
                        "domain":  "Code",
-                       "description":  "Conduz trabalho de engenharia ponta a ponta: anÃ¡lise do repositÃ³rio, alteraÃ§Ãµes de cÃ³digo, testes, planos e PRs.",
+                       "description":  "Conduz trabalho de engenharia ponta a ponta: análise do repositório, alterações de código, testes, planos e PRs.",
                        "skills":  [
                                       "codebase-onboarding-map",
                                       "github-pr-lifecycle",
@@ -48,10 +48,10 @@ const data={
                        "updatedAt":  "2026-05-25"
                    },
                    {
-                       "name":  "Gestor CI, Releases e ProveniÃªncia",
+                       "name":  "Gestor CI, Releases e Proveniência",
                        "file":  "ci-release-agent.md",
                        "domain":  "CI/Release",
-                       "description":  "Investiga falhas de CI, releases, changelogs, upgrades de dependÃªncias, rollback e proveniÃªncia de build.",
+                       "description":  "Investiga falhas de CI, releases, changelogs, upgrades de dependências, rollback e proveniência de build.",
                        "skills":  [
                                       "ci-failure-fixer",
                                       "release-manager",
@@ -64,7 +64,7 @@ const data={
                        "name":  "Gestor de Incidentes",
                        "file":  "production-incident-agent.md",
                        "domain":  "Incidents",
-                       "description":  "Trata alertas, incidentes, logs, stack traces, falhas de produÃ§Ã£o e comunicaÃ§Ã£o para stakeholders.",
+                       "description":  "Trata alertas, incidentes, logs, stack traces, falhas de produção e comunicação para stakeholders.",
                        "skills":  [
                                       "production-error-to-pr",
                                       "incident-monitoring-betterstack",
@@ -74,10 +74,10 @@ const data={
                        "updatedAt":  "2026-05-25"
                    },
                    {
-                       "name":  "Arquiteto de AutomaÃ§Ã£o",
+                       "name":  "Arquiteto de Automação",
                        "file":  "automation-architect-agent.md",
                        "domain":  "Automation",
-                       "description":  "Transforma trabalho manual repetido em scripts, CLIs, automaÃ§Ãµes agendadas, runbooks ou workflows assistidos por IA.",
+                       "description":  "Transforma trabalho manual repetido em scripts, CLIs, automações agendadas, runbooks ou workflows assistidos por IA.",
                        "skills":  [
                                       "automation-factory",
                                       "automation-designer",
@@ -87,10 +87,10 @@ const data={
                        "updatedAt":  "2026-05-25"
                    },
                    {
-                       "name":  "Engenheiro de AutomaÃ§Ã£o Interna",
+                       "name":  "Engenheiro de Automação Interna",
                        "file":  "internal-automation-engineer-agent.md",
                        "domain":  "Automation",
-                       "description":  "ConstrÃ³i ferramentas internas, mÃ³dulos PowerShell, CLIs, automaÃ§Ãµes de runbook e utilitÃ¡rios administrativos.",
+                       "description":  "Constrói ferramentas internas, módulos PowerShell, CLIs, automações de runbook e utilitários administrativos.",
                        "skills":  [
                                       "internal-tools-builder",
                                       "runbook-to-automation",
@@ -103,7 +103,7 @@ const data={
                        "name":  "Operador Microsoft 365",
                        "file":  "microsoft-365-ops-agent.md",
                        "domain":  "M365",
-                       "description":  "Apoia operaÃ§Ãµes de Microsoft 365: Exchange, Graph, Teams, SharePoint, Entra adjacente e PowerShell administrativo.",
+                       "description":  "Apoia operações de Microsoft 365: Exchange, Graph, Teams, SharePoint, Entra adjacente e PowerShell administrativo.",
                        "skills":  [
                                       "m365-admin-runbook",
                                       "powershell-safe-ops",
@@ -113,10 +113,10 @@ const data={
                        "updatedAt":  "2026-05-25"
                    },
                    {
-                       "name":  "Operador IntegraÃ§Ãµes ITSM",
+                       "name":  "Operador Integrações ITSM",
                        "file":  "service-integration-ops-agent.md",
                        "domain":  "ITSM",
-                       "description":  "Diagnostica integraÃ§Ãµes ITSM, Freshservice, Jira Service Management, submissÃ£o por mailbox, routing, sincronizaÃ§Ã£o e duplicidade.",
+                       "description":  "Diagnostica integrações ITSM, Freshservice, Jira Service Management, submissão por mailbox, routing, sincronização e duplicidade.",
                        "skills":  [
                                       "freshservice-itil-ops",
                                       "freshservice-jira-m365-integration-ops",
@@ -129,7 +129,7 @@ const data={
                        "name":  "Engenheiro Azure Functions e Nuvem",
                        "file":  "azure-functions-engineer-agent.md",
                        "domain":  "Azure",
-                       "description":  "Apoia Azure Functions, Function Apps, triggers, bindings, configuraÃ§Ãµes locais, seguranÃ§a, deploy e Application Insights.",
+                       "description":  "Apoia Azure Functions, Function Apps, triggers, bindings, configurações locais, segurança, deploy e Application Insights.",
                        "skills":  [
                                       "azure-functions-engineering",
                                       "azure-deployment-runbook",
@@ -142,7 +142,7 @@ const data={
                        "name":  "Observabilidade de Nuvem",
                        "file":  "azure-ops-observability-agent.md",
                        "domain":  "Azure Ops",
-                       "description":  "Apoia Azure Monitor, Application Insights, Log Analytics, KQL, alertas, incidentes e diagnÃ³stico operacional.",
+                       "description":  "Apoia Azure Monitor, Application Insights, Log Analytics, KQL, alertas, incidentes e diagnóstico operacional.",
                        "skills":  [
                                       "azure-observability-ops",
                                       "observability-instrumentation",
@@ -152,7 +152,7 @@ const data={
                        "updatedAt":  "2026-06-08"
                    },
                    {
-                       "name":  "GuardiÃ£o de Acessos",
+                       "name":  "Guardião de Acessos",
                        "file":  "identity-access-agent.md",
                        "domain":  "Identity",
                        "description":  "Apoia Entra ID, RBAC, grupos, app registrations, managed identities, service principals, consentimento e troubleshooting de acesso.",
@@ -165,10 +165,10 @@ const data={
                        "updatedAt":  "2026-05-25"
                    },
                    {
-                       "name":  "GuardiÃ£o de SeguranÃ§a e ExposiÃ§Ã£o",
+                       "name":  "Guardião de Segurança e Exposição",
                        "file":  "security-review-agent.md",
                        "domain":  "Security",
-                       "description":  "RevÃª AppSec, segredos, permissÃµes, exposiÃ§Ã£o de tenant, seguranÃ§a de migraÃ§Ãµes e risco de release.",
+                       "description":  "Revê AppSec, segredos, permissões, exposição de tenant, segurança de migrações e risco de release.",
                        "skills":  [
                                       "appsec-threat-model",
                                       "secret-leak-prevention",
@@ -194,7 +194,7 @@ const data={
                        "name":  "Documentador",
                        "file":  "documentation-reporting-agent.md",
                        "domain":  "Docs",
-                       "description":  "Produz documentaÃ§Ã£o, relatÃ³rios, arquivos Office, runbooks e escrita tÃ©cnica/profissional concisa.",
+                       "description":  "Produz documentação, relatórios, arquivos Office, runbooks e escrita técnica/profissional concisa.",
                        "skills":  [
                                       "docs-from-code",
                                       "document-report-builder",
@@ -207,7 +207,7 @@ const data={
                        "name":  "Analista de Performance",
                        "file":  "performance-agent.md",
                        "domain":  "Performance",
-                       "description":  "Investiga latÃªncia, profiling, queries lentas, renderizaÃ§Ã£o, memÃ³ria, CPU, bundle, cache e regressÃµes.",
+                       "description":  "Investiga latência, profiling, queries lentas, renderização, memória, CPU, bundle, cache e regressões.",
                        "skills":  [
                                       "performance-profiler",
                                       "observability-instrumentation",
@@ -220,7 +220,7 @@ const data={
                        "name":  "Coach de Produtividade IA",
                        "file":  "ai-workflow-coach-agent.md",
                        "domain":  "AI workflow",
-                       "description":  "Melhora prompts, agentes, competÃªncias, automaÃ§Ãµes, controlo de contexto e workflows recorrentes de IA.",
+                       "description":  "Melhora prompts, agentes, competências, automações, controlo de contexto e workflows recorrentes de IA.",
                        "skills":  [
                                       "workflow-auditor",
                                       "token-optimizer",
@@ -230,10 +230,10 @@ const data={
                        "updatedAt":  "2026-05-25"
                    },
                    {
-                       "name":  "GovernanÃ§a de IA e Agentes",
+                       "name":  "Governança de IA e Agentes",
                        "file":  "enterprise-ai-governance-agent.md",
                        "domain":  "AI Governance",
-                       "description":  "Apoia governanÃ§a de IA, inventÃ¡rio de agentes, permissÃµes, fronteiras de dados, rollout e arquitetura de agentes.",
+                       "description":  "Apoia governança de IA, inventário de agentes, permissões, fronteiras de dados, rollout e arquitetura de agentes.",
                        "skills":  [
                                       "enterprise-ai-governance",
                                       "openai-agents-sdk-architecture",
@@ -246,7 +246,7 @@ const data={
                        "name":  "Arquiteto de Sistemas",
                        "file":  "systems-implementation-architect-agent.md",
                        "domain":  "Systems",
-                       "description":  "Apoia novos sistemas internos, avaliaÃ§Ã£o de fornecedores, integraÃ§Ãµes, rollout, suporte e gestÃ£o de mudanÃ§a.",
+                       "description":  "Apoia novos sistemas internos, avaliação de fornecedores, integrações, rollout, suporte e gestão de mudança.",
                        "skills":  [
                                       "system-implementation-playbook",
                                       "vendor-system-evaluator",
@@ -272,7 +272,7 @@ const data={
                    [
                        "request-routing-policy",
                        "Roteamento",
-                       "Classifica o pedido e define agente, profundidade de execuÃ§Ã£o, verificaÃ§Ã£o e orÃ§amento de contexto."
+                       "Classifica o pedido e define agente, profundidade de execução, verificação e orçamento de contexto."
                    ],
                    [
                        "conversation-limit-manager",
@@ -282,85 +282,85 @@ const data={
                    [
                        "workflow-auditor",
                        "Produtividade",
-                       "Identifica trabalho repetido que deve virar competÃªncia, script, automaÃ§Ã£o ou runbook."
+                       "Identifica trabalho repetido que deve virar competência, script, automação ou runbook."
                    ],
                    [
                        "token-efficiency",
                        "Contexto",
-                       "MantÃ©m investigaÃ§Ã£o e resposta proporcionais ao risco e evita gasto desnecessÃ¡rio de contexto."
+                       "Mantém investigação e resposta proporcionais ao risco e evita gasto desnecessário de contexto."
                    ],
                    [
                        "automation-factory",
-                       "AutomaÃ§Ã£o",
-                       "Transforma workflows recorrentes em scripts, CLIs, jobs agendados, automaÃ§Ãµes ou runbooks."
+                       "Automação",
+                       "Transforma workflows recorrentes em scripts, CLIs, jobs agendados, automações ou runbooks."
                    ],
                    [
                        "powershell-safe-ops",
                        "PowerShell",
-                       "Aplica PowerShell com descoberta prÃ©via, escopo explÃ­cito, paths seguros e erros acionÃ¡veis."
+                       "Aplica PowerShell com descoberta prévia, escopo explícito, paths seguros e erros acionáveis."
                    ],
                    [
                        "m365-admin-runbook",
                        "Microsoft 365",
-                       "Guia operaÃ§Ãµes seguras em Exchange, Graph, Teams, SharePoint e administraÃ§Ã£o de tenant."
+                       "Guia operações seguras em Exchange, Graph, Teams, SharePoint e administração de tenant."
                    ],
                    [
                        "freshservice-jira-m365-integration-ops",
                        "ITSM",
-                       "Diagnostica routing, sincronizaÃ§Ã£o, mailbox submission e duplicidade em integraÃ§Ãµes ITSM."
+                       "Diagnostica routing, sincronização, mailbox submission e duplicidade em integrações ITSM."
                    ],
                    [
                        "azure-functions-engineering",
                        "Azure",
-                       "Apoia Function Apps, triggers, bindings, configuraÃ§Ãµes locais e restriÃ§Ãµes de deploy."
+                       "Apoia Function Apps, triggers, bindings, configurações locais e restrições de deploy."
                    ],
                    [
                        "azure-observability-ops",
                        "Azure Ops",
-                       "Usa Azure Monitor, Application Insights, Log Analytics, KQL, alertas e diagnÃ³sticos."
+                       "Usa Azure Monitor, Application Insights, Log Analytics, KQL, alertas e diagnósticos."
                    ],
                    [
                        "incident-monitoring-betterstack",
                        "Incidentes",
-                       "Consulta monitores, heartbeats, incidentes e histÃ³rico de uptime."
+                       "Consulta monitores, heartbeats, incidentes e histórico de uptime."
                    ],
                    [
                        "frontend-design",
                        "Interface",
-                       "Desenha dashboards e interfaces prÃ¡ticas, responsivas e verificÃ¡veis."
+                       "Desenha dashboards e interfaces práticas, responsivas e verificáveis."
                    ],
                    [
                        "web-qa-playwright",
                        "QA Web",
-                       "Valida pÃ¡ginas com browser automation, screenshots, console e comportamento responsivo."
+                       "Valida páginas com browser automation, screenshots, console e comportamento responsivo."
                    ],
                    [
                        "skill-creator",
                        "Workflow IA",
-                       "Cria competÃªncias compactas com gatilhos claros, escopo definido e verificaÃ§Ã£o esperada."
+                       "Cria competências compactas com gatilhos claros, escopo definido e verificação esperada."
                    ],
                    [
                        "secret-leak-prevention",
-                       "SeguranÃ§a",
-                       "Evita exposiÃ§Ã£o de credenciais, tokens, chaves, paths sensÃ­veis e arquivos privados."
+                       "Segurança",
+                       "Evita exposição de credenciais, tokens, chaves, paths sensíveis e arquivos privados."
                    ],
                    [
                        "docs-from-code",
-                       "DocumentaÃ§Ã£o",
-                       "Gera ou atualiza documentaÃ§Ã£o, runbooks, diagramas e notas tÃ©cnicas a partir do cÃ³digo."
+                       "Documentação",
+                       "Gera ou atualiza documentação, runbooks, diagramas e notas técnicas a partir do código."
                    ]
                ],
     "workflows":  [
                       {
-                          "name":  "Adicionar memÃ³ria",
+                          "name":  "Adicionar memória",
                           "owner":  "AI Workflow Coach",
                           "status":  "active",
-                          "summary":  "Registra contexto recorrente em memÃ³ria, decisÃµes ou workflows sem duplicar regras.",
+                          "summary":  "Registra contexto recorrente em memória, decisões ou workflows sem duplicar regras.",
                           "steps":  [
-                                        "Classificar memÃ³ria",
+                                        "Classificar memória",
                                         "Escolher destino",
                                         "Escrever entrada compacta",
-                                        "Remover duplicaÃ§Ã£o"
+                                        "Remover duplicação"
                                     ],
                           "duration":  "4 min"
                       },
@@ -368,12 +368,12 @@ const data={
                           "name":  "Roteamento de pedido",
                           "owner":  "Master Router",
                           "status":  "done",
-                          "summary":  "Escolhe domÃ­nio, agente, competÃªncias, profundidade e verificaÃ§Ã£o antes de trabalho substancial.",
+                          "summary":  "Escolhe domínio, agente, competências, profundidade e verificação antes de trabalho substancial.",
                           "steps":  [
                                         "Classificar",
                                         "Selecionar agente",
                                         "Selecionar skills",
-                                        "Definir verificaÃ§Ã£o"
+                                        "Definir verificação"
                                     ],
                           "duration":  "1 min"
                       },
@@ -381,25 +381,25 @@ const data={
                           "name":  "Investigar incidente",
                           "owner":  "Production Incident",
                           "status":  "watch",
-                          "summary":  "Monta timeline, impacto, hipÃ³tese de causa, mitigaÃ§Ã£o e resumo para stakeholders.",
+                          "summary":  "Monta timeline, impacto, hipótese de causa, mitigação e resumo para stakeholders.",
                           "steps":  [
                                         "Confirmar alerta",
                                         "Consultar logs",
                                         "Avaliar impacto",
-                                        "Recomendar aÃ§Ã£o"
+                                        "Recomendar ação"
                                     ],
                           "duration":  "18 min"
                       },
                       {
-                          "name":  "MudanÃ§a Microsoft 365",
+                          "name":  "Mudança Microsoft 365",
                           "owner":  "Microsoft 365 Ops",
                           "status":  "watch",
-                          "summary":  "Executa leituras antes de qualquer alteraÃ§Ã£o, confirma escopo e exige aprovaÃ§Ã£o para escrita.",
+                          "summary":  "Executa leituras antes de qualquer alteração, confirma escopo e exige aprovação para escrita.",
                           "steps":  [
                                         "Confirmar tenant",
                                         "Ler estado",
-                                        "Planejar mudanÃ§a",
-                                        "Executar com seguranÃ§a"
+                                        "Planejar mudança",
+                                        "Executar com segurança"
                                     ],
                           "duration":  "12 min"
                       },
@@ -407,12 +407,12 @@ const data={
                           "name":  "Construir ou corrigir UI",
                           "owner":  "Frontend Product",
                           "status":  "active",
-                          "summary":  "Inspeciona padrÃµes, implementa tela Ãºtil e valida renderizaÃ§Ã£o desktop/mobile.",
+                          "summary":  "Inspeciona padrões, implementa tela útil e valida renderização desktop/mobile.",
                           "steps":  [
                                         "Inspecionar",
                                         "Implementar",
-                                        "Testar interaÃ§Ã£o",
-                                        "Validar renderizaÃ§Ã£o"
+                                        "Testar interação",
+                                        "Validar renderização"
                                     ],
                           "duration":  "25 min"
                       },
@@ -420,12 +420,12 @@ const data={
                           "name":  "Criar skill",
                           "owner":  "AI Workflow Coach",
                           "status":  "done",
-                          "summary":  "Transforma trabalho recorrente em skill compacta quando o padrÃ£o Ã© frequente ou arriscado.",
+                          "summary":  "Transforma trabalho recorrente em skill compacta quando o padrão é frequente ou arriscado.",
                           "steps":  [
                                         "Definir gatilho",
                                         "Escrever comportamento",
-                                        "Adicionar verificaÃ§Ã£o",
-                                        "Evitar sobreposiÃ§Ã£o"
+                                        "Adicionar verificação",
+                                        "Evitar sobreposição"
                                     ],
                           "duration":  "9 min"
                       },
@@ -433,9 +433,9 @@ const data={
                           "name":  "Captura Microsoft 365",
                           "owner":  "Operador Microsoft 365",
                           "status":  "active",
-                          "summary":  "Captura estado somente leitura de mÃ³dulos, Graph, Exchange e configuraÃ§Ã£o de identificaÃ§Ã£o externa.",
+                          "summary":  "Captura estado somente leitura de módulos, Graph, Exchange e configuração de identificação externa.",
                           "steps":  [
-                                        "Conectar se necessÃ¡rio",
+                                        "Conectar se necessário",
                                         "Executar snapshot",
                                         "Rever JSON",
                                         "Anexar ao runbook"
@@ -448,7 +448,7 @@ const data={
                           "status":  "active",
                           "summary":  "Gera resumo de monitores, incidentes e heartbeats a partir da API de observabilidade.",
                           "steps":  [
-                                        "Definir token em variÃ¡vel segura",
+                                        "Definir token em variável segura",
                                         "Executar resumo",
                                         "Rever Markdown",
                                         "Anexar ao briefing"
@@ -464,67 +464,67 @@ const data={
                           "Samuel"
                       ],
                       [
-                          "Separar memÃ³ria durÃ¡vel das regras de roteamento",
+                          "Separar memória durável das regras de roteamento",
                           "alta",
                           "aceito",
                           "Samuel"
                       ],
                       [
-                          "Usar memÃ³ria do projeto para contexto estÃ¡vel",
-                          "mÃ©dia",
+                          "Usar memória do projeto para contexto estável",
+                          "média",
                           "aceito",
                           "Samuel"
                       ],
                       [
-                          "Usar workflows para procedimentos repetÃ­veis",
-                          "mÃ©dia",
+                          "Usar workflows para procedimentos repetíveis",
+                          "média",
                           "aceito",
                           "Samuel"
                       ],
                       [
-                          "Preferir menos competÃªncias, mas mais fortes, em vez de competÃªncias sobrepostas",
-                          "mÃ©dia",
+                          "Preferir menos competências, mas mais fortes, em vez de competências sobrepostas",
+                          "média",
                           "ativo",
                           "Coach IA"
                       ],
                       [
-                          "Usar verificaÃ§Ã£o mais profunda para administraÃ§Ã£o, cÃ³digo, UI e seguranÃ§a",
-                          "mÃ©dia",
+                          "Usar verificação mais profunda para administração, código, UI e segurança",
+                          "média",
                           "aceito",
                           "Roteador"
                       ],
                       [
-                          "Manter o painel como aplicaÃ§Ã£o estÃ¡tica local primeiro",
+                          "Manter o painel como aplicação estática local primeiro",
                           "baixa",
                           "ativo",
                           "Interface"
                       ],
                       [
-                          "Automatizar sincronizaÃ§Ã£o de memÃ³ria apÃ³s estabilizar o formato manual",
+                          "Automatizar sincronização de memória após estabilizar o formato manual",
                           "baixa",
-                          "em observaÃ§Ã£o",
+                          "em observação",
                           "Samuel"
                       ]
                   ],
     "commands":  [
                      [
                          "Projeto local",
-                         "DiretÃ³rio de trabalho deste hub",
+                         "Diretório de trabalho deste hub",
                          "\u003cworkspace\u003e/"
                      ],
                      [
                          "Perfis de agentes",
-                         "DiretÃ³rio privado de perfis locais",
+                         "Diretório privado de perfis locais",
                          "\u003cagent-profiles\u003e/"
                      ],
                      [
                          "Aliases",
-                         "Mapa privado de nomes amigÃ¡veis para agentes e skills",
+                         "Mapa privado de nomes amigáveis para agentes e skills",
                          "\u003cagent-profiles\u003e/ALIASES.md"
                      ],
                      [
-                         "MemÃ³ria do projeto",
-                         "Contexto durÃ¡vel do dashboard",
+                         "Memória do projeto",
+                         "Contexto durável do dashboard",
                          "codex-brain-dashboard/PROJECT_MEMORY.md"
                      ],
                      [
@@ -534,7 +534,7 @@ const data={
                      ],
                      [
                          "Dashboard local",
-                         "Interface local de apresentaÃ§Ã£o e operaÃ§Ã£o",
+                         "Interface local de apresentação e operação",
                          "codex-brain-dashboard/index.html"
                      ],
                      [
@@ -552,8 +552,8 @@ const data={
                      {
                          "id":  "mem-routing-layer",
                          "type":  "routing",
-                         "title":  "Usar roteador central em pedidos nÃ£o triviais",
-                         "description":  "Usar o roteador central e a polÃ­tica de roteamento para escolher domÃ­nio, agente, competÃªncias e verificaÃ§Ã£o quando o pedido exigir decisÃ£o tÃ©cnica.",
+                         "title":  "Usar roteador central em pedidos não triviais",
+                         "description":  "Usar o roteador central e a política de roteamento para escolher domínio, agente, competências e verificação quando o pedido exigir decisão técnica.",
                          "priority":  "high",
                          "related":  "master-router-agent.md",
                          "createdAt":  "2026-06-19"
@@ -561,8 +561,8 @@ const data={
                      {
                          "id":  "mem-memory-split",
                          "type":  "context",
-                         "title":  "Separar roteamento, memÃ³ria e workflows",
-                         "description":  "Usar regras de roteamento para decisÃ£o, memÃ³ria do projeto para contexto durÃ¡vel e workflows para procedimentos repetÃ­veis.",
+                         "title":  "Separar roteamento, memória e workflows",
+                         "description":  "Usar regras de roteamento para decisão, memória do projeto para contexto durável e workflows para procedimentos repetíveis.",
                          "priority":  "high",
                          "related":  "PROJECT_MEMORY.md",
                          "createdAt":  "2026-06-19"
@@ -572,13 +572,13 @@ const data={
 };
 const positions=[[22,24],[34,16],[47,13],[60,16],[75,25],[80,41],[74,58],[62,70],[50,75],[38,70],[27,58],[20,43],[25,34],[36,34],[44,45],[58,44],[67,51],[50,58],[42,25]];
 const center={x:510,y:330};let selected=data.agents[0];const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const domainText={Routing:'DecisÃ£o de agente e verificaÃ§Ã£o.',M365:'Exchange, Graph, Teams e SharePoint.',ITSM:'Freshservice, Jira e routing.',Azure:'Function Apps e deployment.','Azure Ops':'KQL, logs e alertas.',Security:'Segredos, exposiÃ§Ã£o e permissÃµes.',Automation:'Scripts, CLIs e runbooks.',Identity:'Entra ID, RBAC e consentimento.',Docs:'Runbooks, relatÃ³rios e Office.',UI:'Painels e QA visual.',Incidents:'Alertas e comunicaÃ§Ã£o.',Performance:'LatÃªncia e profiling.',Systems:'Rollout e fornecedores.',Context:'Handoff e limites.','AI workflow':'CompetÃªncias, prompts e produtividade.','AI Governance':'GovernanÃ§a e agentes.'};
-function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}function risk(l){return l==='critical'?'critical':l==='core'?'core':'normal'}function levelLabel(l){return l==='critical'?'crÃ­tico':l==='core'?'central':'normal'}function statusLabel(s){return s==='active'?'ativo':s==='done'?'concluÃ­do':s==='watch'?'em observaÃ§Ã£o':s}
-function example(a){if(a.domain==='M365')return'Use para captura somente leitura antes de mexer em Exchange/Graph.';if(a.domain==='ITSM')return'Use para diagnosticar Freshservice/Jira sem duplicar tickets.';if(a.domain.includes('Azure'))return'Use para logs, Function Apps, KQL e alertas.';if(a.domain==='Automation')return'Use para converter rotina manual em script ou runbook.';return'Use quando o pedido cair neste domÃ­nio e precisar de roteamento claro.'}
-function renderKpis(){const domains=new Set(data.agents.map(a=>a.domain)).size;$('#kpis').innerHTML=[['Agentes',data.agents.length,'Especialistas locais'],['CompetÃªncias',data.skills.length,'Capacidades reutilizÃ¡veis'],['Workflows',data.workflows.length,'Procedimentos prontos'],['DomÃ­nios',domains,'Ãreas cobertas']].map(x=>`<article class="kpi"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join('')}
+const domainText={Routing:'Decisão de agente e verificação.',M365:'Exchange, Graph, Teams e SharePoint.',ITSM:'Freshservice, Jira e routing.',Azure:'Function Apps e deployment.','Azure Ops':'KQL, logs e alertas.',Security:'Segredos, exposição e permissões.',Automation:'Scripts, CLIs e runbooks.',Identity:'Entra ID, RBAC e consentimento.',Docs:'Runbooks, relatórios e Office.',UI:'Painels e QA visual.',Incidents:'Alertas e comunicação.',Performance:'Latência e profiling.',Systems:'Rollout e fornecedores.',Context:'Handoff e limites.','AI workflow':'Competências, prompts e produtividade.','AI Governance':'Governança e agentes.'};
+function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}function risk(l){return l==='critical'?'critical':l==='core'?'core':'normal'}function levelLabel(l){return l==='critical'?'crítico':l==='core'?'central':'normal'}function statusLabel(s){return s==='active'?'ativo':s==='done'?'concluído':s==='watch'?'em observação':s}
+function example(a){if(a.domain==='M365')return'Use para captura somente leitura antes de mexer em Exchange/Graph.';if(a.domain==='ITSM')return'Use para diagnosticar Freshservice/Jira sem duplicar tickets.';if(a.domain.includes('Azure'))return'Use para logs, Function Apps, KQL e alertas.';if(a.domain==='Automation')return'Use para converter rotina manual em script ou runbook.';return'Use quando o pedido cair neste domínio e precisar de roteamento claro.'}
+function renderKpis(){const domains=new Set(data.agents.map(a=>a.domain)).size;$('#kpis').innerHTML=[['Agentes',data.agents.length,'Especialistas locais'],['Competências',data.skills.length,'Capacidades reutilizáveis'],['Workflows',data.workflows.length,'Procedimentos prontos'],['Domínios',domains,'Áreas cobertas']].map(x=>`<article class="kpi"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join('')}
 function renderMap(){const map=$('#map');$$('.pill').forEach(e=>e.remove());$('#traces').innerHTML='';data.agents.forEach((a,i)=>{const p=positions[i%positions.length],x=p[0]*10,y=p[1]*6.6;const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',`M ${center.x} ${center.y} C ${(center.x+x)/2} ${center.y}, ${(center.x+x)/2} ${y}, ${x} ${y}`);path.setAttribute('class',`trace ${a===selected?'active':''}`);$('#traces').appendChild(path);const b=document.createElement('button');b.className=`pill ${a===selected?'active':''}`;b.style.left=p[0]+'%';b.style.top=p[1]+'%';b.textContent=a.name;b.onclick=()=>select(a);map.appendChild(b)})}
-function renderDetail(){$('#detail').innerHTML=`<h3>${esc(selected.name)}</h3><p>${esc(selected.description)}</p><div class="tags"><span class="tag ${risk(selected.level)}">${levelLabel(selected.level)}</span><span class="tag">${esc(selected.domain)}</span></div><dl class="meta"><div><dt>Quando usar</dt><dd>${esc(example(selected))}</dd></div><div><dt>Arquivo tÃ©cnico</dt><dd>${esc(selected.file)}</dd></div><div><dt>Atualizado em</dt><dd>${esc(selected.updatedAt||'sem data')}</dd></div><div><dt>CompetÃªncias</dt><dd><div class="tags">${selected.skills.map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div></dd></div><div><dt>Frase para apresentaÃ§Ã£o</dt><dd>Este agente reduz ambiguidade no domÃ­nio ${esc(selected.domain)} e aplica verificaÃ§Ã£o proporcional ao risco.</dd></div></dl>`}
-function renderDomains(){const c={};data.agents.forEach(a=>c[a.domain]=(c[a.domain]||0)+1);$('#domains').innerHTML=Object.entries(c).map(([d,n])=>`<article class="domaincard searchable" data-search="${esc(d+' '+(domainText[d]||''))}"><h3>${esc(d)}</h3><p>${esc(domainText[d]||'Ãrea operacional.')}</p><div class="tags"><span class="tag">${n} agente${n>1?'s':''}</span></div></article>`).join('')}
+function renderDetail(){$('#detail').innerHTML=`<h3>${esc(selected.name)}</h3><p>${esc(selected.description)}</p><div class="tags"><span class="tag ${risk(selected.level)}">${levelLabel(selected.level)}</span><span class="tag">${esc(selected.domain)}</span></div><dl class="meta"><div><dt>Quando usar</dt><dd>${esc(example(selected))}</dd></div><div><dt>Arquivo técnico</dt><dd>${esc(selected.file)}</dd></div><div><dt>Atualizado em</dt><dd>${esc(selected.updatedAt||'sem data')}</dd></div><div><dt>Competências</dt><dd><div class="tags">${selected.skills.map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div></dd></div><div><dt>Frase para apresentação</dt><dd>Este agente reduz ambiguidade no domínio ${esc(selected.domain)} e aplica verificação proporcional ao risco.</dd></div></dl>`}
+function renderDomains(){const c={};data.agents.forEach(a=>c[a.domain]=(c[a.domain]||0)+1);$('#domains').innerHTML=Object.entries(c).map(([d,n])=>`<article class="domaincard searchable" data-search="${esc(d+' '+(domainText[d]||''))}"><h3>${esc(d)}</h3><p>${esc(domainText[d]||'Área operacional.')}</p><div class="tags"><span class="tag">${n} agente${n>1?'s':''}</span></div></article>`).join('')}
 function renderAgents(){$('#agentGrid').innerHTML=data.agents.map(a=>`<article class="agentcard searchable" data-file="${esc(a.file)}" data-search="${esc([a.name,a.file,a.domain,a.description,...a.skills].join(' '))}"><h3>${esc(a.name)}</h3><p>${esc(a.description)}</p><div class="tags"><span class="tag ${risk(a.level)}">${levelLabel(a.level)}</span><span class="tag">${esc(a.domain)}</span><span class="tag">Atualizado ${esc(a.updatedAt||'sem data')}</span></div></article>`).join('');$$('.agentcard').forEach(c=>c.onclick=()=>select(data.agents.find(a=>a.file===c.dataset.file)))}
 function renderWorkflows(){$('#workflows').innerHTML=data.workflows.map(w=>`<article class="opcard searchable" data-search="${esc([w.name,w.owner,w.summary,(w.steps||[]).join(' ')].join(' '))}"><h3>${esc(w.name)}</h3><p>${esc(w.summary)}</p><div class="tags"><span class="tag ${w.status==='active'?'core':w.status==='watch'?'critical':'normal'}">${statusLabel(w.status)}</span><span class="tag">${esc(w.owner)}</span></div></article>`).join('')}
 function renderCommands(){$('#commandGrid').innerHTML=data.commands.map((r,i)=>`<article class="cmdcard searchable" data-search="${esc(r.join(' '))}"><div class="cmdtop"><h3>${esc(r[0])}</h3><button class="copybtn" type="button" data-command-index="${i}">Copiar</button></div><p>${esc(r[1])}</p><code class="code">${esc(r[2])}</code></article>`).join('');$$('.copybtn').forEach(b=>b.onclick=()=>copyCommand(data.commands[Number(b.dataset.commandIndex)][2],b))}
