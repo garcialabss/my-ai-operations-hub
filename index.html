@@ -19,560 +19,625 @@
 <section class="panel section" id="commands"><div class="panel-head"><div><h2>Comandos e caminhos</h2><p>Referências operacionais para execução, auditoria e handoff.</p></div></div><div class="panel-body"><div class="commands" id="commandGrid"></div></div></section></div></main></div>
 <script>
 const data={
-    "agents":  [
-                   {
-                       "name":  "Cérebro Central",
-                       "file":  "master-router-agent.md",
-                       "domain":  "Routing",
-                       "description":  "Camada de roteamento que classifica o pedido, escolhe agente, competências, profundidade de execução, verificação e orçamento de contexto.",
-                       "skills":  [
-                                      "request-routing-policy",
-                                      "conversation-limit-manager",
-                                      "token-efficiency",
-                                      "workflow-auditor"
-                                  ],
-                       "level":  "core",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Engenheiro de Código",
-                       "file":  "engineering-lead-agent.md",
-                       "domain":  "Code",
-                       "description":  "Conduz trabalho de engenharia ponta a ponta: análise do repositório, alterações de código, testes, planos e PRs.",
-                       "skills":  [
-                                      "codebase-onboarding-map",
-                                      "github-pr-lifecycle",
-                                      "verification-before-completion"
-                                  ],
-                       "level":  "normal",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Gestor CI, Releases e Proveniência",
-                       "file":  "ci-release-agent.md",
-                       "domain":  "CI/Release",
-                       "description":  "Investiga falhas de CI, releases, changelogs, upgrades de dependências, rollback e proveniência de build.",
-                       "skills":  [
-                                      "ci-failure-fixer",
-                                      "release-manager",
-                                      "dependency-upgrade-migration"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-06-01"
-                   },
-                   {
-                       "name":  "Gestor de Incidentes",
-                       "file":  "production-incident-agent.md",
-                       "domain":  "Incidents",
-                       "description":  "Trata alertas, incidentes, logs, stack traces, falhas de produção e comunicação para responsáveis.",
-                       "skills":  [
-                                      "production-error-to-pr",
-                                      "incident-monitoring-betterstack",
-                                      "daily-ops-brief"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Arquiteto de Automação",
-                       "file":  "automation-architect-agent.md",
-                       "domain":  "Automation",
-                       "description":  "Transforma trabalho manual repetido em scripts, CLIs, automações agendadas, runbooks ou workflows assistidos por IA.",
-                       "skills":  [
-                                      "automation-factory",
-                                      "automation-designer",
-                                      "local-cli-builder"
-                                  ],
-                       "level":  "normal",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Engenheiro de Automação Interna",
-                       "file":  "internal-automation-engineer-agent.md",
-                       "domain":  "Automation",
-                       "description":  "Constrói ferramentas internas, módulos PowerShell, CLIs, automações de runbook e utilitários administrativos.",
-                       "skills":  [
-                                      "internal-tools-builder",
-                                      "runbook-to-automation",
-                                      "powershell-module-builder"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Operador Microsoft 365",
-                       "file":  "microsoft-365-ops-agent.md",
-                       "domain":  "M365",
-                       "description":  "Apoia operações de Microsoft 365: Exchange, Graph, Teams, SharePoint, Entra adjacente e PowerShell administrativo.",
-                       "skills":  [
-                                      "m365-admin-runbook",
-                                      "powershell-safe-ops",
-                                      "sharepoint-teams-ops"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Operador Integrações ITSM",
-                       "file":  "service-integration-ops-agent.md",
-                       "domain":  "ITSM",
-                       "description":  "Diagnostica integrações ITSM, Freshservice, Jira Service Management, submissão por mailbox, routing, sincronização e duplicidade.",
-                       "skills":  [
-                                      "freshservice-itil-ops",
-                                      "freshservice-jira-m365-integration-ops",
-                                      "api-integration-builder"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Engenheiro Azure Functions e Nuvem",
-                       "file":  "azure-functions-engineer-agent.md",
-                       "domain":  "Azure",
-                       "description":  "Apoia Azure Functions, Function Apps, triggers, bindings, configurações locais, segurança, deploy e Application Insights.",
-                       "skills":  [
-                                      "azure-functions-engineering",
-                                      "azure-deployment-runbook",
-                                      "azure-functions-security-review"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-06-08"
-                   },
-                   {
-                       "name":  "Observabilidade de Nuvem",
-                       "file":  "azure-ops-observability-agent.md",
-                       "domain":  "Azure Ops",
-                       "description":  "Apoia Azure Monitor, Application Insights, Log Analytics, KQL, alertas, incidentes e diagnóstico operacional.",
-                       "skills":  [
-                                      "azure-observability-ops",
-                                      "observability-instrumentation",
-                                      "performance-profiler"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-06-08"
-                   },
-                   {
-                       "name":  "Guardião de Acessos",
-                       "file":  "identity-access-agent.md",
-                       "domain":  "Identity",
-                       "description":  "Apoia Entra ID, RBAC, grupos, app registrations, managed identities, service principals, consentimento e troubleshooting de acesso.",
-                       "skills":  [
-                                      "identity-access-admin",
-                                      "tenant-security-review",
-                                      "powershell-safe-ops"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Guardião de Segurança e Exposição",
-                       "file":  "security-review-agent.md",
-                       "domain":  "Security",
-                       "description":  "Revê AppSec, segredos, permissões, exposição de tenant, segurança de migrações e risco de release.",
-                       "skills":  [
-                                      "appsec-threat-model",
-                                      "secret-leak-prevention",
-                                      "tenant-security-review"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-06-01"
-                   },
-                   {
-                       "name":  "Designer Produto Web",
-                       "file":  "frontend-product-agent.md",
-                       "domain":  "UI",
-                       "description":  "Desenha e valida interfaces, dashboards, layouts responsivos, fluxos de produto e QA visual.",
-                       "skills":  [
-                                      "frontend-design",
-                                      "web-qa-playwright",
-                                      "react-best-practices"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Documentador",
-                       "file":  "documentation-reporting-agent.md",
-                       "domain":  "Docs",
-                       "description":  "Produz documentação, relatórios, arquivos Office, runbooks e escrita técnica/profissional concisa.",
-                       "skills":  [
-                                      "docs-from-code",
-                                      "document-report-builder",
-                                      "pdf-word-excel-powerpoint"
-                                  ],
-                       "level":  "normal",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Analista de Performance",
-                       "file":  "performance-agent.md",
-                       "domain":  "Performance",
-                       "description":  "Investiga latência, profiling, queries lentas, renderização, memória, CPU, bundle, cache e regressões.",
-                       "skills":  [
-                                      "performance-profiler",
-                                      "observability-instrumentation",
-                                      "react-best-practices"
-                                  ],
-                       "level":  "normal",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Coach de Produtividade IA",
-                       "file":  "ai-workflow-coach-agent.md",
-                       "domain":  "AI workflow",
-                       "description":  "Melhora prompts, agentes, competências, automações, controlo de contexto e workflows recorrentes de IA.",
-                       "skills":  [
-                                      "workflow-auditor",
-                                      "token-optimizer",
-                                      "skill-creator"
-                                  ],
-                       "level":  "normal",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Governança de IA e Agentes",
-                       "file":  "enterprise-ai-governance-agent.md",
-                       "domain":  "AI Governance",
-                       "description":  "Apoia governança de IA, inventário de agentes, permissões, fronteiras de dados, rollout e arquitetura de agentes.",
-                       "skills":  [
-                                      "enterprise-ai-governance",
-                                      "openai-agents-sdk-architecture",
-                                      "agent-security-misconfig-review"
-                                  ],
-                       "level":  "critical",
-                       "updatedAt":  "2026-06-08"
-                   },
-                   {
-                       "name":  "Arquiteto de Sistemas",
-                       "file":  "systems-implementation-architect-agent.md",
-                       "domain":  "Systems",
-                       "description":  "Apoia novos sistemas internos, avaliação de fornecedores, integrações, rollout, suporte e gestão de mudança.",
-                       "skills":  [
-                                      "system-implementation-playbook",
-                                      "vendor-system-evaluator",
-                                      "integration-systems-architect"
-                                  ],
-                       "level":  "normal",
-                       "updatedAt":  "2026-05-25"
-                   },
-                   {
-                       "name":  "Gestor de Conversa",
-                       "file":  "conversation-continuity-agent.md",
-                       "domain":  "Context",
-                       "description":  "Ajuda em threads longas, limpeza de contexto, handoffs compactos e continuidade entre conversas.",
-                       "skills":  [
-                                      "conversation-limit-manager",
-                                      "token-efficiency"
-                                  ],
-                       "level":  "normal",
-                       "updatedAt":  "2026-05-25"
-                   }
-               ],
-    "skills":  [
-                   [
-                       "request-routing-policy",
-                       "Roteamento",
-                       "Classifica o pedido e define agente, profundidade de execução, verificação e orçamento de contexto."
-                   ],
-                   [
-                       "conversation-limit-manager",
-                       "Contexto",
-                       "Sugere nova conversa e handoff quando o contexto fica longo ou arriscado."
-                   ],
-                   [
-                       "workflow-auditor",
-                       "Produtividade",
-                       "Identifica trabalho repetido que deve virar competência, script, automação ou runbook."
-                   ],
-                   [
-                       "token-efficiency",
-                       "Contexto",
-                       "Mantém investigação e resposta proporcionais ao risco e evita gasto desnecessário de contexto."
-                   ],
-                   [
-                       "automation-factory",
-                       "Automação",
-                       "Transforma workflows recorrentes em scripts, CLIs, jobs agendados, automações ou runbooks."
-                   ],
-                   [
-                       "powershell-safe-ops",
-                       "PowerShell",
-                       "Aplica PowerShell com descoberta prévia, escopo explícito, paths seguros e erros acionáveis."
-                   ],
-                   [
-                       "m365-admin-runbook",
-                       "Microsoft 365",
-                       "Guia operações seguras em Exchange, Graph, Teams, SharePoint e administração de tenant."
-                   ],
-                   [
-                       "freshservice-jira-m365-integration-ops",
-                       "ITSM",
-                       "Diagnostica routing, sincronização, mailbox submission e duplicidade em integrações ITSM."
-                   ],
-                   [
-                       "azure-functions-engineering",
-                       "Azure",
-                       "Apoia Function Apps, triggers, bindings, configurações locais e restrições de deploy."
-                   ],
-                   [
-                       "azure-observability-ops",
-                       "Azure Ops",
-                       "Usa Azure Monitor, Application Insights, Log Analytics, KQL, alertas e diagnósticos."
-                   ],
-                   [
-                       "incident-monitoring-betterstack",
-                       "Incidentes",
-                       "Consulta monitores, heartbeats, incidentes e histórico de uptime."
-                   ],
-                   [
-                       "frontend-design",
-                       "Interface",
-                       "Desenha dashboards e interfaces práticas, responsivas e verificáveis."
-                   ],
-                   [
-                       "web-qa-playwright",
-                       "QA Web",
-                       "Valida páginas com browser automation, screenshots, console e comportamento responsivo."
-                   ],
-                   [
-                       "skill-creator",
-                       "Workflow IA",
-                       "Cria competências compactas com gatilhos claros, escopo definido e verificação esperada."
-                   ],
-                   [
-                       "secret-leak-prevention",
-                       "Segurança",
-                       "Evita exposição de credenciais, tokens, chaves, paths sensíveis e arquivos privados."
-                   ],
-                   [
-                       "docs-from-code",
-                       "Documentação",
-                       "Gera ou atualiza documentação, runbooks, diagramas e notas técnicas a partir do código."
-                   ]
-               ],
-    "workflows":  [
-                      {
-                          "name":  "Adicionar memória",
-                          "owner":  "AI Workflow Coach",
-                          "status":  "active",
-                          "summary":  "Registra contexto recorrente em memória, decisões ou workflows sem duplicar regras.",
-                          "steps":  [
-                                        "Classificar memória",
-                                        "Escolher destino",
-                                        "Escrever entrada compacta",
-                                        "Remover duplicação"
-                                    ],
-                          "duration":  "4 min"
-                      },
-                      {
-                          "name":  "Roteamento de pedido",
-                          "owner":  "Master Router",
-                          "status":  "done",
-                          "summary":  "Escolhe domínio, agente, competências, profundidade e verificação antes de trabalho substancial.",
-                          "steps":  [
-                                        "Classificar",
-                                        "Selecionar agente",
-                                        "Selecionar skills",
-                                        "Definir verificação"
-                                    ],
-                          "duration":  "1 min"
-                      },
-                      {
-                          "name":  "Investigar incidente",
-                          "owner":  "Production Incident",
-                          "status":  "watch",
-                          "summary":  "Monta timeline, impacto, hipótese de causa, mitigação e resumo para responsáveis.",
-                          "steps":  [
-                                        "Confirmar alerta",
-                                        "Consultar logs",
-                                        "Avaliar impacto",
-                                        "Recomendar ação"
-                                    ],
-                          "duration":  "18 min"
-                      },
-                      {
-                          "name":  "Mudança Microsoft 365",
-                          "owner":  "Microsoft 365 Ops",
-                          "status":  "watch",
-                          "summary":  "Executa leituras antes de qualquer alteração, confirma escopo e exige aprovação para escrita.",
-                          "steps":  [
-                                        "Confirmar tenant",
-                                        "Ler estado",
-                                        "Planejar mudança",
-                                        "Executar com segurança"
-                                    ],
-                          "duration":  "12 min"
-                      },
-                      {
-                          "name":  "Construir ou corrigir UI",
-                          "owner":  "Frontend Product",
-                          "status":  "active",
-                          "summary":  "Inspeciona padrões, implementa tela útil e valida renderização desktop/mobile.",
-                          "steps":  [
-                                        "Inspecionar",
-                                        "Implementar",
-                                        "Testar interação",
-                                        "Validar renderização"
-                                    ],
-                          "duration":  "25 min"
-                      },
-                      {
-                          "name":  "Criar skill",
-                          "owner":  "AI Workflow Coach",
-                          "status":  "done",
-                          "summary":  "Transforma trabalho recorrente em skill compacta quando o padrão é frequente ou arriscado.",
-                          "steps":  [
-                                        "Definir gatilho",
-                                        "Escrever comportamento",
-                                        "Adicionar verificação",
-                                        "Evitar sobreposição"
-                                    ],
-                          "duration":  "9 min"
-                      },
-                      {
-                          "name":  "Captura Microsoft 365",
-                          "owner":  "Operador Microsoft 365",
-                          "status":  "active",
-                          "summary":  "Captura estado somente leitura de módulos, Graph, Exchange e configuração de identificação externa.",
-                          "steps":  [
-                                        "Conectar se necessário",
-                                        "Executar snapshot",
-                                        "Rever JSON",
-                                        "Anexar ao runbook"
-                                    ],
-                          "duration":  "2 min"
-                      },
-                      {
-                          "name":  "Resumo Better Stack",
-                          "owner":  "Gestor de Incidentes",
-                          "status":  "active",
-                          "summary":  "Gera resumo de monitores, incidentes e heartbeats a partir da API de observabilidade.",
-                          "steps":  [
-                                        "Definir token em variável segura",
-                                        "Executar resumo",
-                                        "Rever Markdown",
-                                        "Anexar ao registro operacional"
-                                    ],
-                          "duration":  "2 min"
-                      }
-                  ],
-    "decisions":  [
-                      [
-                          "Manter o roteador central como camada de decisão operacional",
-                          "alta",
-                          "aceito",
-                          "Samuel"
-                      ],
-                      [
-                          "Separar memória durável das regras de roteamento",
-                          "alta",
-                          "aceito",
-                          "Samuel"
-                      ],
-                      [
-                          "Usar memória do projeto para contexto estável",
-                          "média",
-                          "aceito",
-                          "Samuel"
-                      ],
-                      [
-                          "Usar workflows para procedimentos repetíveis",
-                          "média",
-                          "aceito",
-                          "Samuel"
-                      ],
-                      [
-                          "Preferir menos competências, mas mais fortes, em vez de competências sobrepostas",
-                          "média",
-                          "ativo",
-                          "Coach IA"
-                      ],
-                      [
-                          "Usar verificação mais profunda para administração, código, UI e segurança",
-                          "média",
-                          "aceito",
-                          "Roteador"
-                      ],
-                      [
-                          "Manter o painel como aplicação estática local primeiro",
-                          "baixa",
-                          "ativo",
-                          "Interface"
-                      ],
-                      [
-                          "Automatizar sincronização de memória após estabilizar o formato manual",
-                          "baixa",
-                          "em observação",
-                          "Samuel"
-                      ]
-                  ],
-    "commands":  [
-                     [
-                         "Projeto local",
-                         "Diretório de trabalho deste hub",
-                         "\u003cworkspace\u003e/"
-                     ],
-                     [
-                         "Perfis de agentes",
-                         "Diretório privado de perfis locais",
-                         "\u003cagent-profiles\u003e/"
-                     ],
-                     [
-                         "Aliases",
-                         "Mapa privado de nomes amigáveis para agentes e skills",
-                         "\u003cagent-profiles\u003e/ALIASES.md"
-                     ],
-                     [
-                         "Memória do projeto",
-                         "Contexto durável do dashboard",
-                         "codex-brain-dashboard/PROJECT_MEMORY.md"
-                     ],
-                     [
-                         "Workflows",
-                         "Procedimentos recorrentes documentados",
-                         "codex-brain-dashboard/WORKFLOWS.md"
-                     ],
-                     [
-                         "Dashboard local",
-                         "Interface local de operação e registro operacional",
-                         "codex-brain-dashboard/index.html"
-                     ],
-                     [
-                         "Captura Microsoft 365",
-                         "Captura somente leitura de contexto administrativo",
-                         "automations/m365-tenant-snapshot.ps1 -OutputPath out/m365-tenant-snapshot.json"
-                     ],
-                     [
-                         "Resumo Better Stack",
-                         "Resumo Markdown de monitores e incidentes",
-                         "automations/betterstack-ops-digest.ps1 -OutputPath out/betterstack-ops-digest.md"
-                     ]
-                 ],
-    "memories":  [
-                     {
-                         "id":  "mem-routing-layer",
-                         "type":  "routing",
-                         "title":  "Usar roteador central em pedidos não triviais",
-                         "description":  "Usar o roteador central e a política de roteamento para escolher domínio, agente, competências e verificação quando o pedido exigir decisão técnica.",
-                         "priority":  "high",
-                         "related":  "master-router-agent.md",
-                         "createdAt":  "2026-06-19"
-                     },
-                     {
-                         "id":  "mem-memory-split",
-                         "type":  "context",
-                         "title":  "Separar roteamento, memória e workflows",
-                         "description":  "Usar regras de roteamento para decisão, memória do projeto para contexto durável e workflows para procedimentos repetíveis.",
-                         "priority":  "high",
-                         "related":  "PROJECT_MEMORY.md",
-                         "createdAt":  "2026-06-19"
-                     }
-                 ],
-    "generatedAt":  "2026-07-03"
+  "agents": [
+    {
+      "name": "Cérebro Central",
+      "file": "master-router-agent.md",
+      "domain": "Routing",
+      "description": "Camada de roteamento que classifica o pedido, escolhe agente, aplica crítica dos 5 Conselheiros, aciona o loop de qualidade e define profundidade de execução, verificação e orçamento de contexto.",
+      "skills": [
+        "request-routing-policy",
+        "conversation-limit-manager",
+        "token-efficiency",
+        "workflow-auditor",
+        "five-counselors-decision-review",
+        "quality-delivery-loop"
+      ],
+      "level": "core",
+      "updatedAt": "2026-07-19"
+    },
+    {
+      "name": "Engenheiro de Código",
+      "file": "engineering-lead-agent.md",
+      "domain": "Code",
+      "description": "Conduz trabalho de engenharia ponta a ponta: análise do repositório, alterações de código, testes, planos e PRs.",
+      "skills": [
+        "codebase-onboarding-map",
+        "github-pr-lifecycle",
+        "verification-before-completion"
+      ],
+      "level": "normal",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Gestor CI, Releases e Proveniência",
+      "file": "ci-release-agent.md",
+      "domain": "CI/Release",
+      "description": "Investiga falhas de CI, releases, changelogs, upgrades de dependências, rollback e proveniência de build.",
+      "skills": [
+        "ci-failure-fixer",
+        "release-manager",
+        "dependency-upgrade-migration"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "name": "Gestor de Incidentes",
+      "file": "production-incident-agent.md",
+      "domain": "Incidents",
+      "description": "Trata alertas, incidentes, logs, stack traces, falhas de produção e comunicação para responsáveis.",
+      "skills": [
+        "production-error-to-pr",
+        "incident-monitoring-betterstack",
+        "daily-ops-brief"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Arquiteto de Automação",
+      "file": "automation-architect-agent.md",
+      "domain": "Automation",
+      "description": "Transforma trabalho manual repetido em scripts, CLIs, automações agendadas, runbooks ou workflows assistidos por IA.",
+      "skills": [
+        "automation-factory",
+        "automation-designer",
+        "local-cli-builder"
+      ],
+      "level": "normal",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Engenheiro de Automação Interna",
+      "file": "internal-automation-engineer-agent.md",
+      "domain": "Automation",
+      "description": "Constrói ferramentas internas, módulos PowerShell, CLIs, automações de runbook e utilitários administrativos.",
+      "skills": [
+        "internal-tools-builder",
+        "runbook-to-automation",
+        "powershell-module-builder"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Operador Microsoft 365",
+      "file": "microsoft-365-ops-agent.md",
+      "domain": "M365",
+      "description": "Apoia operações de Microsoft 365: Exchange, Graph, Teams, SharePoint, Entra adjacente e PowerShell administrativo.",
+      "skills": [
+        "m365-admin-runbook",
+        "powershell-safe-ops",
+        "sharepoint-teams-ops"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Operador Integrações ITSM",
+      "file": "service-integration-ops-agent.md",
+      "domain": "ITSM",
+      "description": "Diagnostica integrações ITSM, Freshservice, Jira Service Management, submissão por mailbox, routing, sincronização e duplicidade.",
+      "skills": [
+        "freshservice-itil-ops",
+        "freshservice-jira-m365-integration-ops",
+        "api-integration-builder"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Engenheiro Azure Functions e Nuvem",
+      "file": "azure-functions-engineer-agent.md",
+      "domain": "Azure",
+      "description": "Apoia Azure Functions, Function Apps, triggers, bindings, configurações locais, segurança, deploy e Application Insights.",
+      "skills": [
+        "azure-functions-engineering",
+        "azure-deployment-runbook",
+        "azure-functions-security-review"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-06-08"
+    },
+    {
+      "name": "Observabilidade de Nuvem",
+      "file": "azure-ops-observability-agent.md",
+      "domain": "Azure Ops",
+      "description": "Apoia Azure Monitor, Application Insights, Log Analytics, KQL, alertas, incidentes e diagnóstico operacional.",
+      "skills": [
+        "azure-observability-ops",
+        "observability-instrumentation",
+        "performance-profiler"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-06-08"
+    },
+    {
+      "name": "Guardião de Acessos",
+      "file": "identity-access-agent.md",
+      "domain": "Identity",
+      "description": "Apoia Entra ID, RBAC, grupos, app registrations, managed identities, service principals, consentimento e troubleshooting de acesso.",
+      "skills": [
+        "identity-access-admin",
+        "tenant-security-review",
+        "powershell-safe-ops"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Guardião de Segurança e Exposição",
+      "file": "security-review-agent.md",
+      "domain": "Security",
+      "description": "Revê AppSec, segredos, permissões, exposição de tenant, segurança de migrações e risco de release.",
+      "skills": [
+        "appsec-threat-model",
+        "secret-leak-prevention",
+        "tenant-security-review"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-06-01"
+    },
+    {
+      "name": "Designer Produto Web",
+      "file": "frontend-product-agent.md",
+      "domain": "UI",
+      "description": "Desenha e valida interfaces, dashboards, layouts responsivos, fluxos de produto e QA visual.",
+      "skills": [
+        "frontend-design",
+        "web-qa-playwright",
+        "react-best-practices"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Documentador",
+      "file": "documentation-reporting-agent.md",
+      "domain": "Docs",
+      "description": "Produz documentação, relatórios, arquivos Office, runbooks e escrita técnica/profissional concisa.",
+      "skills": [
+        "docs-from-code",
+        "document-report-builder",
+        "pdf-word-excel-powerpoint"
+      ],
+      "level": "normal",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Analista de Performance",
+      "file": "performance-agent.md",
+      "domain": "Performance",
+      "description": "Investiga latência, profiling, queries lentas, renderização, memória, CPU, bundle, cache e regressões.",
+      "skills": [
+        "performance-profiler",
+        "observability-instrumentation",
+        "react-best-practices"
+      ],
+      "level": "normal",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Coach de Produtividade IA",
+      "file": "ai-workflow-coach-agent.md",
+      "domain": "AI workflow",
+      "description": "Melhora prompts, agentes, competências, automações, controlo de contexto e loops de qualidade para reduzir retrabalho.",
+      "skills": [
+        "workflow-auditor",
+        "token-optimizer",
+        "skill-creator",
+        "spec-first-clarifier",
+        "build-from-spec",
+        "review-against-spec"
+      ],
+      "level": "normal",
+      "updatedAt": "2026-07-19"
+    },
+    {
+      "name": "Governança de IA e Agentes",
+      "file": "enterprise-ai-governance-agent.md",
+      "domain": "AI Governance",
+      "description": "Apoia governança de IA, inventário de agentes, permissões, fronteiras de dados, rollout e arquitetura de agentes.",
+      "skills": [
+        "enterprise-ai-governance",
+        "openai-agents-sdk-architecture",
+        "agent-security-misconfig-review"
+      ],
+      "level": "critical",
+      "updatedAt": "2026-06-08"
+    },
+    {
+      "name": "Arquiteto de Sistemas",
+      "file": "systems-implementation-architect-agent.md",
+      "domain": "Systems",
+      "description": "Apoia novos sistemas internos, avaliação de fornecedores, integrações, rollout, suporte e gestão de mudança.",
+      "skills": [
+        "system-implementation-playbook",
+        "vendor-system-evaluator",
+        "integration-systems-architect"
+      ],
+      "level": "normal",
+      "updatedAt": "2026-05-25"
+    },
+    {
+      "name": "Gestor de Conversa",
+      "file": "conversation-continuity-agent.md",
+      "domain": "Context",
+      "description": "Ajuda em threads longas, limpeza de contexto, handoffs compactos e continuidade entre conversas.",
+      "skills": [
+        "conversation-limit-manager",
+        "token-efficiency"
+      ],
+      "level": "normal",
+      "updatedAt": "2026-05-25"
+    }
+  ],
+  "skills": [
+    [
+      "request-routing-policy",
+      "Roteamento",
+      "Classifica o pedido e define agente, profundidade de execução, verificação e orçamento de contexto."
+    ],
+    [
+      "conversation-limit-manager",
+      "Contexto",
+      "Sugere nova conversa e handoff quando o contexto fica longo ou arriscado."
+    ],
+    [
+      "workflow-auditor",
+      "Produtividade",
+      "Identifica trabalho repetido que deve virar competência, script, automação ou runbook."
+    ],
+    [
+      "token-efficiency",
+      "Contexto",
+      "Mantém investigação e resposta proporcionais ao risco e evita gasto desnecessário de contexto."
+    ],
+    [
+      "automation-factory",
+      "Automação",
+      "Transforma workflows recorrentes em scripts, CLIs, jobs agendados, automações ou runbooks."
+    ],
+    [
+      "powershell-safe-ops",
+      "PowerShell",
+      "Aplica PowerShell com descoberta prévia, escopo explícito, paths seguros e erros acionáveis."
+    ],
+    [
+      "m365-admin-runbook",
+      "Microsoft 365",
+      "Guia operações seguras em Exchange, Graph, Teams, SharePoint e administração de tenant."
+    ],
+    [
+      "freshservice-jira-m365-integration-ops",
+      "ITSM",
+      "Diagnostica routing, sincronização, mailbox submission e duplicidade em integrações ITSM."
+    ],
+    [
+      "azure-functions-engineering",
+      "Azure",
+      "Apoia Function Apps, triggers, bindings, configurações locais e restrições de deploy."
+    ],
+    [
+      "azure-observability-ops",
+      "Azure Ops",
+      "Usa Azure Monitor, Application Insights, Log Analytics, KQL, alertas e diagnósticos."
+    ],
+    [
+      "incident-monitoring-betterstack",
+      "Incidentes",
+      "Consulta monitores, heartbeats, incidentes e histórico de uptime."
+    ],
+    [
+      "frontend-design",
+      "Interface",
+      "Desenha dashboards e interfaces práticas, responsivas e verificáveis."
+    ],
+    [
+      "web-qa-playwright",
+      "QA Web",
+      "Valida páginas com browser automation, screenshots, console e comportamento responsivo."
+    ],
+    [
+      "skill-creator",
+      "Workflow IA",
+      "Cria competências compactas com gatilhos claros, escopo definido e verificação esperada."
+    ],
+    [
+      "secret-leak-prevention",
+      "Segurança",
+      "Evita exposição de credenciais, tokens, chaves, paths sensíveis e arquivos privados."
+    ],
+    [
+      "docs-from-code",
+      "Documentação",
+      "Gera ou atualiza documentação, runbooks, diagramas e notas técnicas a partir do código."
+    ],
+    [
+      "five-counselors-decision-review",
+      "Decisão",
+      "Aplica cinco perspectivas críticas para evitar respostas agradáveis, enviesadas ou pouco profissionais."
+    ],
+    [
+      "quality-delivery-loop",
+      "Qualidade",
+      "Orquestra Spec, Build, Review, Fix e Deliver para reduzir retrabalho antes da entrega."
+    ],
+    [
+      "spec-first-clarifier",
+      "Qualidade",
+      "Transforma pedidos vagos em objetivo, escopo, requisitos e critérios de aceitação antes de construir."
+    ],
+    [
+      "build-from-spec",
+      "Qualidade",
+      "Executa exatamente o que a especificação pede, sem inventar escopo ou recurso."
+    ],
+    [
+      "review-against-spec",
+      "Qualidade",
+      "Compara a entrega contra a spec e reprova quando houver lacunas, overreach ou verificação fraca."
+    ]
+  ],
+  "workflows": [
+    {
+      "name": "Adicionar memória",
+      "owner": "AI Workflow Coach",
+      "status": "active",
+      "summary": "Registra contexto recorrente em memória, decisões ou workflows sem duplicar regras.",
+      "steps": [
+        "Classificar memória",
+        "Escolher destino",
+        "Escrever entrada compacta",
+        "Remover duplicação"
+      ],
+      "duration": "4 min"
+    },
+    {
+      "name": "Roteamento de pedido",
+      "owner": "Master Router",
+      "status": "done",
+      "summary": "Escolhe domínio, agente, competências, profundidade e verificação antes de trabalho substancial.",
+      "steps": [
+        "Classificar",
+        "Selecionar agente",
+        "Selecionar skills",
+        "Definir verificação"
+      ],
+      "duration": "1 min"
+    },
+    {
+      "name": "Investigar incidente",
+      "owner": "Production Incident",
+      "status": "watch",
+      "summary": "Monta timeline, impacto, hipótese de causa, mitigação e resumo para responsáveis.",
+      "steps": [
+        "Confirmar alerta",
+        "Consultar logs",
+        "Avaliar impacto",
+        "Recomendar ação"
+      ],
+      "duration": "18 min"
+    },
+    {
+      "name": "Mudança Microsoft 365",
+      "owner": "Microsoft 365 Ops",
+      "status": "watch",
+      "summary": "Executa leituras antes de qualquer alteração, confirma escopo e exige aprovação para escrita.",
+      "steps": [
+        "Confirmar tenant",
+        "Ler estado",
+        "Planejar mudança",
+        "Executar com segurança"
+      ],
+      "duration": "12 min"
+    },
+    {
+      "name": "Construir ou corrigir UI",
+      "owner": "Frontend Product",
+      "status": "active",
+      "summary": "Inspeciona padrões, implementa tela útil e valida renderização desktop/mobile.",
+      "steps": [
+        "Inspecionar",
+        "Implementar",
+        "Testar interação",
+        "Validar renderização"
+      ],
+      "duration": "25 min"
+    },
+    {
+      "name": "Criar skill",
+      "owner": "AI Workflow Coach",
+      "status": "done",
+      "summary": "Transforma trabalho recorrente em skill compacta quando o padrão é frequente ou arriscado.",
+      "steps": [
+        "Definir gatilho",
+        "Escrever comportamento",
+        "Adicionar verificação",
+        "Evitar sobreposição"
+      ],
+      "duration": "9 min"
+    },
+    {
+      "name": "Captura Microsoft 365",
+      "owner": "Operador Microsoft 365",
+      "status": "active",
+      "summary": "Captura estado somente leitura de módulos, Graph, Exchange e configuração de identificação externa.",
+      "steps": [
+        "Conectar se necessário",
+        "Executar snapshot",
+        "Rever JSON",
+        "Anexar ao runbook"
+      ],
+      "duration": "2 min"
+    },
+    {
+      "name": "Resumo Better Stack",
+      "owner": "Gestor de Incidentes",
+      "status": "active",
+      "summary": "Gera resumo de monitores, incidentes e heartbeats a partir da API de observabilidade.",
+      "steps": [
+        "Definir token em variável segura",
+        "Executar resumo",
+        "Rever Markdown",
+        "Anexar ao registro operacional"
+      ],
+      "duration": "2 min"
+    },
+    {
+      "name": "Loop de qualidade antes de entregar",
+      "owner": "Cérebro Central",
+      "status": "active",
+      "summary": "Transforma pedidos relevantes em spec curta, executa só o combinado, revisa contra critérios e só entrega quando passa ou quando o bloqueio está claro.",
+      "steps": [
+        "Definir spec",
+        "Construir pela spec",
+        "Revisar contra critérios",
+        "Corrigir ou declarar bloqueio"
+      ],
+      "duration": "3-15 min"
+    }
+  ],
+  "decisions": [
+    [
+      "Manter o roteador central como camada de decisão operacional",
+      "alta",
+      "aceito",
+      "Samuel"
+    ],
+    [
+      "Separar memória durável das regras de roteamento",
+      "alta",
+      "aceito",
+      "Samuel"
+    ],
+    [
+      "Usar memória do projeto para contexto estável",
+      "média",
+      "aceito",
+      "Samuel"
+    ],
+    [
+      "Usar workflows para procedimentos repetíveis",
+      "média",
+      "aceito",
+      "Samuel"
+    ],
+    [
+      "Preferir menos competências, mas mais fortes, em vez de competências sobrepostas",
+      "média",
+      "ativo",
+      "Coach IA"
+    ],
+    [
+      "Usar verificação mais profunda para administração, código, UI e segurança",
+      "média",
+      "aceito",
+      "Roteador"
+    ],
+    [
+      "Manter o painel como aplicação estática local primeiro",
+      "baixa",
+      "ativo",
+      "Interface"
+    ],
+    [
+      "Automatizar sincronização de memória após estabilizar o formato manual",
+      "baixa",
+      "em observação",
+      "Samuel"
+    ],
+    [
+      "Aplicar 5 Conselheiros como filtro crítico para pedidos não triviais",
+      "alta",
+      "ativo",
+      "Cérebro Central"
+    ],
+    [
+      "Aplicar loop Spec-Build-Review antes de entregas relevantes",
+      "alta",
+      "ativo",
+      "Cérebro Central"
+    ]
+  ],
+  "commands": [
+    [
+      "Projeto local",
+      "Diretório de trabalho deste hub",
+      "<workspace>/"
+    ],
+    [
+      "Perfis de agentes",
+      "Diretório privado de perfis locais",
+      "<agent-profiles>/"
+    ],
+    [
+      "Aliases",
+      "Mapa privado de nomes amigáveis para agentes e skills",
+      "<agent-profiles>/ALIASES.md"
+    ],
+    [
+      "Memória do projeto",
+      "Contexto durável do dashboard",
+      "codex-brain-dashboard/PROJECT_MEMORY.md"
+    ],
+    [
+      "Workflows",
+      "Procedimentos recorrentes documentados",
+      "codex-brain-dashboard/WORKFLOWS.md"
+    ],
+    [
+      "Dashboard local",
+      "Interface local de operação e registro operacional",
+      "codex-brain-dashboard/index.html"
+    ],
+    [
+      "Captura Microsoft 365",
+      "Captura somente leitura de contexto administrativo",
+      "automations/m365-tenant-snapshot.ps1 -OutputPath out/m365-tenant-snapshot.json"
+    ],
+    [
+      "Resumo Better Stack",
+      "Resumo Markdown de monitores e incidentes",
+      "automations/betterstack-ops-digest.ps1 -OutputPath out/betterstack-ops-digest.md"
+    ],
+    [
+      "Loop de qualidade",
+      "Regra global para reduzir retrabalho em entregas relevantes",
+      "Spec -> Build -> Review -> Fix -> Deliver"
+    ],
+    [
+      "5 Conselheiros",
+      "Filtro crítico sempre ativo para decisões e recomendações",
+      "Cético -> Origem -> Expansionista -> Forasteiro -> Executor"
+    ]
+  ],
+  "memories": [
+    {
+      "id": "mem-routing-layer",
+      "type": "routing",
+      "title": "Usar roteador central em pedidos não triviais",
+      "description": "Usar o roteador central e a política de roteamento para escolher domínio, agente, competências e verificação quando o pedido exigir decisão técnica.",
+      "priority": "high",
+      "related": "master-router-agent.md",
+      "createdAt": "2026-06-19"
+    },
+    {
+      "id": "mem-memory-split",
+      "type": "context",
+      "title": "Separar roteamento, memória e workflows",
+      "description": "Usar regras de roteamento para decisão, memória do projeto para contexto durável e workflows para procedimentos repetíveis.",
+      "priority": "high",
+      "related": "PROJECT_MEMORY.md",
+      "createdAt": "2026-06-19"
+    }
+  ],
+  "generatedAt": "2026-07-19"
 };
 const positions=[[22,24],[34,16],[47,13],[60,16],[75,25],[80,41],[74,58],[62,70],[50,75],[38,70],[27,58],[20,43],[25,34],[36,34],[44,45],[58,44],[67,51],[50,58],[42,25]];
 const center={x:510,y:330};let selected=data.agents[0];const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const domainText={Routing:'Decisão de agente e verificação.',M365:'Exchange, Graph, Teams e SharePoint.',ITSM:'Freshservice, Jira e routing.',Azure:'Function Apps e deployment.','Azure Ops':'KQL, logs e alertas.',Security:'Segredos, exposição e permissões.',Automation:'Scripts, CLIs e runbooks.',Identity:'Entra ID, RBAC e consentimento.',Docs:'Runbooks, relatórios e Office.',UI:'Painels e QA visual.',Incidents:'Alertas e comunicação.',Performance:'Latência e profiling.',Systems:'Rollout e fornecedores.',Context:'Handoff e limites.','AI workflow':'Competências, prompts e produtividade.','AI Governance':'Governança e agentes.'};
+const domainText={Routing:'Decisão de agente e verificação.',M365:'Exchange, Graph, Teams e SharePoint.',ITSM:'Freshservice, Jira e routing.',Azure:'Function Apps e deployment.','Azure Ops':'KQL, logs e alertas.',Security:'Segredos, exposição e permissões.',Automation:'Scripts, CLIs e runbooks.',Identity:'Entra ID, RBAC e consentimento.',Docs:'Runbooks, relatórios e Office.',UI:'Painels e QA visual.',Incidents:'Alertas e comunicação.',Performance:'Latência e profiling.',Systems:'Rollout e fornecedores.',Context:'Handoff e limites.','AI workflow':'Competências, prompts, produtividade e qualidade de entrega.','AI Governance':'Governança e agentes.'};
 function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}function risk(l){return l==='critical'?'critical':l==='core'?'core':'normal'}function levelLabel(l){return l==='critical'?'crítico':l==='core'?'central':'normal'}function statusLabel(s){return s==='active'?'ativo':s==='done'?'concluído':s==='watch'?'em observação':s}
 function example(a){if(a.domain==='M365')return'Use para captura somente leitura antes de mexer em Exchange/Graph.';if(a.domain==='ITSM')return'Use para diagnosticar Freshservice/Jira sem duplicar tickets.';if(a.domain.includes('Azure'))return'Use para logs, Function Apps, KQL e alertas.';if(a.domain==='Automation')return'Use para converter rotina manual em script ou runbook.';return'Use quando o pedido cair neste domínio e precisar de roteamento claro.'}
 function renderKpis(){const domains=new Set(data.agents.map(a=>a.domain)).size;$('#kpis').innerHTML=[['Agentes',data.agents.length,'Especialistas locais'],['Competências',data.skills.length,'Capacidades reutilizáveis'],['Workflows',data.workflows.length,'Procedimentos prontos'],['Domínios',domains,'Áreas cobertas']].map(x=>`<article class="kpi"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join('')}
@@ -587,3 +652,4 @@ renderKpis();renderMap();renderDetail();renderDomains();renderAgents();renderWor
 </script>
 <div class="toast" id="toast" role="status" aria-live="polite">Comando copiado</div></body>
 </html>
+

@@ -6,6 +6,8 @@ Mapa interativo estático de um sistema de trabalho assistido por IA para opera�
 
 O projeto mostra como um roteador central pode coordenar agentes especializados, competências reutilizáveis, níveis de execução e decisões de poupança de contexto em áreas como nuvem, identidade, automação, segurança, engenharia, documentação e governança de IA.
 
+Inclui também um loop de qualidade para reduzir retrabalho: clarificar a especificação, construir apenas o escopo definido, revisar contra critérios e só entregar quando a revisão passa ou quando o bloqueio está explícito.
+
 ## Demonstração
 
 - Repositório: <https://github.com/garcialabss/my-ai-operations-hub>
@@ -21,6 +23,8 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 - agentes especializados por domínio;
 - competências reutilizáveis como playbooks operacionais;
 - níveis de execução para equilibrar rapidez, segurança e verificação;
+- filtro crítico dos 5 Conselheiros para evitar validação automática;
+- loop Spec -> Build -> Review para melhorar qualidade antes da entrega;
 - fluxo de poupança de contexto para trabalhos longos.
 
 ## Indicado Para
@@ -54,6 +58,8 @@ Esta é a versão pública e sanitizada. Não deve ser publicado o workspace ori
 
 - Arquitetura de workflows com IA.
 - Organização de agentes e competências.
+- Qualidade de entrega com especificação, execução controlada e revisão.
 - Poupança de contexto e escolha de nível de execução.
 - Frontend estático sem dependência de backend.
 - Publicação de portfólio com atenção à segurança.
+
