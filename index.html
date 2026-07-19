@@ -3,653 +3,91 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Painel de Operações IA</title>
-<meta name="description" content="Painel operacional de agentes, competências, automações e runbooks de IA.">
+<title>Hub de Operações IA</title>
+<meta name="description" content="Mapa público e interativo de agentes, competências e loops de qualidade para trabalho assistido por IA.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Hub de Operações IA">
+<meta property="og:description" content="Mapa cerebral interativo de agentes, competências, decisões críticas e qualidade de entrega.">
+<meta property="og:url" content="https://garcialabss.github.io/my-ai-operations-hub/">
+<meta property="og:image" content="https://garcialabss.github.io/my-ai-operations-hub/social-preview.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Hub de Operações IA">
+<meta name="twitter:description" content="Mapa cerebral interativo de agentes, competências, decisões críticas e qualidade de entrega.">
+<meta name="twitter:image" content="https://garcialabss.github.io/my-ai-operations-hub/social-preview.png">
 <style>
-:root{color-scheme:dark;--bg:#0b111c;--rail:#0f1724;--panel:#151f2f;--panel2:#1a2638;--line:rgba(226,234,244,.13);--text:#eef4fb;--muted:#9fb0c3;--cyan:#43cbe3;--green:#62d391;--amber:#e9b85a;--red:#ee7188;--blue:#8db6ff;--shadow:0 18px 55px rgba(0,0,0,.26)}*{box-sizing:border-box}body{margin:0;background:#0b111c;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;padding:18px 14px;border-right:1px solid var(--line);background:linear-gradient(180deg,#0d1522,#0a101a)}.brand{display:flex;align-items:center;gap:11px;padding:6px 6px 18px}.logo{width:38px;height:38px;border:1px solid rgba(67,203,227,.36);border-radius:8px;display:grid;place-items:center;color:var(--cyan);background:rgba(67,203,227,.11);font-weight:800}.brand strong,.brand span{display:block}.brand span{font-size:12px;color:var(--muted);margin-top:2px}.nav{display:grid;gap:6px}.nav a{color:var(--muted);text-decoration:none;border-radius:8px;padding:10px 11px;font-size:13px;border:1px solid transparent}.nav a:hover,.nav a.active{background:rgba(255,255,255,.05);border-color:var(--line);color:var(--text)}.sidebox{position:absolute;left:14px;right:14px;bottom:16px;border:1px solid var(--line);border-radius:10px;padding:12px;background:rgba(255,255,255,.035);color:var(--muted);font-size:12px;line-height:1.4}.main{min-width:0}.topbar{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line);background:rgba(11,17,28,.86);backdrop-filter:blur(12px)}.title h1{margin:0;font-size:22px}.title p{margin:4px 0 0;color:var(--muted);font-size:13px}.search{width:min(430px,100%);height:40px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.05);color:var(--text);padding:0 12px}.content{padding:18px 22px 28px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.kpi{border:1px solid var(--line);border-radius:10px;background:var(--panel);padding:14px;box-shadow:var(--shadow)}.kpi span{display:block;color:var(--muted);font-size:12px}.kpi b{display:block;margin-top:8px;font-size:28px;line-height:1}.kpi small{display:block;margin-top:8px;color:#b7c6d7}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) 380px;gap:14px;margin-top:14px}.panel{border:1px solid var(--line);border-radius:10px;background:var(--panel);box-shadow:var(--shadow);min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:14px;padding:14px 15px;border-bottom:1px solid var(--line)}.panel-head h2{margin:0;font-size:16px}.panel-head p{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.4}.panel-body{padding:14px 15px}.mapwrap{position:relative;min-height:440px;border-radius:8px;background:radial-gradient(circle at 48% 48%,rgba(154,210,255,.16),transparent 31%),radial-gradient(circle at 8% 80%,rgba(120,186,255,.12),transparent 18%),radial-gradient(circle at 92% 78%,rgba(185,223,255,.12),transparent 20%),linear-gradient(145deg,#030810,#071121 55%,#0b1628);overflow:hidden}.mapwrap:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 48%,rgba(222,244,255,.12),transparent 28%),linear-gradient(110deg,transparent 0%,rgba(255,255,255,.035) 46%,transparent 61%);opacity:.82;animation:brainGlow 5.8s ease-in-out infinite;pointer-events:none}.mapwrap:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 21% 78%,rgba(211,236,255,.2),transparent 2px),radial-gradient(circle at 88% 67%,rgba(211,236,255,.18),transparent 2px),radial-gradient(circle at 52% 20%,rgba(255,255,255,.13),transparent 1px);background-size:190px 170px,230px 210px,130px 120px;mix-blend-mode:screen;opacity:.65;pointer-events:none}.mapwrap svg{position:absolute;inset:0;width:100%;height:100%}.brain{fill:url(#brainFill);stroke:rgba(232,247,255,.78);stroke-width:2.2;filter:url(#brainGlowFilter);animation:brainPulse 5.2s ease-in-out infinite}.brain-shadow{fill:rgba(82,151,218,.11);filter:url(#brainBlur)}.brainfold{fill:none;stroke:rgba(226,243,255,.36);stroke-width:1.6;stroke-linecap:round;filter:url(#softGlow);animation:traceDrift 13s linear infinite}.brainfold:nth-child(2n){stroke:rgba(128,190,255,.3);animation-duration:16s}.neural{stroke:rgba(226,244,255,.56);stroke-width:1;vector-effect:non-scaling-stroke;filter:url(#softGlow);animation:netPulse 4s ease-in-out infinite}.neural.dim{stroke:rgba(128,190,255,.28)}.star{fill:rgba(246,252,255,.96);filter:url(#nodeGlow);animation:nodePulse 3.1s ease-in-out infinite}.star.soft{fill:rgba(158,211,255,.78)}.trace{fill:none;stroke:rgba(210,235,255,.32);stroke-width:1.5;stroke-linecap:round;stroke-dasharray:4 13;animation:traceDrift 9s linear infinite;filter:url(#softGlow)}.trace:nth-child(3n){animation-duration:11s;stroke:rgba(141,182,255,.3)}.trace:nth-child(4n){animation-duration:7.5s;stroke:rgba(240,248,255,.36)}.trace.active{stroke:rgba(255,255,255,.94);stroke-width:2.2;stroke-dasharray:10 12;animation:dash 2s linear infinite;filter:url(#brainGlowFilter)}@keyframes dash{to{stroke-dashoffset:-88}}@keyframes traceDrift{to{stroke-dashoffset:-160}}@keyframes brainGlow{0%,100%{opacity:.62;transform:scale(1)}50%{opacity:1;transform:scale(1.015)}}@keyframes brainPulse{0%,100%{stroke-opacity:.62}50%{stroke-opacity:1}}@keyframes netPulse{0%,100%{opacity:.48}50%{opacity:.92}}@keyframes nodePulse{0%,100%{opacity:.68;transform:scale(1)}50%{opacity:1;transform:scale(1.22)}}.chip{fill:rgba(255,255,255,.025);stroke:rgba(230,247,255,.22);stroke-width:1;filter:url(#softGlow);animation:chipPulse 2.8s ease-in-out infinite}@keyframes chipPulse{0%,100%{opacity:.75}50%{opacity:1}}.chiptext{fill:#f3fbff;font-size:50px;font-weight:750;text-anchor:middle;dominant-baseline:middle;letter-spacing:0;filter:url(#brainGlowFilter)}.pill{position:absolute;transform:translate(-50%,-50%);max-width:172px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(8,15,26,.88);color:var(--text);padding:7px 9px;font-size:11px;box-shadow:0 8px 26px rgba(0,0,0,.24);animation:labelIn .42s ease both;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}.pill:hover{transform:translate(-50%,-50%) translateY(-2px);border-color:rgba(67,203,227,.75);background:#17263a;box-shadow:0 0 18px rgba(67,203,227,.24),0 10px 26px rgba(0,0,0,.32)}.pill.active{border-color:rgba(98,211,145,.9);background:#17263a;box-shadow:0 0 18px rgba(98,211,145,.42),0 10px 28px rgba(0,0,0,.34);animation:labelIn .42s ease both,activeLabel 2.2s ease-in-out infinite}@keyframes labelIn{from{opacity:0;transform:translate(-50%,-50%) scale(.92)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}@keyframes activeLabel{0%,100%{box-shadow:0 0 14px rgba(98,211,145,.34),0 10px 28px rgba(0,0,0,.34)}50%{box-shadow:0 0 24px rgba(98,211,145,.58),0 10px 28px rgba(0,0,0,.34)}}.detail h3{margin:0;font-size:18px}.detail p{margin:8px 0 0;color:#c5d3e4;line-height:1.45;font-size:13px}.meta{display:grid;gap:9px;margin-top:13px}.meta div{border-top:1px solid var(--line);padding-top:9px}.meta dt{color:var(--muted);font-size:12px;margin-bottom:4px}.meta dd{margin:0;font-size:13px;line-height:1.4}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tag{display:inline-flex;align-items:center;min-height:23px;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;color:#dce8f4;background:rgba(255,255,255,.04)}.tag.critical{color:#ffd1dc;border-color:rgba(238,113,136,.34);background:rgba(238,113,136,.08)}.tag.core{color:#caf6dc;border-color:rgba(98,211,145,.34);background:rgba(98,211,145,.08)}.tag.normal{color:#d8e5ff;border-color:rgba(141,182,255,.34);background:rgba(141,182,255,.08)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.opcard,.agentcard,.domaincard,.cmdcard{border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);padding:12px;min-width:0}.opcard h3,.agentcard h3,.domaincard h3,.cmdcard h3{margin:0;font-size:14px;line-height:1.25}.opcard p,.agentcard p,.domaincard p,.cmdcard p{margin:7px 0 0;color:var(--muted);font-size:12px;line-height:1.4}.agentcard{cursor:pointer}.agentcard:hover{border-color:rgba(67,203,227,.45);background:rgba(67,203,227,.05)}.domains{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.agents{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.commands{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.code{display:block;overflow-x:auto;white-space:nowrap;margin-top:9px;border:1px solid var(--line);border-radius:7px;background:rgba(0,0,0,.22);padding:8px;color:#d4f6ff;font:12px "Cascadia Mono",Consolas,monospace}.cmdtop{display:flex;justify-content:space-between;align-items:start;gap:8px}.copybtn{border:1px solid var(--line);border-radius:7px;background:rgba(67,203,227,.08);color:#d4f6ff;padding:5px 8px;font-size:11px;white-space:nowrap}.copybtn:hover{border-color:rgba(67,203,227,.5);background:rgba(67,203,227,.14)}.toast{position:fixed;right:18px;bottom:18px;z-index:50;border:1px solid var(--line);border-radius:9px;background:#17263a;color:var(--text);padding:10px 12px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:.18s ease}.toast.show{opacity:1;transform:translateY(0)}.script{display:grid;gap:9px;margin:0;padding:0;list-style:none;counter-reset:item}.script li{display:grid;grid-template-columns:28px 1fr;gap:9px;align-items:start;padding:10px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.03);font-size:12px;line-height:1.4;color:#d7e4f0}.script li:before{counter-increment:item;content:counter(item);width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:rgba(67,203,227,.12);color:var(--cyan);font-weight:800}.section{margin-top:14px}.hidden{display:none!important}@media(max-width:1180px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.sidebox{position:static;margin-top:14px}.layout{grid-template-columns:1fr}.kpis,.domains{grid-template-columns:repeat(2,minmax(0,1fr))}.agents{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (prefers-reduced-motion:reduce){.trace,.trace.active,.brain,.chip,.pill,.pill.active,.mapwrap:before,.mapwrap:after{animation:none!important;transition:none!important}}@media(max-width:720px){.topbar{align-items:stretch;flex-direction:column}.content{padding:14px}.kpis,.domains,.agents,.commands,.grid2{grid-template-columns:1fr}.mapwrap{min-height:520px}.pill{font-size:10px;max-width:130px}.sidebar{padding-bottom:12px}}
+:root{color-scheme:dark;--bg:#070b12;--panel:#101927;--panel2:#142033;--line:rgba(222,236,248,.16);--text:#edf7fb;--muted:#9fb4c5;--cyan:#42eaff;--green:#6ee7a8;--amber:#f0c66a;--rose:#ff7d96;--violet:#b79cff;--shadow:0 22px 80px rgba(0,0,0,.34)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;background:radial-gradient(circle at 12% 12%,rgba(66,234,255,.10),transparent 28%),radial-gradient(circle at 88% 18%,rgba(183,156,255,.10),transparent 24%),linear-gradient(145deg,#060a10,#0b1320 48%,#05070b);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,"Segoe UI",Arial,sans-serif}button,input{font:inherit}button{cursor:pointer}.shell{display:grid;grid-template-columns:260px 1fr;min-height:100vh}.rail{position:sticky;top:0;height:100vh;padding:18px 14px;border-right:1px solid var(--line);background:linear-gradient(180deg,rgba(14,22,34,.96),rgba(7,10,15,.96))}.brand{display:flex;align-items:center;gap:11px;padding:7px 7px 18px}.logo{width:42px;height:42px;border:1px solid rgba(66,234,255,.42);border-radius:9px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(66,234,255,.18),rgba(110,231,168,.10));color:var(--cyan);font-weight:850;box-shadow:0 0 28px rgba(66,234,255,.16)}.brand strong,.brand span{display:block}.brand span{font-size:12px;color:var(--muted);margin-top:2px}.nav{display:grid;gap:6px}.nav a{color:var(--muted);text-decoration:none;border-radius:8px;padding:10px 11px;font-size:13px;border:1px solid transparent}.nav a:hover,.nav a.active{background:rgba(255,255,255,.055);border-color:var(--line);color:var(--text)}.railnote{position:absolute;left:14px;right:14px;bottom:16px;border:1px solid var(--line);border-radius:10px;padding:12px;background:rgba(255,255,255,.035);color:var(--muted);font-size:12px;line-height:1.45}.main{min-width:0}.topbar{position:sticky;top:0;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 22px;border-bottom:1px solid var(--line);background:rgba(7,11,18,.82);backdrop-filter:blur(14px)}.title h1{margin:0;font-size:23px;letter-spacing:0}.title p{margin:4px 0 0;color:var(--muted);font-size:13px}.search{width:min(440px,100%);height:40px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.055);color:var(--text);padding:0 12px}.content{padding:18px 22px 30px}.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.kpi{border:1px solid var(--line);border-radius:10px;background:linear-gradient(180deg,rgba(20,32,51,.96),rgba(14,22,34,.96));padding:14px;box-shadow:var(--shadow)}.kpi span{display:block;color:#9fd9e4;font-size:12px}.kpi b{display:block;margin-top:8px;font-size:28px;line-height:1}.kpi small{display:block;margin-top:8px;color:#b7c8d8}.layout{display:grid;grid-template-columns:minmax(0,1.55fr) 390px;gap:14px;margin-top:14px}.panel{border:1px solid var(--line);border-radius:10px;background:rgba(16,25,39,.92);box-shadow:var(--shadow);min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:start;gap:14px;padding:14px 15px;border-bottom:1px solid var(--line)}.panel-head h2{margin:0;font-size:16px}.panel-head p{margin:4px 0 0;color:var(--muted);font-size:12px;line-height:1.45}.panel-body{padding:14px 15px}.brain-stage{position:relative;min-height:560px;border-radius:9px;overflow:hidden;background:radial-gradient(circle at 50% 48%,rgba(66,234,255,.13),transparent 28%),radial-gradient(circle at 28% 70%,rgba(110,231,168,.11),transparent 20%),radial-gradient(circle at 75% 35%,rgba(183,156,255,.12),transparent 23%),linear-gradient(145deg,#02070e,#091421 55%,#07101a)}.brain-stage:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(226,246,255,.22) 1px,transparent 1px);background-size:62px 54px;opacity:.22;animation:gridDrift 18s linear infinite}.brain-stage svg{position:absolute;inset:0;width:100%;height:100%}.brain-outline{fill:rgba(103,169,219,.10);stroke:rgba(230,248,255,.58);stroke-width:2.2;filter:url(#glow);animation:breath 5s ease-in-out infinite}.fold{fill:none;stroke:rgba(222,244,255,.30);stroke-width:1.7;stroke-linecap:round;filter:url(#soft);animation:dashLong 18s linear infinite}.fold.alt{stroke:rgba(110,231,168,.24);animation-duration:22s}.orbit-line{fill:none;stroke:rgba(210,235,255,.20);stroke-width:1.4;stroke-dasharray:5 14;filter:url(#soft);animation:dash 6s linear infinite}.orbit-line.active{stroke:rgba(66,234,255,.90);stroke-width:2.4;stroke-dasharray:9 12}.micro-node{fill:rgba(238,250,255,.82);filter:url(#node);animation:pulse 3.3s ease-in-out infinite}.center-chip{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:150px;min-height:118px;border:1px solid rgba(66,234,255,.78);border-radius:16px;background:linear-gradient(145deg,rgba(66,234,255,.30),rgba(110,231,168,.18));box-shadow:0 0 34px rgba(66,234,255,.38),inset 0 0 28px rgba(255,255,255,.08);display:grid;place-items:center;text-align:center;z-index:5}.center-chip b{font-size:36px;line-height:1;color:#e9fdff}.center-chip span{display:block;margin-top:4px;color:#b7f7ff;font-size:12px}.center-chip:after{content:"";position:absolute;inset:-12px;border-radius:22px;border:1px solid rgba(66,234,255,.20);animation:ring 3.4s ease-in-out infinite}.node{position:absolute;transform:translate(-50%,-50%);border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(8,15,25,.88);color:var(--text);padding:8px 10px;font-size:11px;white-space:nowrap;box-shadow:0 12px 30px rgba(0,0,0,.28);z-index:6;transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,background .18s ease}.node:hover,.node.active{transform:translate(-50%,-50%) translateY(-2px) scale(1.04);border-color:rgba(66,234,255,.78);background:#14243a;box-shadow:0 0 22px rgba(66,234,255,.28),0 12px 30px rgba(0,0,0,.32)}.node.core{border-color:rgba(110,231,168,.72);background:rgba(12,38,31,.92)}.detail h3{margin:0;font-size:19px}.detail p{margin:8px 0 0;color:#c8d7e5;line-height:1.48;font-size:13px}.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}.tag{display:inline-flex;align-items:center;min-height:23px;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;color:#dce8f4;background:rgba(255,255,255,.045)}.tag.core{color:#c8f9df;border-color:rgba(110,231,168,.36);background:rgba(110,231,168,.08)}.tag.critical{color:#ffd5dc;border-color:rgba(255,125,150,.36);background:rgba(255,125,150,.08)}.tag.normal{color:#dce8ff;border-color:rgba(183,156,255,.32);background:rgba(183,156,255,.08)}.meta{display:grid;gap:9px;margin-top:13px}.meta div{border-top:1px solid var(--line);padding-top:9px}.meta dt{color:var(--muted);font-size:12px;margin-bottom:4px}.meta dd{margin:0;font-size:13px;line-height:1.45}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.domain-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}.card{border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);padding:12px;min-width:0}.card h3{margin:0;font-size:14px;line-height:1.25}.card p{margin:7px 0 0;color:var(--muted);font-size:12px;line-height:1.42}.card.clickable{cursor:pointer}.card.clickable:hover{border-color:rgba(66,234,255,.45);background:rgba(66,234,255,.055)}.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.step{border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.035);padding:11px;position:relative}.step:before{content:attr(data-step);display:grid;place-items:center;width:25px;height:25px;border-radius:7px;background:rgba(66,234,255,.13);color:var(--cyan);font-weight:800;font-size:12px;margin-bottom:8px}.step h3{margin:0;font-size:13px}.step p{margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.42}.hidden{display:none!important}.toast{position:fixed;right:18px;bottom:18px;z-index:50;border:1px solid var(--line);border-radius:9px;background:#14243a;color:var(--text);padding:10px 12px;box-shadow:var(--shadow);opacity:0;transform:translateY(8px);transition:.18s ease}.toast.show{opacity:1;transform:translateY(0)}@keyframes dash{to{stroke-dashoffset:-90}}@keyframes dashLong{to{stroke-dashoffset:-220}}@keyframes breath{0%,100%{opacity:.72;transform:scale(1)}50%{opacity:1;transform:scale(1.012)}}@keyframes pulse{0%,100%{opacity:.55;r:2.2}50%{opacity:1;r:3.5}}@keyframes ring{0%,100%{opacity:.25;transform:scale(.98)}50%{opacity:.8;transform:scale(1.05)}}@keyframes gridDrift{to{background-position:124px 108px}}@media(max-width:1180px){.shell{grid-template-columns:1fr}.rail{position:relative;height:auto}.railnote{position:static;margin-top:14px}.layout{grid-template-columns:1fr}.kpis,.domain-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.topbar{align-items:stretch;flex-direction:column}.content{padding:14px}.kpis,.domain-grid,.cards,.grid2,.flow{grid-template-columns:1fr}.brain-stage{min-height:620px}.center-chip{width:132px;min-height:104px}.center-chip b{font-size:30px}.node{font-size:10px;max-width:138px;overflow:hidden;text-overflow:ellipsis}.rail{padding-bottom:12px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<div class="app">
-<aside class="sidebar"><div class="brand"><div class="logo">AI</div><div><strong>Operações IA</strong><span>Painel</span></div></div><nav class="nav"><a class="active" href="#overview">Visão geral</a><a href="#agents">Agentes</a><a href="#operations">Operações</a><a href="#commands">Comandos</a><a href="#script">Roteiro</a></nav><div class="sidebox"><strong>Estado operacional</strong><br>Visão consolidada de agentes, operações, comandos e governança.</div></aside>
-<main class="main"><header class="topbar"><div class="title"><h1>Painel de Operações IA</h1><p>Agentes, automações, runbooks e decisões operacionais em uma visão consolidada.</p></div><input class="search" id="search" type="search" placeholder="Pesquisar agente, competência, workflow ou comando"></header>
-<div class="content" id="overview"><section class="kpis" id="kpis"></section><section class="layout"><div class="panel"><div class="panel-head"><div><h2>Mapa do cérebro operacional</h2><p>Seleção de agente, domínio, risco e competências associadas.</p></div></div><div class="panel-body"><div class="mapwrap" id="map"><svg viewBox="0 0 1000 660" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><radialGradient id="brainFill" cx="46%" cy="41%" r="62%"><stop offset="0" stop-color="#dff6ff" stop-opacity=".22"/><stop offset=".42" stop-color="#83c7ff" stop-opacity=".13"/><stop offset="1" stop-color="#1f69ac" stop-opacity=".05"/></radialGradient><filter id="brainGlowFilter" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.8" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="nodeGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.7" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="brainBlur"><feGaussianBlur stdDeviation="18"/></filter></defs><g opacity=".82"><line class="neural dim" x1="64" y1="510" x2="150" y2="438"/><line class="neural dim" x1="150" y1="438" x2="254" y2="478"/><line class="neural dim" x1="64" y1="510" x2="254" y2="478"/><line class="neural dim" x1="768" y1="430" x2="890" y2="505"/><line class="neural dim" x1="890" y1="505" x2="958" y2="424"/><line class="neural dim" x1="768" y1="430" x2="958" y2="424"/><circle class="star soft" cx="64" cy="510" r="2.2"/><circle class="star soft" cx="150" cy="438" r="2.8"/><circle class="star soft" cx="254" cy="478" r="2.4"/><circle class="star soft" cx="768" cy="430" r="2.4"/><circle class="star soft" cx="890" cy="505" r="2.9"/><circle class="star soft" cx="958" cy="424" r="2.2"/></g><path class="brain-shadow" d="M225 350 C167 319 159 251 207 211 C226 136 331 101 405 143 C468 76 603 84 661 154 C744 153 823 212 831 293 C894 334 881 410 810 449 C780 526 668 561 592 515 C537 575 420 569 372 498 C289 506 213 434 225 350 Z"/><path class="brain" d="M225 350 C167 319 159 251 207 211 C226 136 331 101 405 143 C468 76 603 84 661 154 C744 153 823 212 831 293 C894 334 881 410 810 449 C780 526 668 561 592 515 C537 575 420 569 372 498 C289 506 213 434 225 350 Z"/><g><path class="brainfold" d="M234 337 C297 304 370 307 437 340 C506 374 579 372 649 334 C712 300 776 302 830 329"/><path class="brainfold" d="M269 217 C338 196 410 214 457 263 C506 313 553 322 619 288 C676 260 741 254 803 287"/><path class="brainfold" d="M301 470 C342 410 398 386 470 400 C545 414 592 458 670 446 C729 437 774 416 815 380"/><path class="brainfold" d="M365 146 C394 232 397 306 374 384 C357 442 380 489 430 527"/><path class="brainfold" d="M524 119 C504 199 508 273 530 348 C551 420 544 475 510 536"/><path class="brainfold" d="M657 159 C621 229 618 303 655 370 C685 425 694 474 669 523"/><path class="brainfold" d="M244 291 C320 270 382 248 437 211 C498 170 571 166 636 207 C697 246 738 281 830 291"/><path class="brainfold" d="M255 390 C335 394 405 374 468 343 C550 303 638 303 724 350 C762 371 795 391 843 397"/></g><g><line class="neural" x1="246" y1="230" x2="323" y2="181"/><line class="neural" x1="323" y1="181" x2="421" y2="151"/><line class="neural" x1="421" y1="151" x2="505" y2="124"/><line class="neural" x1="505" y1="124" x2="612" y2="146"/><line class="neural" x1="612" y1="146" x2="715" y2="183"/><line class="neural" x1="715" y1="183" x2="798" y2="278"/><line class="neural" x1="246" y1="230" x2="310" y2="321"/><line class="neural" x1="310" y1="321" x2="414" y2="300"/><line class="neural" x1="414" y1="300" x2="510" y2="323"/><line class="neural" x1="510" y1="323" x2="606" y2="299"/><line class="neural" x1="606" y1="299" x2="706" y2="330"/><line class="neural" x1="706" y1="330" x2="798" y2="278"/><line class="neural" x1="310" y1="321" x2="374" y2="448"/><line class="neural" x1="374" y1="448" x2="488" y2="459"/><line class="neural" x1="488" y1="459" x2="592" y2="454"/><line class="neural" x1="592" y1="454" x2="706" y2="330"/><line class="neural" x1="421" y1="151" x2="414" y2="300"/><line class="neural" x1="612" y1="146" x2="606" y2="299"/><line class="neural" x1="488" y1="459" x2="510" y2="323"/></g><g><circle class="star" cx="246" cy="230" r="2.8"/><circle class="star" cx="323" cy="181" r="2.4"/><circle class="star" cx="421" cy="151" r="3"/><circle class="star" cx="505" cy="124" r="2.6"/><circle class="star" cx="612" cy="146" r="3"/><circle class="star" cx="715" cy="183" r="2.5"/><circle class="star" cx="798" cy="278" r="3.2"/><circle class="star" cx="310" cy="321" r="2.5"/><circle class="star" cx="414" cy="300" r="2.8"/><circle class="star" cx="510" cy="323" r="3.6"/><circle class="star" cx="606" cy="299" r="2.8"/><circle class="star" cx="706" cy="330" r="2.6"/><circle class="star" cx="374" cy="448" r="2.6"/><circle class="star" cx="488" cy="459" r="3"/><circle class="star" cx="592" cy="454" r="2.7"/><circle class="star soft" cx="277" cy="404" r="1.8"/><circle class="star soft" cx="354" cy="247" r="1.7"/><circle class="star soft" cx="552" cy="213" r="1.8"/><circle class="star soft" cx="690" cy="418" r="1.9"/></g><g id="traces"></g><rect class="chip" x="455" y="276" width="110" height="92" rx="12"/><text class="chiptext" x="510" y="323">AI</text></svg></div></div></div><aside class="panel"><div class="panel-head"><div><h2>Agente selecionado</h2><p>Contexto operacional do agente selecionado.</p></div></div><div class="panel-body detail" id="detail"></div></aside></section><section class="domains searchable-section" id="domains"></section>
-<section class="layout section"><div class="panel" id="operations"><div class="panel-head"><div><h2>Operações prontas</h2><p>Workflows acionáveis e rotinas padronizadas.</p></div></div><div class="panel-body"><div class="grid2" id="workflows"></div></div></div><aside class="panel" id="script"><div class="panel-head"><div><h2>Fluxo de decisão</h2><p>Sequência operacional padrão.</p></div></div><div class="panel-body"><ol class="script"><li><span><strong>Problema:</strong> múltiplas frentes técnicas exigem contexto compartilhado.</span></li><li><span><strong>Cérebro:</strong> define agente, competências e profundidade de verificação.</span></li><li><span><strong>Domínios:</strong> M365, Azure, ITSM, segurança, automação e documentação.</span></li><li><span><strong>Exemplo:</strong> Captura Microsoft 365 ou Better Stack Digest.</span></li><li><span><strong>Governança:</strong> níveis de risco, comandos e evidências rastreáveis.</span></li></ol></div></aside></section>
-<section class="panel section" id="agents"><div class="panel-head"><div><h2>Agentes</h2><p>Especialistas locais, com domínio, risco e competências principais.</p></div></div><div class="panel-body"><div class="agents" id="agentGrid"></div></div></section>
-<section class="panel section" id="commands"><div class="panel-head"><div><h2>Comandos e caminhos</h2><p>Referências operacionais para execução, auditoria e handoff.</p></div></div><div class="panel-body"><div class="commands" id="commandGrid"></div></div></section></div></main></div>
+<div class="shell">
+  <aside class="rail">
+    <div class="brand"><div class="logo">AI</div><div><strong>Hub de Operações IA</strong><span>Mapa público</span></div></div>
+    <nav class="nav"><a class="active" href="#overview">Visão geral</a><a href="#mapa">Cérebro</a><a href="#qualidade">Qualidade</a><a href="#agentes">Agentes</a><a href="#governanca">Governança</a></nav>
+    <div class="railnote"><strong>Versão pública</strong><br>Sem nomes internos, credenciais, caminhos locais ou detalhes operacionais privados.</div>
+  </aside>
+  <main class="main">
+    <header class="topbar"><div class="title"><h1>Hub de Operações IA</h1><p>Agentes, competências, decisão crítica e qualidade de entrega numa arquitetura visual.</p></div><input class="search" id="search" type="search" placeholder="Pesquisar domínio, agente, competência ou workflow"></header>
+    <div class="content" id="overview">
+      <section class="kpis" id="kpis"></section>
+      <section class="layout" id="mapa">
+        <div class="panel"><div class="panel-head"><div><h2>Mapa cerebral público</h2><p>O núcleo fica no centro. Os domínios orbitam o cérebro e convergem para roteamento, crítica e qualidade.</p></div></div><div class="panel-body"><div class="brain-stage" id="brain"><svg viewBox="0 0 1000 660" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><defs><filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="soft" x="-35%" y="-35%" width="170%" height="170%"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><filter id="node" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path class="brain-outline" d="M195 350 C143 296 163 223 231 200 C252 125 354 94 424 139 C488 73 612 82 668 148 C754 149 835 212 840 295 C902 335 887 418 814 455 C779 536 665 572 588 520 C530 581 414 573 366 505 C282 513 206 438 195 350 Z"/><path class="fold" d="M218 334 C298 292 388 305 463 345 C535 383 610 376 684 334 C744 298 798 303 840 333"/><path class="fold alt" d="M265 219 C343 194 427 217 480 266 C532 316 583 319 645 286 C702 258 759 263 817 292"/><path class="fold" d="M295 470 C354 407 421 389 497 405 C570 420 622 461 704 444 C752 434 794 408 828 374"/><path class="fold alt" d="M382 139 C412 224 405 309 383 385 C365 448 395 495 446 532"/><path class="fold" d="M522 112 C503 197 508 274 531 350 C554 423 544 482 506 541"/><path class="fold alt" d="M662 154 C628 226 623 304 658 371 C691 433 694 481 664 526"/><g id="paths"></g><g id="micro"></g></svg><div class="center-chip" role="button" tabindex="0" id="centerChip"><div><b>AI</b><span>Cérebro Central</span></div></div></div></div></div>
+        <aside class="panel"><div class="panel-head"><div><h2>Selecionado</h2><p>Resumo público do domínio selecionado.</p></div></div><div class="panel-body detail" id="detail"></div></aside>
+      </section>
+      <section class="panel section" id="qualidade"><div class="panel-head"><div><h2>Loop de qualidade</h2><p>O fluxo que reduz retrabalho antes da entrega.</p></div></div><div class="panel-body"><div class="flow" id="flow"></div></div></section>
+      <section class="domain-grid searchable-section" id="domains"></section>
+      <section class="panel section" id="agentes"><div class="panel-head"><div><h2>Agentes e competências</h2><p>Nomes públicos, focados em capacidades e sem exposição operacional interna.</p></div></div><div class="panel-body"><div class="cards" id="agentGrid"></div></div></section>
+      <section class="panel section" id="governanca"><div class="panel-head"><div><h2>Decisões de governança</h2><p>Princípios que mantêm o sistema útil, crítico e publicável.</p></div></div><div class="panel-body"><div class="grid2" id="decisions"></div></div></section>
+    </div>
+  </main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite">Selecionado</div>
 <script>
 const data={
-  "agents": [
-    {
-      "name": "Cérebro Central",
-      "file": "master-router-agent.md",
-      "domain": "Routing",
-      "description": "Camada de roteamento que classifica o pedido, escolhe agente, aplica crítica dos 5 Conselheiros, aciona o loop de qualidade e define profundidade de execução, verificação e orçamento de contexto.",
-      "skills": [
-        "request-routing-policy",
-        "conversation-limit-manager",
-        "token-efficiency",
-        "workflow-auditor",
-        "five-counselors-decision-review",
-        "quality-delivery-loop"
-      ],
-      "level": "core",
-      "updatedAt": "2026-07-19"
-    },
-    {
-      "name": "Engenheiro de Código",
-      "file": "engineering-lead-agent.md",
-      "domain": "Code",
-      "description": "Conduz trabalho de engenharia ponta a ponta: análise do repositório, alterações de código, testes, planos e PRs.",
-      "skills": [
-        "codebase-onboarding-map",
-        "github-pr-lifecycle",
-        "verification-before-completion"
-      ],
-      "level": "normal",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Gestor CI, Releases e Proveniência",
-      "file": "ci-release-agent.md",
-      "domain": "CI/Release",
-      "description": "Investiga falhas de CI, releases, changelogs, upgrades de dependências, rollback e proveniência de build.",
-      "skills": [
-        "ci-failure-fixer",
-        "release-manager",
-        "dependency-upgrade-migration"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-06-01"
-    },
-    {
-      "name": "Gestor de Incidentes",
-      "file": "production-incident-agent.md",
-      "domain": "Incidents",
-      "description": "Trata alertas, incidentes, logs, stack traces, falhas de produção e comunicação para responsáveis.",
-      "skills": [
-        "production-error-to-pr",
-        "incident-monitoring-betterstack",
-        "daily-ops-brief"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Arquiteto de Automação",
-      "file": "automation-architect-agent.md",
-      "domain": "Automation",
-      "description": "Transforma trabalho manual repetido em scripts, CLIs, automações agendadas, runbooks ou workflows assistidos por IA.",
-      "skills": [
-        "automation-factory",
-        "automation-designer",
-        "local-cli-builder"
-      ],
-      "level": "normal",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Engenheiro de Automação Interna",
-      "file": "internal-automation-engineer-agent.md",
-      "domain": "Automation",
-      "description": "Constrói ferramentas internas, módulos PowerShell, CLIs, automações de runbook e utilitários administrativos.",
-      "skills": [
-        "internal-tools-builder",
-        "runbook-to-automation",
-        "powershell-module-builder"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Operador Microsoft 365",
-      "file": "microsoft-365-ops-agent.md",
-      "domain": "M365",
-      "description": "Apoia operações de Microsoft 365: Exchange, Graph, Teams, SharePoint, Entra adjacente e PowerShell administrativo.",
-      "skills": [
-        "m365-admin-runbook",
-        "powershell-safe-ops",
-        "sharepoint-teams-ops"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Operador Integrações ITSM",
-      "file": "service-integration-ops-agent.md",
-      "domain": "ITSM",
-      "description": "Diagnostica integrações ITSM, Freshservice, Jira Service Management, submissão por mailbox, routing, sincronização e duplicidade.",
-      "skills": [
-        "freshservice-itil-ops",
-        "freshservice-jira-m365-integration-ops",
-        "api-integration-builder"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Engenheiro Azure Functions e Nuvem",
-      "file": "azure-functions-engineer-agent.md",
-      "domain": "Azure",
-      "description": "Apoia Azure Functions, Function Apps, triggers, bindings, configurações locais, segurança, deploy e Application Insights.",
-      "skills": [
-        "azure-functions-engineering",
-        "azure-deployment-runbook",
-        "azure-functions-security-review"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-06-08"
-    },
-    {
-      "name": "Observabilidade de Nuvem",
-      "file": "azure-ops-observability-agent.md",
-      "domain": "Azure Ops",
-      "description": "Apoia Azure Monitor, Application Insights, Log Analytics, KQL, alertas, incidentes e diagnóstico operacional.",
-      "skills": [
-        "azure-observability-ops",
-        "observability-instrumentation",
-        "performance-profiler"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-06-08"
-    },
-    {
-      "name": "Guardião de Acessos",
-      "file": "identity-access-agent.md",
-      "domain": "Identity",
-      "description": "Apoia Entra ID, RBAC, grupos, app registrations, managed identities, service principals, consentimento e troubleshooting de acesso.",
-      "skills": [
-        "identity-access-admin",
-        "tenant-security-review",
-        "powershell-safe-ops"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Guardião de Segurança e Exposição",
-      "file": "security-review-agent.md",
-      "domain": "Security",
-      "description": "Revê AppSec, segredos, permissões, exposição de tenant, segurança de migrações e risco de release.",
-      "skills": [
-        "appsec-threat-model",
-        "secret-leak-prevention",
-        "tenant-security-review"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-06-01"
-    },
-    {
-      "name": "Designer Produto Web",
-      "file": "frontend-product-agent.md",
-      "domain": "UI",
-      "description": "Desenha e valida interfaces, dashboards, layouts responsivos, fluxos de produto e QA visual.",
-      "skills": [
-        "frontend-design",
-        "web-qa-playwright",
-        "react-best-practices"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Documentador",
-      "file": "documentation-reporting-agent.md",
-      "domain": "Docs",
-      "description": "Produz documentação, relatórios, arquivos Office, runbooks e escrita técnica/profissional concisa.",
-      "skills": [
-        "docs-from-code",
-        "document-report-builder",
-        "pdf-word-excel-powerpoint"
-      ],
-      "level": "normal",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Analista de Performance",
-      "file": "performance-agent.md",
-      "domain": "Performance",
-      "description": "Investiga latência, profiling, queries lentas, renderização, memória, CPU, bundle, cache e regressões.",
-      "skills": [
-        "performance-profiler",
-        "observability-instrumentation",
-        "react-best-practices"
-      ],
-      "level": "normal",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Coach de Produtividade IA",
-      "file": "ai-workflow-coach-agent.md",
-      "domain": "AI workflow",
-      "description": "Melhora prompts, agentes, competências, automações, controlo de contexto e loops de qualidade para reduzir retrabalho.",
-      "skills": [
-        "workflow-auditor",
-        "token-optimizer",
-        "skill-creator",
-        "spec-first-clarifier",
-        "build-from-spec",
-        "review-against-spec"
-      ],
-      "level": "normal",
-      "updatedAt": "2026-07-19"
-    },
-    {
-      "name": "Governança de IA e Agentes",
-      "file": "enterprise-ai-governance-agent.md",
-      "domain": "AI Governance",
-      "description": "Apoia governança de IA, inventário de agentes, permissões, fronteiras de dados, rollout e arquitetura de agentes.",
-      "skills": [
-        "enterprise-ai-governance",
-        "openai-agents-sdk-architecture",
-        "agent-security-misconfig-review"
-      ],
-      "level": "critical",
-      "updatedAt": "2026-06-08"
-    },
-    {
-      "name": "Arquiteto de Sistemas",
-      "file": "systems-implementation-architect-agent.md",
-      "domain": "Systems",
-      "description": "Apoia novos sistemas internos, avaliação de fornecedores, integrações, rollout, suporte e gestão de mudança.",
-      "skills": [
-        "system-implementation-playbook",
-        "vendor-system-evaluator",
-        "integration-systems-architect"
-      ],
-      "level": "normal",
-      "updatedAt": "2026-05-25"
-    },
-    {
-      "name": "Gestor de Conversa",
-      "file": "conversation-continuity-agent.md",
-      "domain": "Context",
-      "description": "Ajuda em threads longas, limpeza de contexto, handoffs compactos e continuidade entre conversas.",
-      "skills": [
-        "conversation-limit-manager",
-        "token-efficiency"
-      ],
-      "level": "normal",
-      "updatedAt": "2026-05-25"
-    }
+  agents:[
+    {id:'central',name:'Cérebro Central',domain:'Roteamento',risk:'core',x:50,y:50,summary:'Classifica pedidos, escolhe o melhor especialista, controla profundidade, contexto e verificação.',skills:['Roteamento inteligente','5 Conselheiros','Loop de qualidade','Poupança de contexto']},
+    {id:'quality',name:'Qualidade de Entrega',domain:'Qualidade',risk:'core',x:50,y:18,summary:'Garante que trabalhos relevantes seguem Spec, Build, Review, Fix e Deliver antes da entrega.',skills:['Spec antes de construir','Construir pela spec','Revisar contra critérios','Definição de pronto']},
+    {id:'decision',name:'Conselho Crítico',domain:'Decisão',risk:'core',x:24,y:28,summary:'Evita respostas agradáveis e força análise por risco, origem, oportunidade, visão externa e próximo passo.',skills:['Cético','Pensador de origem','Expansionista','Forasteiro','Executor']},
+    {id:'engineering',name:'Engenharia',domain:'Código',risk:'normal',x:76,y:28,summary:'Apoia análise de repositório, implementação controlada, testes e revisão de mudanças.',skills:['Mapa do projeto','Ciclo de mudança','Estratégia de testes']},
+    {id:'automation',name:'Automação',domain:'Automação',risk:'normal',x:83,y:46,summary:'Transforma rotinas manuais em scripts, ferramentas internas, runbooks e fluxos repetíveis.',skills:['Desenho de automação','Ferramentas internas','Runbook para automação']},
+    {id:'cloud',name:'Nuvem e Observabilidade',domain:'Nuvem',risk:'critical',x:75,y:66,summary:'Apoia workloads cloud, deploys, logs, métricas, alertas e diagnóstico operacional.',skills:['Engenharia cloud','Deploy seguro','Observabilidade']},
+    {id:'security',name:'Segurança e Exposição',domain:'Segurança',risk:'critical',x:50,y:76,summary:'Revê ameaças, segredos, permissões, exposição pública e riscos antes de publicar ou operar.',skills:['Modelo de ameaças','Prevenção de segredos','Revisão de exposição']},
+    {id:'identity',name:'Identidade e Acessos',domain:'Acessos',risk:'critical',x:27,y:67,summary:'Analisa grupos, permissões, papéis, consentimentos e acesso com princípio de menor privilégio.',skills:['Gestão de identidade','Revisão de permissões','Controlo de acesso']},
+    {id:'ops',name:'Operações de Serviço',domain:'Operações',risk:'normal',x:17,y:48,summary:'Apoia incidentes, tickets, integrações operacionais, comunicação e melhoria contínua.',skills:['Gestão de incidentes','Integração de serviços','Resumo operacional']},
+    {id:'docs',name:'Documentação',domain:'Documentação',risk:'normal',x:31,y:39,summary:'Produz runbooks, relatórios, notas técnicas e documentação clara a partir do trabalho real.',skills:['Documentação do código','Relatórios','Texto direto']},
+    {id:'product',name:'Produto e Interface',domain:'Produto',risk:'critical',x:69,y:39,summary:'Desenha interfaces, dashboards e experiências verificáveis, com foco em uso real.',skills:['Design de interface','QA visual','Boas práticas frontend']},
+    {id:'governance',name:'Governança de IA',domain:'Governança',risk:'critical',x:63,y:61,summary:'Define inventário, donos, dados, permissões, limites, observabilidade e ciclo de vida de agentes.',skills:['Governança de IA','Arquitetura de agentes','Segurança de agentes']},
+    {id:'context',name:'Continuidade',domain:'Contexto',risk:'normal',x:38,y:60,summary:'Controla conversas longas, handoffs compactos, poupança de contexto e retomada eficiente.',skills:['Gestão de limites','Handoff compacto','Poupança de tokens']}
   ],
-  "skills": [
-    [
-      "request-routing-policy",
-      "Roteamento",
-      "Classifica o pedido e define agente, profundidade de execução, verificação e orçamento de contexto."
-    ],
-    [
-      "conversation-limit-manager",
-      "Contexto",
-      "Sugere nova conversa e handoff quando o contexto fica longo ou arriscado."
-    ],
-    [
-      "workflow-auditor",
-      "Produtividade",
-      "Identifica trabalho repetido que deve virar competência, script, automação ou runbook."
-    ],
-    [
-      "token-efficiency",
-      "Contexto",
-      "Mantém investigação e resposta proporcionais ao risco e evita gasto desnecessário de contexto."
-    ],
-    [
-      "automation-factory",
-      "Automação",
-      "Transforma workflows recorrentes em scripts, CLIs, jobs agendados, automações ou runbooks."
-    ],
-    [
-      "powershell-safe-ops",
-      "PowerShell",
-      "Aplica PowerShell com descoberta prévia, escopo explícito, paths seguros e erros acionáveis."
-    ],
-    [
-      "m365-admin-runbook",
-      "Microsoft 365",
-      "Guia operações seguras em Exchange, Graph, Teams, SharePoint e administração de tenant."
-    ],
-    [
-      "freshservice-jira-m365-integration-ops",
-      "ITSM",
-      "Diagnostica routing, sincronização, mailbox submission e duplicidade em integrações ITSM."
-    ],
-    [
-      "azure-functions-engineering",
-      "Azure",
-      "Apoia Function Apps, triggers, bindings, configurações locais e restrições de deploy."
-    ],
-    [
-      "azure-observability-ops",
-      "Azure Ops",
-      "Usa Azure Monitor, Application Insights, Log Analytics, KQL, alertas e diagnósticos."
-    ],
-    [
-      "incident-monitoring-betterstack",
-      "Incidentes",
-      "Consulta monitores, heartbeats, incidentes e histórico de uptime."
-    ],
-    [
-      "frontend-design",
-      "Interface",
-      "Desenha dashboards e interfaces práticas, responsivas e verificáveis."
-    ],
-    [
-      "web-qa-playwright",
-      "QA Web",
-      "Valida páginas com browser automation, screenshots, console e comportamento responsivo."
-    ],
-    [
-      "skill-creator",
-      "Workflow IA",
-      "Cria competências compactas com gatilhos claros, escopo definido e verificação esperada."
-    ],
-    [
-      "secret-leak-prevention",
-      "Segurança",
-      "Evita exposição de credenciais, tokens, chaves, paths sensíveis e arquivos privados."
-    ],
-    [
-      "docs-from-code",
-      "Documentação",
-      "Gera ou atualiza documentação, runbooks, diagramas e notas técnicas a partir do código."
-    ],
-    [
-      "five-counselors-decision-review",
-      "Decisão",
-      "Aplica cinco perspectivas críticas para evitar respostas agradáveis, enviesadas ou pouco profissionais."
-    ],
-    [
-      "quality-delivery-loop",
-      "Qualidade",
-      "Orquestra Spec, Build, Review, Fix e Deliver para reduzir retrabalho antes da entrega."
-    ],
-    [
-      "spec-first-clarifier",
-      "Qualidade",
-      "Transforma pedidos vagos em objetivo, escopo, requisitos e critérios de aceitação antes de construir."
-    ],
-    [
-      "build-from-spec",
-      "Qualidade",
-      "Executa exatamente o que a especificação pede, sem inventar escopo ou recurso."
-    ],
-    [
-      "review-against-spec",
-      "Qualidade",
-      "Compara a entrega contra a spec e reprova quando houver lacunas, overreach ou verificação fraca."
-    ]
+  quality:[
+    ['Spec','Clarificar objetivo, escopo, requisitos e critérios antes de construir.'],
+    ['Build','Executar somente o combinado, sem inventar recurso ou mexer fora do escopo.'],
+    ['Review','Comparar contra critérios, segurança, qualidade e verificação esperada.'],
+    ['Fix','Corrigir falhas encontradas antes de dizer que está pronto.'],
+    ['Deliver','Entregar resumo honesto: feito, verificado, riscos e próximo passo.']
   ],
-  "workflows": [
-    {
-      "name": "Adicionar memória",
-      "owner": "AI Workflow Coach",
-      "status": "active",
-      "summary": "Registra contexto recorrente em memória, decisões ou workflows sem duplicar regras.",
-      "steps": [
-        "Classificar memória",
-        "Escolher destino",
-        "Escrever entrada compacta",
-        "Remover duplicação"
-      ],
-      "duration": "4 min"
-    },
-    {
-      "name": "Roteamento de pedido",
-      "owner": "Master Router",
-      "status": "done",
-      "summary": "Escolhe domínio, agente, competências, profundidade e verificação antes de trabalho substancial.",
-      "steps": [
-        "Classificar",
-        "Selecionar agente",
-        "Selecionar skills",
-        "Definir verificação"
-      ],
-      "duration": "1 min"
-    },
-    {
-      "name": "Investigar incidente",
-      "owner": "Production Incident",
-      "status": "watch",
-      "summary": "Monta timeline, impacto, hipótese de causa, mitigação e resumo para responsáveis.",
-      "steps": [
-        "Confirmar alerta",
-        "Consultar logs",
-        "Avaliar impacto",
-        "Recomendar ação"
-      ],
-      "duration": "18 min"
-    },
-    {
-      "name": "Mudança Microsoft 365",
-      "owner": "Microsoft 365 Ops",
-      "status": "watch",
-      "summary": "Executa leituras antes de qualquer alteração, confirma escopo e exige aprovação para escrita.",
-      "steps": [
-        "Confirmar tenant",
-        "Ler estado",
-        "Planejar mudança",
-        "Executar com segurança"
-      ],
-      "duration": "12 min"
-    },
-    {
-      "name": "Construir ou corrigir UI",
-      "owner": "Frontend Product",
-      "status": "active",
-      "summary": "Inspeciona padrões, implementa tela útil e valida renderização desktop/mobile.",
-      "steps": [
-        "Inspecionar",
-        "Implementar",
-        "Testar interação",
-        "Validar renderização"
-      ],
-      "duration": "25 min"
-    },
-    {
-      "name": "Criar skill",
-      "owner": "AI Workflow Coach",
-      "status": "done",
-      "summary": "Transforma trabalho recorrente em skill compacta quando o padrão é frequente ou arriscado.",
-      "steps": [
-        "Definir gatilho",
-        "Escrever comportamento",
-        "Adicionar verificação",
-        "Evitar sobreposição"
-      ],
-      "duration": "9 min"
-    },
-    {
-      "name": "Captura Microsoft 365",
-      "owner": "Operador Microsoft 365",
-      "status": "active",
-      "summary": "Captura estado somente leitura de módulos, Graph, Exchange e configuração de identificação externa.",
-      "steps": [
-        "Conectar se necessário",
-        "Executar snapshot",
-        "Rever JSON",
-        "Anexar ao runbook"
-      ],
-      "duration": "2 min"
-    },
-    {
-      "name": "Resumo Better Stack",
-      "owner": "Gestor de Incidentes",
-      "status": "active",
-      "summary": "Gera resumo de monitores, incidentes e heartbeats a partir da API de observabilidade.",
-      "steps": [
-        "Definir token em variável segura",
-        "Executar resumo",
-        "Rever Markdown",
-        "Anexar ao registro operacional"
-      ],
-      "duration": "2 min"
-    },
-    {
-      "name": "Loop de qualidade antes de entregar",
-      "owner": "Cérebro Central",
-      "status": "active",
-      "summary": "Transforma pedidos relevantes em spec curta, executa só o combinado, revisa contra critérios e só entrega quando passa ou quando o bloqueio está claro.",
-      "steps": [
-        "Definir spec",
-        "Construir pela spec",
-        "Revisar contra critérios",
-        "Corrigir ou declarar bloqueio"
-      ],
-      "duration": "3-15 min"
-    }
-  ],
-  "decisions": [
-    [
-      "Manter o roteador central como camada de decisão operacional",
-      "alta",
-      "aceito",
-      "Samuel"
-    ],
-    [
-      "Separar memória durável das regras de roteamento",
-      "alta",
-      "aceito",
-      "Samuel"
-    ],
-    [
-      "Usar memória do projeto para contexto estável",
-      "média",
-      "aceito",
-      "Samuel"
-    ],
-    [
-      "Usar workflows para procedimentos repetíveis",
-      "média",
-      "aceito",
-      "Samuel"
-    ],
-    [
-      "Preferir menos competências, mas mais fortes, em vez de competências sobrepostas",
-      "média",
-      "ativo",
-      "Coach IA"
-    ],
-    [
-      "Usar verificação mais profunda para administração, código, UI e segurança",
-      "média",
-      "aceito",
-      "Roteador"
-    ],
-    [
-      "Manter o painel como aplicação estática local primeiro",
-      "baixa",
-      "ativo",
-      "Interface"
-    ],
-    [
-      "Automatizar sincronização de memória após estabilizar o formato manual",
-      "baixa",
-      "em observação",
-      "Samuel"
-    ],
-    [
-      "Aplicar 5 Conselheiros como filtro crítico para pedidos não triviais",
-      "alta",
-      "ativo",
-      "Cérebro Central"
-    ],
-    [
-      "Aplicar loop Spec-Build-Review antes de entregas relevantes",
-      "alta",
-      "ativo",
-      "Cérebro Central"
-    ]
-  ],
-  "commands": [
-    [
-      "Projeto local",
-      "Diretório de trabalho deste hub",
-      "<workspace>/"
-    ],
-    [
-      "Perfis de agentes",
-      "Diretório privado de perfis locais",
-      "<agent-profiles>/"
-    ],
-    [
-      "Aliases",
-      "Mapa privado de nomes amigáveis para agentes e skills",
-      "<agent-profiles>/ALIASES.md"
-    ],
-    [
-      "Memória do projeto",
-      "Contexto durável do dashboard",
-      "codex-brain-dashboard/PROJECT_MEMORY.md"
-    ],
-    [
-      "Workflows",
-      "Procedimentos recorrentes documentados",
-      "codex-brain-dashboard/WORKFLOWS.md"
-    ],
-    [
-      "Dashboard local",
-      "Interface local de operação e registro operacional",
-      "codex-brain-dashboard/index.html"
-    ],
-    [
-      "Captura Microsoft 365",
-      "Captura somente leitura de contexto administrativo",
-      "automations/m365-tenant-snapshot.ps1 -OutputPath out/m365-tenant-snapshot.json"
-    ],
-    [
-      "Resumo Better Stack",
-      "Resumo Markdown de monitores e incidentes",
-      "automations/betterstack-ops-digest.ps1 -OutputPath out/betterstack-ops-digest.md"
-    ],
-    [
-      "Loop de qualidade",
-      "Regra global para reduzir retrabalho em entregas relevantes",
-      "Spec -> Build -> Review -> Fix -> Deliver"
-    ],
-    [
-      "5 Conselheiros",
-      "Filtro crítico sempre ativo para decisões e recomendações",
-      "Cético -> Origem -> Expansionista -> Forasteiro -> Executor"
-    ]
-  ],
-  "memories": [
-    {
-      "id": "mem-routing-layer",
-      "type": "routing",
-      "title": "Usar roteador central em pedidos não triviais",
-      "description": "Usar o roteador central e a política de roteamento para escolher domínio, agente, competências e verificação quando o pedido exigir decisão técnica.",
-      "priority": "high",
-      "related": "master-router-agent.md",
-      "createdAt": "2026-06-19"
-    },
-    {
-      "id": "mem-memory-split",
-      "type": "context",
-      "title": "Separar roteamento, memória e workflows",
-      "description": "Usar regras de roteamento para decisão, memória do projeto para contexto durável e workflows para procedimentos repetíveis.",
-      "priority": "high",
-      "related": "PROJECT_MEMORY.md",
-      "createdAt": "2026-06-19"
-    }
-  ],
-  "generatedAt": "2026-07-19"
+  decisions:[
+    ['Versão pública sanitizada','Não expor nomes internos, caminhos locais, credenciais ou arquitetura operacional privada.','alta'],
+    ['Núcleo central fixo','O Cérebro Central deve estar no meio visual e conceitual do sistema.','alta'],
+    ['Crítica antes de concordar','Aplicar os 5 Conselheiros em decisões e recomendações relevantes.','alta'],
+    ['Qualidade antes da entrega','Usar Spec -> Build -> Review para reduzir retrabalho e evitar entregas meia boca.','alta'],
+    ['Menos nós, mais clareza','Preferir domínios públicos fortes em vez de inventário denso e confuso.','média'],
+    ['Verificação proporcional','Aumentar validação em segurança, produção, código, documentos e interface.','média']
+  ]
 };
-const positions=[[22,24],[34,16],[47,13],[60,16],[75,25],[80,41],[74,58],[62,70],[50,75],[38,70],[27,58],[20,43],[25,34],[36,34],[44,45],[58,44],[67,51],[50,58],[42,25]];
-const center={x:510,y:330};let selected=data.agents[0];const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
-const domainText={Routing:'Decisão de agente e verificação.',M365:'Exchange, Graph, Teams e SharePoint.',ITSM:'Freshservice, Jira e routing.',Azure:'Function Apps e deployment.','Azure Ops':'KQL, logs e alertas.',Security:'Segredos, exposição e permissões.',Automation:'Scripts, CLIs e runbooks.',Identity:'Entra ID, RBAC e consentimento.',Docs:'Runbooks, relatórios e Office.',UI:'Painels e QA visual.',Incidents:'Alertas e comunicação.',Performance:'Latência e profiling.',Systems:'Rollout e fornecedores.',Context:'Handoff e limites.','AI workflow':'Competências, prompts, produtividade e qualidade de entrega.','AI Governance':'Governança e agentes.'};
-function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}function risk(l){return l==='critical'?'critical':l==='core'?'core':'normal'}function levelLabel(l){return l==='critical'?'crítico':l==='core'?'central':'normal'}function statusLabel(s){return s==='active'?'ativo':s==='done'?'concluído':s==='watch'?'em observação':s}
-function example(a){if(a.domain==='M365')return'Use para captura somente leitura antes de mexer em Exchange/Graph.';if(a.domain==='ITSM')return'Use para diagnosticar Freshservice/Jira sem duplicar tickets.';if(a.domain.includes('Azure'))return'Use para logs, Function Apps, KQL e alertas.';if(a.domain==='Automation')return'Use para converter rotina manual em script ou runbook.';return'Use quando o pedido cair neste domínio e precisar de roteamento claro.'}
-function renderKpis(){const domains=new Set(data.agents.map(a=>a.domain)).size;$('#kpis').innerHTML=[['Agentes',data.agents.length,'Especialistas locais'],['Competências',data.skills.length,'Capacidades reutilizáveis'],['Workflows',data.workflows.length,'Procedimentos prontos'],['Domínios',domains,'Áreas cobertas']].map(x=>`<article class="kpi"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join('')}
-function renderMap(){const map=$('#map');$$('.pill').forEach(e=>e.remove());$('#traces').innerHTML='';data.agents.forEach((a,i)=>{const p=positions[i%positions.length],x=p[0]*10,y=p[1]*6.6;const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',`M ${center.x} ${center.y} C ${(center.x+x)/2} ${center.y}, ${(center.x+x)/2} ${y}, ${x} ${y}`);path.setAttribute('class',`trace ${a===selected?'active':''}`);$('#traces').appendChild(path);const b=document.createElement('button');b.className=`pill ${a===selected?'active':''}`;b.style.left=p[0]+'%';b.style.top=p[1]+'%';b.textContent=a.name;b.style.animationDelay=`${Math.min(i*.025,.35)}s`;b.onclick=()=>select(a);map.appendChild(b)})}
-function renderDetail(){$('#detail').innerHTML=`<h3>${esc(selected.name)}</h3><p>${esc(selected.description)}</p><div class="tags"><span class="tag ${risk(selected.level)}">${levelLabel(selected.level)}</span><span class="tag">${esc(selected.domain)}</span></div><dl class="meta"><div><dt>Quando usar</dt><dd>${esc(example(selected))}</dd></div><div><dt>Arquivo técnico</dt><dd>${esc(selected.file)}</dd></div><div><dt>Atualizado em</dt><dd>${esc(selected.updatedAt||'sem data')}</dd></div><div><dt>Competências</dt><dd><div class="tags">${selected.skills.map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div></dd></div><div><dt>Estado operacional</dt><dd>Opera no domínio ${esc(selected.domain)} com escopo, competências e verificação proporcionais ao risco.</dd></div></dl>`}
-function renderDomains(){const c={};data.agents.forEach(a=>c[a.domain]=(c[a.domain]||0)+1);$('#domains').innerHTML=Object.entries(c).map(([d,n])=>`<article class="domaincard searchable" data-search="${esc(d+' '+(domainText[d]||''))}"><h3>${esc(d)}</h3><p>${esc(domainText[d]||'Área operacional.')}</p><div class="tags"><span class="tag">${n} agente${n>1?'s':''}</span></div></article>`).join('')}
-function renderAgents(){$('#agentGrid').innerHTML=data.agents.map(a=>`<article class="agentcard searchable" data-file="${esc(a.file)}" data-search="${esc([a.name,a.file,a.domain,a.description,...a.skills].join(' '))}"><h3>${esc(a.name)}</h3><p>${esc(a.description)}</p><div class="tags"><span class="tag ${risk(a.level)}">${levelLabel(a.level)}</span><span class="tag">${esc(a.domain)}</span><span class="tag">Atualizado ${esc(a.updatedAt||'sem data')}</span></div></article>`).join('');$$('.agentcard').forEach(c=>c.onclick=()=>select(data.agents.find(a=>a.file===c.dataset.file)))}
-function renderWorkflows(){$('#workflows').innerHTML=data.workflows.map(w=>`<article class="opcard searchable" data-search="${esc([w.name,w.owner,w.summary,(w.steps||[]).join(' ')].join(' '))}"><h3>${esc(w.name)}</h3><p>${esc(w.summary)}</p><div class="tags"><span class="tag ${w.status==='active'?'core':w.status==='watch'?'critical':'normal'}">${statusLabel(w.status)}</span><span class="tag">${esc(w.owner)}</span></div></article>`).join('')}
-function renderCommands(){$('#commandGrid').innerHTML=data.commands.map((r,i)=>`<article class="cmdcard searchable" data-search="${esc(r.join(' '))}"><div class="cmdtop"><h3>${esc(r[0])}</h3><button class="copybtn" type="button" data-command-index="${i}">Copiar</button></div><p>${esc(r[1])}</p><code class="code">${esc(r[2])}</code></article>`).join('');$$('.copybtn').forEach(b=>b.onclick=()=>copyCommand(data.commands[Number(b.dataset.commandIndex)][2],b))}
-function copyCommand(text,button){const done=()=>{const old=button.textContent;button.textContent='Copiado';showToast('Comando copiado');setTimeout(()=>button.textContent=old,1400)};if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done).catch(()=>fallbackCopy(text,done))}else{fallbackCopy(text,done)}}function fallbackCopy(text,done){const t=document.createElement('textarea');t.value=text;t.setAttribute('readonly','');t.style.position='fixed';t.style.left='-999px';document.body.appendChild(t);t.select();try{document.execCommand('copy')}catch(e){}t.remove();done()}function showToast(message){const toast=$('#toast');if(!toast)return;toast.textContent=message;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1600)}function select(a){if(!a)return;selected=a;renderMap();renderDetail()}function search(q){q=q.trim().toLowerCase();$$('.searchable').forEach(e=>e.classList.toggle('hidden',q&&!e.dataset.search.toLowerCase().includes(q)))}
-renderKpis();renderMap();renderDetail();renderDomains();renderAgents();renderWorkflows();renderCommands();$('#search').oninput=e=>search(e.target.value);
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let selected=data.agents[0];
+function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
+function riskLabel(r){return r==='core'?'central':r==='critical'?'crítico':'normal'}
+function renderKpis(){const domains=new Set(data.agents.map(a=>a.domain)).size;$('#kpis').innerHTML=[['Domínios',domains,'Áreas públicas'],['Competências',new Set(data.agents.flatMap(a=>a.skills)).size,'Capacidades agrupadas'],['Quality Gate',data.quality.length,'Etapas de entrega'],['Exposição','0','Nomes internos novos']].map(x=>`<article class="kpi"><span>${x[0]}</span><b>${x[1]}</b><small>${x[2]}</small></article>`).join('')}
+function point(a){return{x:a.x*10,y:a.y*6.6}}
+function renderBrain(){const stage=$('#brain'),paths=$('#paths'),micro=$('#micro');$$('.node').forEach(n=>n.remove());paths.innerHTML='';micro.innerHTML='';data.agents.filter(a=>a.id!=='central').forEach((a,i)=>{const p=point(a);const c={x:500,y:330};const path=document.createElementNS('http://www.w3.org/2000/svg','path');path.setAttribute('d',`M ${c.x} ${c.y} C ${(c.x+p.x)/2} ${c.y-90}, ${(c.x+p.x)/2} ${p.y+70}, ${p.x} ${p.y}`);path.setAttribute('class',`orbit-line ${selected.id===a.id?'active':''}`);path.style.animationDelay=`${i*.18}s`;paths.appendChild(path);const dot=document.createElementNS('http://www.w3.org/2000/svg','circle');dot.setAttribute('class','micro-node');dot.setAttribute('cx',p.x);dot.setAttribute('cy',p.y);dot.setAttribute('r','2.5');dot.style.animationDelay=`${i*.13}s`;micro.appendChild(dot);const b=document.createElement('button');b.className=`node ${selected.id===a.id?'active':''} ${a.risk==='core'?'core':''}`;b.style.left=a.x+'%';b.style.top=a.y+'%';b.textContent=a.name;b.onclick=()=>select(a);stage.appendChild(b)});$('#centerChip').onclick=()=>select(data.agents[0]);$('#centerChip').onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(data.agents[0])}}}
+function renderDetail(){const a=selected;$('#detail').innerHTML=`<h3>${esc(a.name)}</h3><p>${esc(a.summary)}</p><div class="tags"><span class="tag ${a.risk}">${riskLabel(a.risk)}</span><span class="tag">${esc(a.domain)}</span></div><dl class="meta"><div><dt>Função pública</dt><dd>${esc(a.domain)} dentro do mapa de trabalho assistido por IA.</dd></div><div><dt>Competências</dt><dd><div class="tags">${a.skills.map(s=>`<span class="tag">${esc(s)}</span>`).join('')}</div></dd></div><div><dt>Critério de qualidade</dt><dd>Entregar só depois de clarificar, executar o escopo e revisar contra critérios proporcionais ao risco.</dd></div></dl>`}
+function renderFlow(){ $('#flow').innerHTML=data.quality.map((s,i)=>`<article class="step searchable" data-step="${i+1}" data-search="${esc(s.join(' '))}"><h3>${esc(s[0])}</h3><p>${esc(s[1])}</p></article>`).join('') }
+function renderDomains(){const c={};data.agents.forEach(a=>c[a.domain]=(c[a.domain]||0)+1);$('#domains').innerHTML=Object.entries(c).map(([d,n])=>`<article class="card searchable" data-search="${esc(d)}"><h3>${esc(d)}</h3><p>${n} elemento${n>1?'s':''} ligado${n>1?'s':''} ao cérebro operacional público.</p><div class="tags"><span class="tag">${n}</span></div></article>`).join('')}
+function renderAgents(){ $('#agentGrid').innerHTML=data.agents.map(a=>`<article class="card clickable searchable" data-id="${esc(a.id)}" data-search="${esc([a.name,a.domain,a.summary,...a.skills].join(' '))}"><h3>${esc(a.name)}</h3><p>${esc(a.summary)}</p><div class="tags"><span class="tag ${a.risk}">${riskLabel(a.risk)}</span><span class="tag">${esc(a.domain)}</span></div></article>`).join('');$$('.clickable').forEach(c=>c.onclick=()=>select(data.agents.find(a=>a.id===c.dataset.id))) }
+function renderDecisions(){ $('#decisions').innerHTML=data.decisions.map(d=>`<article class="card searchable" data-search="${esc(d.join(' '))}"><h3>${esc(d[0])}</h3><p>${esc(d[1])}</p><div class="tags"><span class="tag ${d[2]==='alta'?'critical':'normal'}">${esc(d[2])}</span></div></article>`).join('') }
+function select(a){selected=a;renderBrain();renderDetail();const toast=$('#toast');toast.textContent=`Selecionado: ${a.name}`;toast.classList.add('show');setTimeout(()=>toast.classList.remove('show'),1200)}
+function search(q){q=q.trim().toLowerCase();$$('.searchable').forEach(e=>e.classList.toggle('hidden',q&&!e.dataset.search.toLowerCase().includes(q)))}
+renderKpis();renderBrain();renderDetail();renderFlow();renderDomains();renderAgents();renderDecisions();$('#search').oninput=e=>search(e.target.value);
 </script>
-<div class="toast" id="toast" role="status" aria-live="polite">Comando copiado</div></body>
+</body>
 </html>
-
