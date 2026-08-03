@@ -20,6 +20,8 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 - filtro crítico dos 5 Conselheiros para evitar validação automática;
 - loop Spec -> Build -> Review -> Fix -> Deliver para reduzir retrabalho;
 - níveis de risco e verificação proporcionais ao impacto;
+- checks de supply chain, exposição pública e proveniência de entrega;
+- governança viva para agentes, automações, custo, revisão e desligamento;
 - versão pública sanitizada, sem nomes internos, caminhos locais ou credenciais.
 
 ## Indicado Para
@@ -55,5 +57,7 @@ Esta é a versão pública e sanitizada. O workspace original, scripts reais, no
 - Organização pública de agentes e competências.
 - Qualidade de entrega com especificação, execução controlada e revisão.
 - Filtro crítico antes de recomendações importantes.
+- Segurança de publicação com revisão de segredos, artefatos e exposição pública.
+- Governança de agentes com inventário, dono, limites e ciclo de vida.
 - Frontend estático com animação leve e sem dependência de backend.
 - Publicação de portfólio com atenção à segurança.

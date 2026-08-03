@@ -49,13 +49,13 @@ const data={
     {id:'decision',name:'Conselho Crítico',domain:'Decisão',risk:'core',x:24,y:28,summary:'Evita respostas agradáveis e força análise por risco, origem, oportunidade, visão externa e próximo passo.',skills:['Cético','Pensador de origem','Expansionista','Forasteiro','Executor']},
     {id:'engineering',name:'Engenharia',domain:'Código',risk:'normal',x:76,y:28,summary:'Apoia análise de repositório, implementação controlada, testes e revisão de mudanças.',skills:['Mapa do projeto','Ciclo de mudança','Estratégia de testes']},
     {id:'automation',name:'Automação',domain:'Automação',risk:'normal',x:83,y:46,summary:'Transforma rotinas manuais em scripts, ferramentas internas, runbooks e fluxos repetíveis.',skills:['Desenho de automação','Ferramentas internas','Runbook para automação']},
-    {id:'cloud',name:'Nuvem e Observabilidade',domain:'Nuvem',risk:'critical',x:75,y:66,summary:'Apoia workloads cloud, deploys, logs, métricas, alertas e diagnóstico operacional.',skills:['Engenharia cloud','Deploy seguro','Observabilidade']},
-    {id:'security',name:'Segurança e Exposição',domain:'Segurança',risk:'critical',x:50,y:76,summary:'Revê ameaças, segredos, permissões, exposição pública e riscos antes de publicar ou operar.',skills:['Modelo de ameaças','Prevenção de segredos','Revisão de exposição']},
+    {id:'cloud',name:'Nuvem e Observabilidade',domain:'Nuvem',risk:'critical',x:75,y:66,summary:'Apoia workloads cloud, hosting serverless, migrações de runtime, deploys, logs, métricas, alertas e diagnóstico operacional.',skills:['Engenharia cloud','Deploy seguro','Observabilidade','Migração serverless']},
+    {id:'security',name:'Segurança e Exposição',domain:'Segurança',risk:'critical',x:50,y:76,summary:'Revê ameaças, segredos, permissões, exposição pública, CI/CD e proveniência antes de publicar ou operar.',skills:['Modelo de ameaças','Prevenção de segredos','Revisão de exposição','Proveniência de artefatos']},
     {id:'identity',name:'Identidade e Acessos',domain:'Acessos',risk:'critical',x:27,y:67,summary:'Analisa grupos, permissões, papéis, consentimentos e acesso com princípio de menor privilégio.',skills:['Gestão de identidade','Revisão de permissões','Controlo de acesso']},
     {id:'ops',name:'Operações de Serviço',domain:'Operações',risk:'normal',x:17,y:48,summary:'Apoia incidentes, tickets, integrações operacionais, comunicação e melhoria contínua.',skills:['Gestão de incidentes','Integração de serviços','Resumo operacional']},
     {id:'docs',name:'Documentação',domain:'Documentação',risk:'normal',x:31,y:39,summary:'Produz runbooks, relatórios, notas técnicas e documentação clara a partir do trabalho real.',skills:['Documentação do código','Relatórios','Texto direto']},
     {id:'product',name:'Produto e Interface',domain:'Produto',risk:'critical',x:69,y:39,summary:'Desenha interfaces, dashboards e experiências verificáveis, com foco em uso real.',skills:['Design de interface','QA visual','Boas práticas frontend']},
-    {id:'governance',name:'Governança de IA',domain:'Governança',risk:'critical',x:63,y:61,summary:'Define inventário, donos, dados, permissões, limites, observabilidade e ciclo de vida de agentes.',skills:['Governança de IA','Arquitetura de agentes','Segurança de agentes']},
+    {id:'governance',name:'Governança de IA',domain:'Governança',risk:'critical',x:63,y:61,summary:'Define inventário, identidades, donos, dados, permissões, limites, custo, observabilidade e ciclo de vida de agentes.',skills:['Governança de IA','Arquitetura de agentes','Segurança de agentes','Inventário de agentes']},
     {id:'context',name:'Continuidade',domain:'Contexto',risk:'normal',x:38,y:60,summary:'Controla conversas longas, handoffs compactos, poupança de contexto e retomada eficiente.',skills:['Gestão de limites','Handoff compacto','Poupança de tokens']}
   ],
   quality:[
@@ -67,11 +67,13 @@ const data={
   ],
   decisions:[
     ['Versão pública sanitizada','Não expor nomes internos, caminhos locais, credenciais ou arquitetura operacional privada.','alta'],
+    ['Supply chain verificável','Preferir credenciais federadas, artefatos assináveis e rastreio de origem em pipelines relevantes.','alta'],
     ['Núcleo central fixo','O Cérebro Central deve estar no meio visual e conceitual do sistema.','alta'],
     ['Crítica antes de concordar','Aplicar os 5 Conselheiros em decisões e recomendações relevantes.','alta'],
     ['Qualidade antes da entrega','Usar Spec -> Build -> Review para reduzir retrabalho e evitar entregas meia boca.','alta'],
     ['Menos nós, mais clareza','Preferir domínios públicos fortes em vez de inventário denso e confuso.','média'],
-    ['Verificação proporcional','Aumentar validação em segurança, produção, código, documentos e interface.','média']
+    ['Verificação proporcional','Aumentar validação em segurança, produção, código, documentos e interface.','média'],
+    ['Governança viva','Manter inventário, dono, ciclo de revisão, custo e desligamento para agentes e automações.','média']
   ]
 };
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let selected=data.agents[0];
