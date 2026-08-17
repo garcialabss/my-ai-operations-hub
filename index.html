@@ -55,7 +55,7 @@ const data={
     {id:'ops',name:'Operações de Serviço',domain:'Operações',risk:'normal',x:17,y:48,summary:'Apoia incidentes, tickets, integrações operacionais, comunicação e melhoria contínua.',skills:['Gestão de incidentes','Integração de serviços','Resumo operacional']},
     {id:'docs',name:'Documentação',domain:'Documentação',risk:'normal',x:31,y:39,summary:'Produz runbooks, relatórios, notas técnicas e documentação clara a partir do trabalho real.',skills:['Documentação do código','Relatórios','Texto direto']},
     {id:'product',name:'Produto e Interface',domain:'Produto',risk:'critical',x:69,y:39,summary:'Desenha interfaces, dashboards e experiências verificáveis, com foco em uso real.',skills:['Design de interface','QA visual','Boas práticas frontend']},
-    {id:'governance',name:'Governança de IA',domain:'Governança',risk:'critical',x:63,y:61,summary:'Define inventário, identidades, donos, dados, permissões, limites, custo, observabilidade e ciclo de vida de agentes.',skills:['Governança de IA','Arquitetura de agentes','Segurança de agentes','Inventário de agentes']},
+    {id:'governance',name:'Governança de IA',domain:'Governança',risk:'critical',x:63,y:61,summary:'Define inventário, identidades, donos, dados, permissões, publicação, limites, custo, observabilidade e ciclo de vida de agentes.',skills:['Governança de IA','Arquitetura de agentes','Segurança de agentes','Inventário de agentes','Gate de publicação']},
     {id:'context',name:'Continuidade',domain:'Contexto',risk:'normal',x:38,y:60,summary:'Controla conversas longas, handoffs compactos, poupança de contexto e retomada eficiente.',skills:['Gestão de limites','Handoff compacto','Poupança de tokens']}
   ],
   quality:[
@@ -73,7 +73,8 @@ const data={
     ['Qualidade antes da entrega','Usar Spec -> Build -> Review para reduzir retrabalho e evitar entregas meia boca.','alta'],
     ['Menos nós, mais clareza','Preferir domínios públicos fortes em vez de inventário denso e confuso.','média'],
     ['Verificação proporcional','Aumentar validação em segurança, produção, código, documentos e interface.','média'],
-    ['Governança viva','Manter inventário, dono, ciclo de revisão, custo e desligamento para agentes e automações.','média']
+    ['Governança viva','Manter inventário, dono, ciclo de revisão, custo e desligamento para agentes e automações.','média'],
+    ['Publicação controlada','Disponibilizar agentes a mais utilizadores só depois de validar público, permissões, dados, aprovação, telemetria e rollback.','alta']
   ]
 };
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let selected=data.agents[0];
