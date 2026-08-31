@@ -44,7 +44,7 @@
 <script>
 const data={
   agents:[
-    {id:'central',name:'Cérebro Central',domain:'Roteamento',risk:'core',x:50,y:50,summary:'Classifica pedidos, escolhe o melhor especialista, controla profundidade, contexto e verificação.',skills:['Roteamento inteligente','5 Conselheiros','Loop de qualidade','Poupança de contexto']},
+    {id:'central',name:'Cérebro Central',domain:'Roteamento',risk:'core',x:50,y:50,summary:'Classifica pedidos, escolhe o melhor especialista, controla profundidade, contexto, APIs legadas e verificação.',skills:['Roteamento inteligente','5 Conselheiros','Loop de qualidade','Poupança de contexto','Auditoria de APIs legadas']},
     {id:'quality',name:'Qualidade de Entrega',domain:'Qualidade',risk:'core',x:50,y:18,summary:'Garante que trabalhos relevantes seguem Spec, Build, Review, Fix e Deliver antes da entrega.',skills:['Spec antes de construir','Construir pela spec','Revisar contra critérios','Definição de pronto']},
     {id:'decision',name:'Conselho Crítico',domain:'Decisão',risk:'core',x:24,y:28,summary:'Evita respostas agradáveis e força análise por risco, origem, oportunidade, visão externa e próximo passo.',skills:['Cético','Pensador de origem','Expansionista','Forasteiro','Executor']},
     {id:'engineering',name:'Engenharia',domain:'Código',risk:'normal',x:76,y:28,summary:'Apoia análise de repositório, implementação controlada, testes e revisão de mudanças.',skills:['Mapa do projeto','Ciclo de mudança','Estratégia de testes']},
@@ -55,7 +55,7 @@ const data={
     {id:'ops',name:'Operações de Serviço',domain:'Operações',risk:'normal',x:17,y:48,summary:'Apoia incidentes, tickets, integrações operacionais, comunicação e melhoria contínua.',skills:['Gestão de incidentes','Integração de serviços','Resumo operacional']},
     {id:'docs',name:'Documentação',domain:'Documentação',risk:'normal',x:31,y:39,summary:'Produz runbooks, relatórios, notas técnicas e documentação clara a partir do trabalho real.',skills:['Documentação do código','Relatórios','Texto direto']},
     {id:'product',name:'Produto e Interface',domain:'Produto',risk:'critical',x:69,y:39,summary:'Desenha interfaces, dashboards e experiências verificáveis, com foco em uso real.',skills:['Design de interface','QA visual','Boas práticas frontend']},
-    {id:'governance',name:'Governança de IA',domain:'Governança',risk:'critical',x:63,y:61,summary:'Define inventário, identidades, donos, dados, permissões, publicação, limites, custo, insights, rubricas e ciclo de vida de agentes.',skills:['Governança de IA','Arquitetura de agentes','Segurança de agentes','Inventário de agentes','Gate de publicação','Rubricas de teste']},
+    {id:'governance',name:'Governança de IA',domain:'Governança',risk:'critical',x:63,y:61,summary:'Define inventário, identidades, donos, dados, permissões, publicação, distribuição, limites, custo, insights, rubricas e ciclo de vida de agentes.',skills:['Governança de IA','Arquitetura de agentes','Segurança de agentes','Inventário de agentes','Gate de publicação','Rubricas de teste','Distribuição controlada']},
     {id:'context',name:'Continuidade',domain:'Contexto',risk:'normal',x:38,y:60,summary:'Controla conversas longas, handoffs compactos, poupança de contexto e retomada eficiente.',skills:['Gestão de limites','Handoff compacto','Poupança de tokens']}
   ],
   quality:[
@@ -76,7 +76,9 @@ const data={
     ['Governança viva','Manter inventário, dono, ciclo de revisão, custo e desligamento para agentes e automações.','média'],
     ['Publicação controlada','Disponibilizar agentes a mais utilizadores só depois de validar público, permissões, dados, aprovação, telemetria e rollback.','alta'],
     ['Partilha restrita','Preferir execução sem edição quando utilizadores só precisam usar o agente, preservando instruções, conectores e governança.','alta'],
-    ['CI sob aprovação','Tratar workflows retidos ou suspeitos como sinal de segurança, revisando permissões, triggers e ações antes de aprovar.','alta']
+    ['CI sob aprovação','Tratar workflows retidos ou suspeitos como sinal de segurança, revisando permissões, triggers e ações antes de aprovar.','alta'],
+    ['APIs legadas','Não iniciar trabalho novo em APIs descontinuadas; auditar dependências antigas e planear migração antes de expandir.','alta'],
+    ['Distribuição controlada','Tratar partilha em equipas, catálogos ou lojas internas como publicação, com audiência e aprovação verificadas.','alta']
   ]
 };
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let selected=data.agents[0];
