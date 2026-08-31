@@ -24,6 +24,8 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 - governança viva para agentes, automações, custo, revisão e desligamento;
 - gate de publicação de agentes antes de ampliar o público de uso;
 - aprovação de workflows suspeitos e partilha restrita para uso governado;
+- auditoria de APIs legadas antes de expandir integrações;
+- distribuição controlada de agentes por audiência, aprovação e rollback;
 - versão pública sanitizada, sem nomes internos, caminhos locais ou credenciais.
 
 ## Indicado Para
@@ -60,6 +62,6 @@ Esta é a versão pública e sanitizada. O workspace original, scripts reais, no
 - Qualidade de entrega com especificação, execução controlada e revisão.
 - Filtro crítico antes de recomendações importantes.
 - Segurança de publicação com revisão de segredos, artefatos e exposição pública.
-- Governança de agentes com inventário, dono, limites, rubricas, publicação controlada e ciclo de vida.
+- Governança de agentes com inventário, dono, limites, rubricas, publicação/distribuição controlada e ciclo de vida.
 - Frontend estático com animação leve e sem dependência de backend.
 - Publicação de portfólio com atenção à segurança.
