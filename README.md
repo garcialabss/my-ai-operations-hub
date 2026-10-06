@@ -24,8 +24,11 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 - governança viva para agentes, automações, custo, revisão e desligamento;
 - gate de publicação de agentes antes de ampliar o público de uso;
 - aprovação de workflows suspeitos e partilha restrita para uso governado;
-- auditoria de APIs legadas antes de expandir integrações;
+- gestão do ciclo de vida tecnológico e migração antes do encerramento de produtos ou APIs;
 - decisão explícita entre orquestração direta e agentes cloud geridos para trabalhos longos;
+- workflows codificados com etapas, checkpoints e resultados estruturados para processos repetíveis;
+- conectividade privada por transporte de saída governado, sem exposição pública desnecessária;
+- revisão de código iniciada por API com profundidade proporcional ao risco;
 - inventário por API e analytics por agente antes de ampliar distribuição;
 - distribuição controlada de agentes por audiência, aprovação e rollback;
 - versão pública sanitizada, sem nomes internos, caminhos locais ou credenciais.
