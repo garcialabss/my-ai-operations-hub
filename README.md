@@ -16,6 +16,7 @@ O GitHub Pages está configurado a partir da branch `gh-pages`.
 Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 
 - cérebro central no meio da tomada de decisão;
+- mapa neural animado com modo Rede para exploração e modo Ciclo para visualizar decisão, engenharia, validação e entrega;
 - agentes organizados por domínio público;
 - filtro crítico dos 5 Conselheiros para evitar validação automática;
 - loop Spec -> Build -> Review -> Validate -> Fix -> Deliver para reduzir retrabalho;
