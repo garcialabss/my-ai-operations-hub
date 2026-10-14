@@ -20,6 +20,7 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 - superfície de controlo com estado da sessão, pesquisa transversal e indicadores derivados do modelo público;
 - matriz operacional por zonas de decisão, construção, proteção e operação;
 - inventário filtrável de agentes, competências, criticidade e cobertura;
+- métricas explicáveis, com interpretação e limites acessíveis por clique;
 - rastreio local das interações e controlos de governança priorizados;
 - agentes organizados por domínio público;
 - filtro crítico dos 5 Conselheiros para evitar validação automática;
