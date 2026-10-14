@@ -17,6 +17,10 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 
 - cérebro central no meio da tomada de decisão;
 - mapa neural animado com modo Rede para exploração e modo Ciclo para visualizar decisão, engenharia, validação e entrega;
+- superfície de controlo com estado da sessão, pesquisa transversal e indicadores derivados do modelo público;
+- matriz operacional por zonas de decisão, construção, proteção e operação;
+- inventário filtrável de agentes, competências, criticidade e cobertura;
+- rastreio local das interações e controlos de governança priorizados;
 - agentes organizados por domínio público;
 - filtro crítico dos 5 Conselheiros para evitar validação automática;
 - loop Spec -> Build -> Review -> Validate -> Fix -> Deliver para reduzir retrabalho;
