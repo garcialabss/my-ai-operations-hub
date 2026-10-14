@@ -45,9 +45,10 @@
 const data={
   agents:[
     {id:'central',name:'Cérebro Central',domain:'Roteamento',risk:'core',x:50,y:50,summary:'Classifica pedidos, escolhe o melhor especialista e controla profundidade, contexto, agentes geridos, ciclo de vida tecnológico e verificação.',skills:['Roteamento inteligente','5 Conselheiros','Loop de qualidade','Poupança de contexto','Ciclo de vida tecnológico','Agentes cloud geridos']},
-    {id:'quality',name:'Qualidade de Entrega',domain:'Qualidade',risk:'core',x:50,y:18,summary:'Garante que trabalhos relevantes seguem Spec, Build, Review, Fix e Deliver antes da entrega.',skills:['Spec antes de construir','Construir pela spec','Revisar contra critérios','Definição de pronto']},
+    {id:'quality',name:'Qualidade de Entrega',domain:'Qualidade',risk:'core',x:50,y:18,summary:'Garante que trabalhos relevantes seguem Spec, Build, Review, Validate, Fix e Deliver antes da entrega.',skills:['Spec antes de construir','Construir pela spec','Revisar contra critérios','Validação executável','Definição de pronto']},
     {id:'decision',name:'Conselho Crítico',domain:'Decisão',risk:'core',x:24,y:28,summary:'Evita respostas agradáveis e força análise por risco, origem, oportunidade, visão externa e próximo passo.',skills:['Cético','Pensador de origem','Expansionista','Forasteiro','Executor']},
     {id:'engineering',name:'Engenharia',domain:'Código',risk:'normal',x:76,y:28,summary:'Apoia análise de repositório, implementação controlada, testes e revisão de mudanças proporcional ao risco.',skills:['Mapa do projeto','Ciclo de mudança','Estratégia de testes','Revisão por API']},
+    {id:'validation',name:'Auditor de Código',domain:'Validação',risk:'critical',x:88,y:16,summary:'Submete código e configuração executável a validação de sintaxe, argumentos, tipos, schemas, testes e execução segura antes da entrega.',skills:['Validação de sintaxe','Verificação de argumentos','Testes focados','Smoke test seguro','Evidência PASS, PARTIAL ou BLOCKED']},
     {id:'automation',name:'Automação',domain:'Automação',risk:'normal',x:83,y:46,summary:'Transforma rotinas manuais em scripts, ferramentas internas, runbooks e workflows reproduzíveis.',skills:['Desenho de automação','Ferramentas internas','Runbook para automação','Workflows dinâmicos']},
     {id:'cloud',name:'Nuvem e Observabilidade',domain:'Nuvem',risk:'critical',x:75,y:66,summary:'Apoia workloads cloud, hosting serverless, compatibilidade de runtime, deploys, logs, métricas, alertas e diagnóstico operacional.',skills:['Engenharia cloud','Deploy seguro','Observabilidade','Inventário de runtime','Migração serverless']},
     {id:'security',name:'Segurança e Exposição',domain:'Segurança',risk:'critical',x:50,y:76,summary:'Revê ameaças, segredos, permissões, isolamento de execução, conectividade privada, exposição pública, CI/CD e proveniência antes de publicar ou operar.',skills:['Modelo de ameaças','Prevenção de segredos','Revisão de exposição','Sandbox local','Conectividade privada','Proveniência de artefatos','Aprovação de workflows']},
@@ -62,6 +63,7 @@ const data={
     ['Spec','Clarificar objetivo, escopo, requisitos e critérios antes de construir.'],
     ['Build','Executar somente o combinado, sem inventar recurso ou mexer fora do escopo.'],
     ['Review','Comparar contra critérios, segurança, qualidade e verificação esperada.'],
+    ['Validate','Executar parsers, tipos, schemas, testes e um caminho representativo seguro antes de afirmar que funciona.'],
     ['Fix','Corrigir falhas encontradas antes de dizer que está pronto.'],
     ['Deliver','Entregar resumo honesto: feito, verificado, riscos e próximo passo.']
   ],
@@ -70,7 +72,7 @@ const data={
     ['Supply chain verificável','Preferir credenciais federadas, artefatos assináveis e rastreio de origem em pipelines relevantes.','alta'],
     ['Núcleo central fixo','O Cérebro Central deve estar no meio visual e conceitual do sistema.','alta'],
     ['Crítica antes de concordar','Aplicar os 5 Conselheiros em decisões e recomendações relevantes.','alta'],
-    ['Qualidade antes da entrega','Usar Spec -> Build -> Review para reduzir retrabalho e evitar entregas meia boca.','alta'],
+    ['Qualidade antes da entrega','Usar Spec -> Build -> Review -> Validate para reduzir retrabalho e evitar entregas sem evidência.','alta'],
     ['Menos nós, mais clareza','Preferir domínios públicos fortes em vez de inventário denso e confuso.','média'],
     ['Verificação proporcional','Aumentar validação em segurança, produção, código, documentos e interface; em revisões automatizadas, ajustar profundidade ao risco.','média'],
     ['Governança viva','Manter inventário, dono, ciclo de revisão, custo e desligamento para agentes e automações.','média'],
@@ -84,7 +86,8 @@ const data={
     ['Orquestração verificável','Usar workflows codificados com etapas, resultados estruturados e checkpoints quando um processo repetido exigir agentes ou execução prolongada.','média'],
     ['Conectividade privada','Ligar ferramentas internas por transporte de saída governado, permissões restritas e auditoria, sem criar exposição pública desnecessária.','alta'],
     ['Execução isolada','Executar comandos de agentes dentro de limites verificáveis de ficheiros, rede e credenciais; falhar fechado quando o isolamento não puder ser aplicado.','alta'],
-    ['Agentes sem responsável','Detetar identidades, ligações, ambientes ou fontes abandonadas e colocar o agente em quarentena ou desativá-lo com registo auditável.','alta']
+    ['Agentes sem responsável','Detetar identidades, ligações, ambientes ou fontes abandonadas e colocar o agente em quarentena ou desativá-lo com registo auditável.','alta'],
+    ['Código com evidência','Não declarar código pronto apenas por inspeção; distinguir validação completa, parcial e bloqueada com os testes realmente executados.','alta']
   ]
 };
 const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];let selected=data.agents[0];
