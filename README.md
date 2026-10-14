@@ -18,7 +18,8 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 - cérebro central no meio da tomada de decisão;
 - agentes organizados por domínio público;
 - filtro crítico dos 5 Conselheiros para evitar validação automática;
-- loop Spec -> Build -> Review -> Fix -> Deliver para reduzir retrabalho;
+- loop Spec -> Build -> Review -> Validate -> Fix -> Deliver para reduzir retrabalho;
+- auditoria executável de código com sintaxe, argumentos, tipos, schemas, testes e smoke test seguro;
 - níveis de risco e verificação proporcionais ao impacto;
 - checks de supply chain, exposição pública e proveniência de entrega;
 - governança viva para agentes, automações, custo, revisão e desligamento;
@@ -67,7 +68,7 @@ Esta é a versão pública e sanitizada. O workspace original, scripts reais, no
 
 - Arquitetura de workflows com IA.
 - Organização pública de agentes e competências.
-- Qualidade de entrega com especificação, execução controlada e revisão.
+- Qualidade de entrega com especificação, execução controlada, revisão e validação executável.
 - Filtro crítico antes de recomendações importantes.
 - Segurança de publicação com revisão de segredos, artefatos e exposição pública.
 - Governança de agentes com inventário, dono, limites, rubricas, analytics, publicação/distribuição controlada e ciclo de vida.
