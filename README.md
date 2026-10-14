@@ -28,6 +28,9 @@ Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
 - decisão explícita entre orquestração direta e agentes cloud geridos para trabalhos longos;
 - workflows codificados com etapas, checkpoints e resultados estruturados para processos repetíveis;
 - conectividade privada por transporte de saída governado, sem exposição pública desnecessária;
+- sandbox local com limites verificáveis de ficheiros, rede e credenciais para execução de agentes;
+- deteção e desativação auditável de agentes sem responsável, identidade ou dependências válidas;
+- migrações de runtime condicionadas a inventário e evidência do modelo de execução realmente utilizado;
 - revisão de código iniciada por API com profundidade proporcional ao risco;
 - inventário por API e analytics por agente antes de ampliar distribuição;
 - distribuição controlada de agentes por audiência, aprovação e rollback;
