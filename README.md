@@ -1,82 +1,79 @@
 # Hub de Operações IA
 
-![Hub de Operações IA social preview](social-preview.png)
+![Pré-visualização do Hub de Operações IA](social-preview.png)
 
-Mapa interativo público de uma arquitetura de trabalho assistido por IA. O projeto mostra como um cérebro central pode coordenar agentes, competências, decisão crítica, qualidade de entrega e poupança de contexto sem expor detalhes operacionais internos.
+Sistema pessoal de operações assistidas por IA criado por Samuel Garcia. O projeto demonstra como um cérebro central pode transformar pedidos técnicos em decisões, automações e código verificado, coordenando análise crítica, agentes especializados, segurança e um ciclo de qualidade em seis etapas.
 
-## Demonstração
+## Ver o projeto
 
+- Site público: <https://garcialabss.github.io/my-ai-operations-hub/>
 - Repositório: <https://github.com/garcialabss/my-ai-operations-hub>
-- Site: <https://garcialabss.github.io/my-ai-operations-hub/>
 
-O GitHub Pages está configurado a partir da branch `gh-pages`.
+## Como funciona
 
-## Objetivo
+```text
+Pedido técnico ou operacional
+→ Cérebro Central
+→ Conselho Crítico
+→ Especialista adequado
+→ Segurança e validação
+→ Resultado verificado com riscos explícitos
+```
 
-Tornar uma arquitetura de trabalho com IA fácil de entender visualmente:
+O visitante pode executar quatro demonstrações públicas:
 
-- cérebro central no meio da tomada de decisão;
-- mapa neural animado com modo Rede para exploração e modo Ciclo para visualizar decisão, engenharia, validação e entrega;
-- superfície de controlo com estado da sessão, pesquisa transversal e indicadores derivados do modelo público;
-- matriz operacional por zonas de decisão, construção, proteção e operação;
-- inventário filtrável de agentes, competências, criticidade e cobertura;
-- métricas explicáveis, com interpretação e limites acessíveis por clique;
-- rastreio local das interações e controlos de governança priorizados;
-- agentes organizados por domínio público;
-- filtro crítico dos 5 Conselheiros para evitar validação automática;
-- loop Spec -> Build -> Review -> Validate -> Fix -> Deliver para reduzir retrabalho;
-- auditoria executável de código com sintaxe, argumentos, tipos, schemas, testes e smoke test seguro;
-- níveis de risco e verificação proporcionais ao impacto;
-- checks de supply chain, exposição pública e proveniência de entrega;
-- governança viva para agentes, automações, custo, revisão e desligamento;
-- gate de publicação de agentes antes de ampliar o público de uso;
-- aprovação de workflows suspeitos e partilha restrita para uso governado;
-- gestão do ciclo de vida tecnológico e migração antes do encerramento de produtos ou APIs;
-- decisão explícita entre orquestração direta e agentes cloud geridos para trabalhos longos;
-- workflows codificados com etapas, checkpoints e resultados estruturados para processos repetíveis;
-- conectividade privada por transporte de saída governado, sem exposição pública desnecessária;
-- sandbox local com limites verificáveis de ficheiros, rede e credenciais para execução de agentes;
-- deteção e desativação auditável de agentes sem responsável, identidade ou dependências válidas;
-- migrações de runtime condicionadas a inventário e evidência do modelo de execução realmente utilizado;
-- revisão de código iniciada por API com profundidade proporcional ao risco;
-- inventário por API e analytics por agente antes de ampliar distribuição;
-- distribuição controlada de agentes por audiência, aprovação e rollback;
-- versão pública sanitizada, sem nomes internos, caminhos locais ou credenciais.
+- criar um script PowerShell seguro;
+- investigar um incidente;
+- avaliar um novo sistema;
+- automatizar uma rotina.
 
-## Indicado Para
+Cada demonstração mostra os agentes ativados e termina com uma entrega verificável. Trata-se de uma simulação local do modelo, não de telemetria ou execução em produção.
 
-- demonstração em portfólio ou CV;
-- destaque no LinkedIn;
-- explicação de orquestração de agentes e competências;
-- apresentação de como IA pode apoiar operações, engenharia, automação, segurança, documentação e governança.
+## Capacidades apresentadas
 
-## Ficheiros
+- 14 rotas especializadas organizadas por decisão, construção, proteção e operação;
+- Conselho Crítico dos 5 Conselheiros para reduzir viés de confirmação;
+- ciclo Especificar → Construir → Rever → Validar → Corrigir → Entregar;
+- auditoria executável de PowerShell, Python, TypeScript e configuração;
+- automação, observabilidade, segurança, identidade e operações de serviço;
+- inventário e governança de agentes, permissões, custo e ciclo de vida;
+- pesquisa, filtros e mapa cerebral interativo;
+- experiência responsiva com uma leitura vertical própria para telemóvel;
+- conteúdo público sanitizado, sem credenciais ou detalhes operacionais internos.
 
-- `index.html` - site estático completo.
-- `social-preview.png` - imagem de preview para LinkedIn e redes sociais.
-- `.nojekyll` - evita processamento Jekyll no GitHub Pages.
+## Finalidade
+
+O Hub serve como projeto de portefólio e como explicação visual de uma metodologia pessoal de trabalho com IA. Demonstra competências em administração de sistemas, automação, programação, segurança, implementação tecnológica e governança de IA.
+
+## Implementação
+
+O site utiliza HTML, CSS e JavaScript sem dependências de execução ou backend. A aplicação é publicada pelo GitHub Pages e mantém toda a interação no navegador.
+
+Ficheiros principais:
+
+- `index.html` - interface, dados públicos e comportamento interativo;
+- `social-preview.png` - pré-visualização para LinkedIn e redes sociais;
+- `.nojekyll` - impede o processamento Jekyll no GitHub Pages.
 
 ## Publicação
 
-Este repositório publica o site estático a partir da branch `gh-pages` e da pasta raiz.
+O GitHub Pages publica a pasta raiz da branch configurada no repositório. Antes de cada publicação devem ser verificados:
 
-Fluxo recomendado:
+1. sintaxe do JavaScript;
+2. ausência de erros no console;
+3. comportamento da demonstração;
+4. layout em desktop e telemóvel;
+5. ausência de segredos, caminhos locais ou nomes internos.
 
-1. Manter os ficheiros fonte na branch `main`.
-2. Publicar os ficheiros estáticos na branch `gh-pages`.
-3. Ativar GitHub Pages em `gh-pages` e `/`.
+## Segurança
 
-## Nota de Segurança
+Esta é uma versão pública e sanitizada. Métricas, eventos e percursos apresentados descrevem o modelo documentado e as interações da sessão local. Não representam dados, disponibilidade ou telemetria de sistemas reais.
 
-Esta é a versão pública e sanitizada. O workspace original, scripts reais, nomes internos de sistemas, caminhos locais e detalhes operacionais privados não devem ser publicados.
+## Autor
 
-## O Que Demonstra
+**Samuel Garcia**
 
-- Arquitetura de workflows com IA.
-- Organização pública de agentes e competências.
-- Qualidade de entrega com especificação, execução controlada, revisão e validação executável.
-- Filtro crítico antes de recomendações importantes.
-- Segurança de publicação com revisão de segredos, artefatos e exposição pública.
-- Governança de agentes com inventário, dono, limites, rubricas, analytics, publicação/distribuição controlada e ciclo de vida.
-- Frontend estático com animação leve e sem dependência de backend.
-- Publicação de portfólio com atenção à segurança.
+Administração de sistemas, automação, implementação tecnológica e operações assistidas por IA.
+
+- GitHub: <https://github.com/garcialabss>
+- LinkedIn: <https://www.linkedin.com/in/samuel-garcia-8a3347165/>
