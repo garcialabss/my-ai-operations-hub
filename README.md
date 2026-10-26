@@ -37,6 +37,9 @@ Cada demonstração mostra os agentes ativados e termina com uma entrega verific
 - auditoria executável de PowerShell, Python, TypeScript e configuração;
 - automação, observabilidade, segurança, identidade e operações de serviço;
 - inventário e governança de agentes, permissões, custo e ciclo de vida;
+- políticas de modelos, controlo de consumo e deteção de alterações nos defaults das plataformas;
+- métricas de utilização interpretadas com cobertura de telemetria, versões mínimas e qualidade;
+- skills reutilizáveis para agentes Microsoft 365 e alertas de fim de vida tecnológico;
 - pesquisa, filtros e mapa cerebral interativo;
 - experiência responsiva com uma leitura vertical própria para telemóvel;
 - conteúdo público sanitizado, sem credenciais ou detalhes operacionais internos.
